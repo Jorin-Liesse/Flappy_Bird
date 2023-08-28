@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=REM:ital,wght@1,100&family=Ubuntu&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+
+  font-family: 'Poppins', sans-serif;
+  font-family: 'REM', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
+
+  box-sizing: border-box;
+
+  transition: 0.25s ease;
+
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-drag: none;
+
+  user-select: none;
+}
+
+body {
+  overflow: hidden;
+}
+
+#mainCanvas {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  z-index: 0;
+}
+
+.startMenu {
+  position: absolute;
+
+  width: 30rem;
+  height: 35rem;
+
+  top: 50%;
+  left: 50%;
+
+  animation: hideMenu 1.5s forwards;
+}
+
+.optionsMenu {
+  position: absolute;
+
+  width: 30rem;
+  height: 35rem;
+
+  top: 50%;
+  left: 50%;
+
+  animation: hideMenu 1.5s forwards;
+}
+
+.startMenu.active {
+  animation: unHideMenu 1.5s forwards;
+
+}
+
+.optionsMenu.active {
+  animation: unHideMenu 1.5s forwards;
+}
+
+.backPanel {
+  position: absolute;
+  width: 30rem;
+  height: auto;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  z-index: 1;
+}
+
+.backPanelTitle {
+  position: absolute;
+
+  width: 20rem;
+  height: auto;
+
+  top: 7.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  z-index: 3;
+}
+
+.title {
+  position: absolute;
+
+  top: 6.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  text-align: center;
+  font-size: 2.5rem;
+
+  font-weight: 1000;
+
+  color: #fff;
+
+  z-index: 4;
+}
+
+#backButtonMainMenu {
+  position: absolute;
+
+  width: 5rem;
+  height: auto;
+
+  top: 3%;
+  left: 87%;
+
+  z-index: 3;
+}
+
+.buttonContainer {
+  position: absolute;
+
+  top: 52.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  gap: 1rem;
+
+  z-index: 5;
+}
+
+.btn.orange {
+  width: 20rem;
+  height: auto;
+}
+
+.btn:hover{
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+@keyframes unHideMenu {
+  0% {
+    display: none;
+    transform: translate(-50%, -1000px);
+  }
+
+  50% {
+    display: none;
+    transform: translate(-50%, -1000px)
+  }
+
+  100% {
+    display: block;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes hideMenu {
+  0% {
+    display: block;
+    transform: translate(-50%, -50%);
+  }
+
+  50% {
+    display: none;
+    transform: translate(-50%, -1000px);
+  }
+
+  100% {
+    display: none;
+    transform: translate(-50%, -1000px);
+  }
+}

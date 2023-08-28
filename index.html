@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Flappy Bird</title>
+</head>
+
+<body>
+    <canvas id="mainCanvas"></canvas>
+
+    <div class="mainMenu">
+        <div class="startMenu active">
+            <img class="backPanel" src="assets/GUI/BoxesBanners/Box_Rounded.svg" alt="SVG Image"/>
+            
+            <img class="backPanelTitle" src="assets/GUI/BoxesBanners/Banner_Red.svg" alt="SVG Image"/>
+            <h1 class="title">Flappy Bird</h1>
+
+            <div class="buttonContainer">
+                <img class="btn orange" id="startButtonMainMenu" src="assets/GUI/ButtonsText/PremadeButtons_Start.svg" alt="SVG Image"/>
+                <img class="btn orange" id="optionsButtonMainMenu" src="assets/GUI/ButtonsText/PremadeButtons_Options.svg" alt="SVG Image"/>
+                <img class="btn orange" id="exitButtonMainMenu" src="assets/GUI/ButtonsText/PremadeButtons_ExitOrange.svg" alt="SVG Image"/>
+            </div>
+        </div>
+
+        <div class="optionsMenu">
+            <img class="backPanel" src="assets/GUI/BoxesBanners/Box_Rounded.svg" alt="SVG Image"/>
+            
+            <img class="backPanelTitle" src="assets/GUI/BoxesBanners/Banner_Large_Square.svg" alt="SVG Image"/>
+            <h1 class="title">Options</h1>
+
+            <img class="btn" id="backButtonMainMenu" src="assets/GUI/ButtonsIcons/PremadeButtons_X_Red.svg" alt="SVG Image">
+        </div>
+    </div>
+
+    <script type="module" src="code/main.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
