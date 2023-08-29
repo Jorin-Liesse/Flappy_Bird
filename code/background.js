@@ -20,7 +20,7 @@ export class Background {
 
     for (let key in this.layerInfo) {
       this.layerInfo[key]["image"] = new Image();
-      this.layerInfo[key]["image"].src = "../../assets/background/" + key + ".png";
+      this.layerInfo[key]["image"].src = "assets/background/" + key + ".png";
 
       this.layerInfo[key]["speed"] = ((highestDistance - this.layerInfo[key]["distance"]) * speed) / highestDistance;
       this.layerInfo[key]["offset"] = 0
