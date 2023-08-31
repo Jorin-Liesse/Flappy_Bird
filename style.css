@@ -156,12 +156,12 @@ body {
 @keyframes unHideMenu {
   0% {
     display: none;
-    transform: translate(-50%, -1000px);
+    transform: translate(-50%, -150vh);
   }
 
-  50% {
+  30% {
     display: none;
-    transform: translate(-50%, -1000px)
+    transform: translate(-50%, -150vh)
   }
 
   100% {
@@ -176,14 +176,14 @@ body {
     transform: translate(-50%, -50%);
   }
 
-  50% {
+  70% {
     display: none;
-    transform: translate(-50%, -1000px);
+    transform: translate(-50%, -150vh);
   }
 
   100% {
     display: none;
-    transform: translate(-50%, -1000px);
+    transform: translate(-50%, -150vh);
   }
 }
 

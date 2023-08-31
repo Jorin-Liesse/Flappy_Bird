@@ -10,7 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const backButtonMainMenu = document.getElementById("backButtonMainMenu");
 
-  startButton.addEventListener("click", () => {});
+  startButton.addEventListener("click", () => {
+    startMenu.classList.remove("active");
+  });
 
   optionsButton.addEventListener("click", () => {
     startMenu.classList.remove("active");
