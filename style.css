@@ -34,8 +34,10 @@ body {
 .startMenu {
   position: absolute;
 
-  width: 30rem;
-  height: 35rem;
+  width: 60%;
+  max-width: 35rem;
+
+  aspect-ratio: 1/1.15;
 
   top: 50%;
   left: 50%;
@@ -46,8 +48,10 @@ body {
 .optionsMenu {
   position: absolute;
 
-  width: 30rem;
-  height: 35rem;
+  width: 60%;
+  max-width: 35rem;
+
+  aspect-ratio: 1/1.15;
 
   top: 50%;
   left: 50%;
@@ -66,8 +70,7 @@ body {
 
 .backPanel {
   position: absolute;
-  width: 30rem;
-  height: auto;
+  width: 100%;
 
   top: 50%;
   left: 50%;
@@ -79,7 +82,7 @@ body {
 .backPanelTitle {
   position: absolute;
 
-  width: 20rem;
+  width: 65%;
   height: auto;
 
   top: 7.5%;
@@ -97,7 +100,7 @@ body {
   transform: translate(-50%, -50%);
 
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 215%;
 
   font-weight: 1000;
 
@@ -109,7 +112,7 @@ body {
 #backButtonMainMenu {
   position: absolute;
 
-  width: 5rem;
+  width: 17.5%;
   height: auto;
 
   top: 3%;
@@ -120,6 +123,8 @@ body {
 
 .buttonContainer {
   position: absolute;
+
+  width: 65%;
 
   top: 52.5%;
   left: 50%;
@@ -136,8 +141,7 @@ body {
 }
 
 .btn.orange {
-  width: 20rem;
-  height: auto;
+  width: 100%;
 }
 
 .btn:hover{
@@ -180,5 +184,15 @@ body {
   100% {
     display: none;
     transform: translate(-50%, -1000px);
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .startMenu {
+    width: 80%;
+  }
+
+  .optionsMenu {
+    width: 80%;
   }
 }
