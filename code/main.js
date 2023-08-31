@@ -1,6 +1,5 @@
 import { Background } from "./background.js";
 
-import { Menu } from "./menu.js";
 import { Level } from "./level.js";
 
 const layerInfo = {
@@ -25,7 +24,6 @@ class Main {
 
     this.background = new Background(layerInfo, -10);
 
-    this.menu = new Menu();
     this.level = new Level();
   }
 
@@ -46,7 +44,6 @@ class Main {
 
     this.background.update(this.dt);
 
-    this.menu.update(this.dt);
     this.level.update(this.dt);
   }
 
