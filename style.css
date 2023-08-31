@@ -197,6 +197,20 @@ body {
   }
 
   .title {
+    font-size: 200%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .startMenu {
+    width: 90%;
+  }
+
+  .optionsMenu {
+    width: 90%;
+  }
+
+  .title {
     font-size: 175%;
   }
 }
