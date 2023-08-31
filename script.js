@@ -1,16 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  if (window.screen.orientation) {
-    window.screen.orientation.lock('landscape')
-      .then(() => {
-        console.log('Screen orientation locked to landscape.');
-      })
-      .catch((error) => {
-        console.error('Error locking screen orientation:', error);
-      });
-  } else {
-    console.log('Screen orientation API is not supported on this device.');
-  }
-
   const startButton = document.getElementById("startButtonMainMenu");
   const optionsButton = document.getElementById("optionsButtonMainMenu");
   const exitButton = document.getElementById("exitButtonMainMenu");
@@ -45,4 +33,3 @@ document.addEventListener("DOMContentLoaded", () => {
     optionsMenu.classList.remove("active");
   });
 });
- 
