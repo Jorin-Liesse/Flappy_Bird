@@ -25,6 +25,11 @@ class Main {
     this.background = new Background(layerInfo, -10);
 
     this.level = new Level();
+
+    window.addEventListener("resize", () => {
+      this.canvas.width = window.innerWidth;
+      this.canvas.height = window.innerHeight;
+    });
   }
 
   run() {
@@ -33,11 +38,6 @@ class Main {
   }
 
   update() {
-    window.addEventListener("resize", () => {
-      this.canvas.width = window.innerWidth;
-      this.canvas.height = window.innerHeight;
-    });
-    
     this.deltaTime();
 
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -49,7 +49,12 @@ class Main {
 
   deltaTime() {
     this.timeThisFrame = Date.now();
-    this.dt = this.timeThisFrame - this.timeLastFrame;
+
+    this.dt = (this.timeThisFrame - this.timeLastFrame) / 1000;
+
+    if (this.dt > 1) {
+      this.dt = 0;
+    }
 
     this.timeLastFrame = this.timeThisFrame;
   }

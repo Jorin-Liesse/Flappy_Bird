@@ -31,7 +31,7 @@ export class Background {
     if (this.status === "play") {
       for (let key in this.layerInfo) {
         if (Number.isFinite(this.canvas.height / this.imageHeight)) {
-          this.layerInfo[key]["offset"] += 0.1 * dt * this.layerInfo[key]["speed"] * (this.canvas.height / this.imageHeight);
+          this.layerInfo[key]["offset"] += 100 * dt * this.layerInfo[key]["speed"] * (this.canvas.height / this.imageHeight);
         }
 
         if (this.layerInfo[key]["speed"] < 0) {
