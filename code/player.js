@@ -31,6 +31,14 @@ export class Player {
       }
     });
 
+    document.addEventListener("click", () => {
+      this.velocity.y = -1000;
+    });
+    
+    document.addEventListener("touchstart", () => {
+      this.velocity.y = -1000;
+    });
+
     window.addEventListener("resize", () => {
       this.position.x = this.canvas.width / 2 - this.imageWidth / 50;
     });
