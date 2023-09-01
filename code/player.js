@@ -20,7 +20,7 @@ export class Player {
       this.imageHeight = this.spriteSheet.naturalHeight;
 
       this.position = {
-        x: this.canvas.width / 2 - this.imageWidth / 50,
+        x: this.canvas.width * 0.5 - this.imageWidth / 50,
         y: -this.imageHeight,
       };
 
@@ -41,7 +41,7 @@ export class Player {
       });
 
       window.addEventListener("resize", () => {
-        this.position.x = this.canvas.width / 2 - this.imageWidth / 50;
+        this.position.x = this.canvas.width * 0.5 - this.imageWidth / 50;
       });
     };
   }
@@ -69,10 +69,10 @@ export class Player {
 
     this.ctx.translate(
       this.position.x + this.imageWidth / 50,
-      this.position.y + this.imageHeight / 2
+      this.position.y + this.imageHeight * 0.5
     );
 
-    this.ctx.rotate(((Math.PI / 2) * this.velocity.y) / 5000);
+    this.ctx.rotate(((Math.PI * 0.5) * this.velocity.y) / 5000);
 
     this.ctx.drawImage(
       this.spriteSheet,
@@ -81,7 +81,7 @@ export class Player {
       this.imageWidth / 25,
       this.imageHeight,
       -this.imageWidth / 50,
-      -this.imageHeight / 2,
+      -this.imageHeight * 0.5,
       this.imageWidth / 25,
       this.imageHeight
     );
