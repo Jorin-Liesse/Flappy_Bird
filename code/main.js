@@ -2,15 +2,6 @@ import { Background } from "./background.js";
 
 import { Level } from "./level.js";
 
-const layerInfo = {
-    "sky": {"distance": 10000},
-    "clouds": {"distance": 9000},
-    "mountains": {"distance": 8000},  
-    "hills": {"distance": 1000},
-    "trees": {"distance": 100},
-    "land": {"distance": 0},
-  }
-
 class Main {
   constructor() {
     this.canvas = document.getElementById("mainCanvas");
@@ -22,9 +13,48 @@ class Main {
     this.timeLastFrame = 0;
     this.timeThisFrame = 0;
 
-    this.background = new Background(layerInfo, -10);
+    this.background = new Background();
 
     this.level = new Level();
+
+    this.constructEventLisstener();
+  }
+
+  constructEventLisstener() {
+    const startButton = document.getElementById("startButtonMainMenu");
+    const optionsButton = document.getElementById("optionsButtonMainMenu");
+    const exitButton = document.getElementById("exitButtonMainMenu");
+
+    const backButton = document.getElementById("backButtonMainMenu");
+
+    const startMenu = document.querySelector(".startMenu");
+    const optionsMenu = document.querySelector(".optionsMenu");
+
+    const backButtonMainMenu = document.getElementById("backButtonMainMenu");
+    
+    startButton.addEventListener("click", () => {
+      startMenu.classList.remove("active");
+      this.level.status = "play";
+    });
+
+    optionsButton.addEventListener("click", () => {
+      startMenu.classList.remove("active");
+      optionsMenu.classList.add("active");
+    });
+
+    exitButton.addEventListener("click", () => {
+      window.close();
+    });
+
+    backButtonMainMenu.addEventListener("click", () => {
+      startMenu.classList.add("active");
+      optionsMenu.classList.remove("active");
+    });
+
+    backButton.addEventListener("click", () => {
+      startMenu.classList.add("active");
+      optionsMenu.classList.remove("active");
+    });
 
     window.addEventListener("resize", () => {
       this.canvas.width = window.innerWidth;
@@ -60,5 +90,7 @@ class Main {
   }
 }
 
-const main = new Main();
-main.run();
+document.addEventListener("DOMContentLoaded", () => {
+  const main = new Main();
+  main.run();
+});

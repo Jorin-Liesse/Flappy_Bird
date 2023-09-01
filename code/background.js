@@ -1,6 +1,15 @@
 export class Background {
-  constructor(layerInfo, speed) {
-    this.layerInfo = layerInfo;
+  constructor() {
+    this.layerInfo = {
+      "sky": {"distance": 10000},
+      "clouds": {"distance": 9000},
+      "mountains": {"distance": 8000},  
+      "hills": {"distance": 1000},
+      "trees": {"distance": 100},
+      "land": {"distance": 0},
+    };
+
+    this.speed = -10;
 
     this.status = "play";
 
@@ -22,7 +31,7 @@ export class Background {
       this.layerInfo[key]["image"] = new Image();
       this.layerInfo[key]["image"].src = "assets/background/" + key + ".png";
 
-      this.layerInfo[key]["speed"] = ((highestDistance - this.layerInfo[key]["distance"]) * speed) / highestDistance;
+      this.layerInfo[key]["speed"] = ((highestDistance - this.layerInfo[key]["distance"]) * this.speed) / highestDistance;
       this.layerInfo[key]["offset"] = 0
     }
   }

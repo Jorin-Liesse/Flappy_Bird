@@ -2,7 +2,7 @@ import { Player } from "./player.js";
 
 export class Level {
   constructor() {
-    this.status = "play";
+    this.status = "paused";
 
     this.canvas = document.getElementById("mainCanvas");
     this.ctx = this.canvas.getContext("2d");

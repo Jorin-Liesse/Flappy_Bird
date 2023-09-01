@@ -1,14 +1,5 @@
 export class Player {
   constructor() {
-    this.canvas = document.getElementById("mainCanvas");
-    this.ctx = this.canvas.getContext("2d");
-
-    this.spriteSheet = new Image();
-    this.spriteSheet.src = "assets/player.png";
-
-    this.imageWidth = this.spriteSheet.naturalWidth;
-    this.imageHeight = this.spriteSheet.naturalHeight;
-
     this.gravity = 4000;
 
     this.totalFrames = 25;
@@ -18,33 +9,45 @@ export class Player {
 
     this.frameRate = 17.5;
 
-    this.position = {
-      x: this.canvas.width / 2 - this.imageWidth / 50,
-      y: -this.imageHeight,
-    };
+    this.canvas = document.getElementById("mainCanvas");
+    this.ctx = this.canvas.getContext("2d");
 
-    this.velocity = { x: 0, y: 0 };
+    this.spriteSheet = new Image();
+    this.spriteSheet.src = "assets/player.png";
 
-    document.addEventListener("keydown", (event) => {
-      if (event.code === "Space") {
+    this.spriteSheet.onload = () => {
+      this.imageWidth = this.spriteSheet.naturalWidth;
+      this.imageHeight = this.spriteSheet.naturalHeight;
+
+      this.position = {
+        x: this.canvas.width / 2 - this.imageWidth / 50,
+        y: -this.imageHeight,
+      };
+
+      this.velocity = { x: 0, y: 0 };
+
+      document.addEventListener("keydown", (event) => {
+        if (event.code === "Space") {
+          this.velocity.y = -1000;
+        }
+      });
+
+      document.addEventListener("click", () => {
         this.velocity.y = -1000;
-      }
-    });
+      });
 
-    document.addEventListener("click", () => {
-      this.velocity.y = -1000;
-    });
-    
-    document.addEventListener("touchstart", () => {
-      this.velocity.y = -1000;
-    });
+      document.addEventListener("touchstart", () => {
+        this.velocity.y = -1000;
+      });
 
-    window.addEventListener("resize", () => {
-      this.position.x = this.canvas.width / 2 - this.imageWidth / 50;
-    });
+      window.addEventListener("resize", () => {
+        this.position.x = this.canvas.width / 2 - this.imageWidth / 50;
+      });
+    };
   }
 
   update(dt) {
+
     if (!this.lastFrameTime) {
       this.lastFrameTime = Date.now();
     }
@@ -65,11 +68,11 @@ export class Player {
     this.ctx.save();
 
     this.ctx.translate(
-        this.position.x + this.imageWidth / 50,
-        this.position.y + this.imageHeight / 2
+      this.position.x + this.imageWidth / 50,
+      this.position.y + this.imageHeight / 2
     );
 
-    this.ctx.rotate(Math.PI / 2 * this.velocity.y / 5000);
+    this.ctx.rotate(((Math.PI / 2) * this.velocity.y) / 5000);
 
     this.ctx.drawImage(
       this.spriteSheet,
@@ -77,8 +80,8 @@ export class Player {
       0,
       this.imageWidth / 25,
       this.imageHeight,
-      - this.imageWidth / 50,
-      - this.imageHeight / 2,
+      -this.imageWidth / 50,
+      -this.imageHeight / 2,
       this.imageWidth / 25,
       this.imageHeight
     );
