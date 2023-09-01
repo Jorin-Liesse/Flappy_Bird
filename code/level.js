@@ -1,4 +1,5 @@
 import { Player } from "./player.js";
+import { Pilar } from "./pilar.js";
 
 export class Level {
   constructor() {
