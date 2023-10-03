@@ -34,38 +34,36 @@ body {
 .startMenu {
   position: absolute;
 
-  width: 60%;
-  max-width: 35rem;
+  width: 35%;
 
   aspect-ratio: 1/1.15;
 
   top: 50%;
   left: 50%;
 
-  animation: hideMenu 1.5s forwards;
+  animation: hideMenu 1.75s forwards;
 }
 
 .optionsMenu {
   position: absolute;
 
-  width: 60%;
-  max-width: 35rem;
+  width: 35%;
 
   aspect-ratio: 1/1.15;
 
   top: 50%;
   left: 50%;
 
-  animation: hideMenu 1.5s forwards;
+  animation: hideMenu 1.75s forwards;
 }
 
 .startMenu.active {
-  animation: unHideMenu 1.5s forwards;
+  animation: unHideMenu 1.75s forwards;
 
 }
 
 .optionsMenu.active {
-  animation: unHideMenu 1.5s forwards;
+  animation: unHideMenu 1.75s forwards;
 }
 
 .backPanel {
@@ -156,12 +154,12 @@ body {
 @keyframes unHideMenu {
   0% {
     display: none;
-    transform: translate(-50%, -150vh);
+    transform: translate(-50%, -200vh);
   }
 
   30% {
     display: none;
-    transform: translate(-50%, -150vh)
+    transform: translate(-50%, -200vh)
   }
 
   100% {
@@ -178,39 +176,25 @@ body {
 
   70% {
     display: none;
-    transform: translate(-50%, -150vh);
+    transform: translate(-50%, -200vh);
   }
 
   100% {
     display: none;
-    transform: translate(-50%, -150vh);
+    transform: translate(-50%, -200vh);
   }
 }
 
 @media screen and (max-width: 750px) {
   .startMenu {
-    width: 80%;
+    width: 60%;
   }
 
   .optionsMenu {
-    width: 80%;
+    width: 60%;
   }
 
   .title {
-    font-size: 200%;
-  }
-}
-
-@media screen and (max-width: 450px) {
-  .startMenu {
-    width: 90%;
-  }
-
-  .optionsMenu {
-    width: 90%;
-  }
-
-  .title {
-    font-size: 175%;
+    font-size: 150%;
   }
 }

@@ -1,4 +1,4 @@
-export class Pilar {
+export class Pillar {
   constructor() {
     this.minOpening = 175;
     this.maxOpening = 250;
@@ -13,7 +13,7 @@ export class Pilar {
     this.ctx = this.canvas.getContext("2d");
 
     this.spriteSheet = new Image();
-    this.spriteSheet.src = "assets/pilar.png";
+    this.spriteSheet.src = "assets/pillar.png";
 
     this.spriteSheet.onload = () => {
       this.imageWidth = this.spriteSheet.naturalWidth;
@@ -26,6 +26,8 @@ export class Pilar {
 
       this.velocity = { x: -this.speed, y: 0 };
 
+      this.updateHitBox();
+
       this.spriteLoaded = true;
     };
 
@@ -37,9 +39,32 @@ export class Pilar {
     );
   }
 
+  updateHitBox() {
+    this.hitBox = {
+      top: {
+        x: this.position.x,
+        y: this.position.y + (this.imageHeight/2 - this.imageHeight * 1 - this.opening * 0.5 - this.heightOffset),
+        width: this.imageWidth,
+        height: this.imageHeight,
+        dx: this.velocity.x,
+        dy: this.velocity.y,
+      },
+      bottom: {
+        x: this.position.x,
+        y: this.position.y - (this.imageHeight /2 - this.imageHeight * 1 - this.opening * 0.5 + this.heightOffset),
+        width: this.imageWidth,
+        height: this.imageHeight,
+        dx: this.velocity.x,
+        dy: this.velocity.y,
+      },
+    };
+  }
+
   update(dt) {
     if (this.spriteLoaded) {
       this.position.x += this.velocity.x * dt;
+
+      this.updateHitBox();
 
       this.ctx.save();
 
