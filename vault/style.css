@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=REM:ital,wght@1,100&family=Ubuntu&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+
+  font-family: 'Poppins', sans-serif;
+  font-family: 'REM', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
+
+  box-sizing: border-box;
+
+  transition: 0.25s ease;
+
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-drag: none;
+
+  user-select: none;
+}
+
+body {
+  overflow: hidden;
+}
+
+#mainCanvas {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  z-index: 0;
+}

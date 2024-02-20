@@ -1,92 +1,72 @@
-import { Background } from "./background.js";
+import { InputManager } from "./canvasUtilitys/inputManager.js";
+import { DeltaTime } from "./canvasUtilitys/deltaTime.js";
+import { AspectRatio } from "./canvasUtilitys/aspectRatio.js";
+import { setCanvasSize } from "./canvasUtilitys/canvasSize.js";
 
-import { Level } from "./level.js";
+import { StartScreen } from "./screens/startScreen.js";
+import { OptionsScreen } from "./screens/optionsScreen.js";
+import { GameScreen } from "./screens/gameScreen.js";
+import { BackgroundScreen } from "./screens/backgroundScreen.js";
 
 class Main {
+  #canvas;
+  #ctx;
+
   constructor() {
-    this.canvas = document.getElementById("mainCanvas");
-    this.ctx = this.canvas.getContext("2d");
+    this.#canvas = document.getElementById("mainCanvas");
+    this.#ctx = this.#canvas.getContext("2d");
 
-    this.canvas.width = window.innerWidth;
-    this.canvas.height = window.innerHeight;
+    InputManager.init();
+    AspectRatio.init();
 
-    this.timeLastFrame = 0;
-    this.timeThisFrame = 0;
+    setCanvasSize(this.#canvas.width, this.#canvas.height);
 
-    this.background = new Background();
+    this.screens = {};
 
-    this.level = new Level();
+    this.screens.backgroundScreen = new BackgroundScreen();
+    this.screens.gameScreen = new GameScreen();
+    this.screens.startScreen = new StartScreen();
+    this.screens.optionsScreen = new OptionsScreen();
 
-    this.constructEventLisstener();
-  }
-
-  constructEventLisstener() {
-    const startButton = document.getElementById("startButtonMainMenu");
-    const optionsButton = document.getElementById("optionsButtonMainMenu");
-    const exitButton = document.getElementById("exitButtonMainMenu");
-
-    const backButton = document.getElementById("backButtonMainMenu");
-
-    const startMenu = document.querySelector(".startMenu");
-    const optionsMenu = document.querySelector(".optionsMenu");
-
-    const backButtonMainMenu = document.getElementById("backButtonMainMenu");
-    
-    startButton.addEventListener("click", () => {
-      startMenu.classList.remove("active");
-      this.level.status = "play";
-    });
-
-    optionsButton.addEventListener("click", () => {
-      startMenu.classList.remove("active");
-      optionsMenu.classList.add("active");
-    });
-
-    exitButton.addEventListener("click", () => {
-      window.close();
-    });
-
-    backButtonMainMenu.addEventListener("click", () => {
-      startMenu.classList.add("active");
-      optionsMenu.classList.remove("active");
-    });
-
-    backButton.addEventListener("click", () => {
-      startMenu.classList.add("active");
-      optionsMenu.classList.remove("active");
-    });
-
-    window.addEventListener("resize", () => {
-      this.canvas.width = window.innerWidth;
-      this.canvas.height = window.innerHeight;
-    });
+    window.addEventListener("resize", this.#resize.bind(this));
   }
 
   run() {
-    this.update();
+    this.#update();
+    this.#draw();
+
     requestAnimationFrame(this.run.bind(this));
   }
 
-  update() {
-    this.deltaTime();
+  #update() {
+    InputManager.update();
+    DeltaTime.update();
 
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-    this.background.update(this.dt);
-
-    this.level.update(this.dt);
-  }
-
-  deltaTime() {
-    this.timeThisFrame = Date.now();
-
-    this.dt = (this.timeThisFrame - this.timeLastFrame) / 1000;
-
-    if (this.dt > 1) {
-      this.dt = 0;
+    for (const screen in this.screens) {
+      this.screens[screen].update();
     }
 
-    this.timeLastFrame = this.timeThisFrame;
+    // if (!this.screens.gameScreen.isLoaded) return;
+  }
+
+  #draw() {
+    this.#ctx.clearRect(0, 0, this.#canvas.width, this.#canvas.height);
+
+    const screenNames = Object.keys(this.screens);
+    screenNames.sort((a, b) => this.screens[a].zIndex - this.screens[b].zIndex);
+
+    for (const screenName of screenNames) {
+      this.screens[screenName].draw();
+    }
+  }
+
+  #resize() {
+    AspectRatio.adjust();
+    setCanvasSize(this.#canvas.width, this.#canvas.height);
+
+    for (const screen in this.screens) {
+      this.screens[screen].resize({ x: 0, y: 0 }, { x: this.#canvas.width, y: this.#canvas.height });
+    }
   }
 }
 

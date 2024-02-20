@@ -1,200 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=REM:ital,wght@1,100&family=Ubuntu&display=swap');
+@font-face {
+  font-family: 'Ubuntu Title';
+  src: url('assets/fonts/Ubuntu-Title.ttf') format('truetype');
+}
 
 * {
   margin: 0;
   padding: 0;
 
-  font-family: 'Poppins', sans-serif;
-  font-family: 'REM', sans-serif;
-  font-family: 'Ubuntu', sans-serif;
-
   box-sizing: border-box;
-
-  transition: 0.25s ease;
-
   -webkit-tap-highlight-color: transparent;
-  -webkit-user-drag: none;
 
-  user-select: none;
+  background-color: #000;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 body {
   overflow: hidden;
-}
-
-#mainCanvas {
-  position: absolute;
-
-  top: 0;
-  left: 0;
-
-  z-index: 0;
-}
-
-.startMenu {
-  position: absolute;
-
-  width: 35%;
-
-  aspect-ratio: 1/1.15;
-
-  top: 50%;
-  left: 50%;
-
-  animation: hideMenu 1.75s forwards;
-}
-
-.optionsMenu {
-  position: absolute;
-
-  width: 35%;
-
-  aspect-ratio: 1/1.15;
-
-  top: 50%;
-  left: 50%;
-
-  animation: hideMenu 1.75s forwards;
-}
-
-.startMenu.active {
-  animation: unHideMenu 1.75s forwards;
-
-}
-
-.optionsMenu.active {
-  animation: unHideMenu 1.75s forwards;
-}
-
-.backPanel {
-  position: absolute;
-  width: 100%;
-
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  z-index: 1;
-}
-
-.backPanelTitle {
-  position: absolute;
-
-  width: 65%;
-  height: auto;
-
-  top: 7.5%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  z-index: 3;
-}
-
-.title {
-  position: absolute;
-
-  top: 6.5%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  text-align: center;
-  font-size: 250%;
-
-  font-weight: 1000;
-
-  color: #fff;
-
-  z-index: 4;
-}
-
-#backButtonMainMenu {
-  position: absolute;
-
-  width: 17.5%;
-  height: auto;
-
-  top: 3%;
-  left: 87%;
-
-  z-index: 3;
-}
-
-.buttonContainer {
-  position: absolute;
-
-  width: 65%;
-
-  top: 52.5%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-
-  gap: 1rem;
-
-  z-index: 5;
-}
-
-.btn.orange {
-  width: 100%;
-}
-
-.btn:hover{
-  cursor: pointer;
-  transform: scale(1.05);
-}
-
-.btn:active {
-  transform: scale(0.95);
-}
-
-@keyframes unHideMenu {
-  0% {
-    display: none;
-    transform: translate(-50%, -200vh);
-  }
-
-  30% {
-    display: none;
-    transform: translate(-50%, -200vh)
-  }
-
-  100% {
-    display: block;
-    transform: translate(-50%, -50%);
-  }
-}
-
-@keyframes hideMenu {
-  0% {
-    display: block;
-    transform: translate(-50%, -50%);
-  }
-
-  70% {
-    display: none;
-    transform: translate(-50%, -200vh);
-  }
-
-  100% {
-    display: none;
-    transform: translate(-50%, -200vh);
-  }
-}
-
-@media screen and (max-width: 750px) {
-  .startMenu {
-    width: 60%;
-  }
-
-  .optionsMenu {
-    width: 60%;
-  }
-
-  .title {
-    font-size: 150%;
-  }
 }

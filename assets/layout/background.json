@@ -1,0 +1,29 @@
+{
+  "parallaxBackground": {
+    "type": "Parallax",
+    "position": { "x": 0, "y": 0 },
+    "size": { "x": 1, "y": 1 },
+    "layers": [
+      {
+        "path": "assets/graphics/background/sky.png",
+        "speed": -0.01
+      },
+      {
+        "path": "assets/graphics/background/mountains.png",
+        "speed": -0.04
+      },
+      {
+        "path": "assets/graphics/background/hills.png",
+        "speed": -0.07
+      },
+      {
+        "path": "assets/graphics/background/trees.png",
+        "speed": -0.1
+      },
+      {
+        "path": "assets/graphics/background/ground.png",
+        "speed": -0.15
+      }
+    ]
+  }
+}

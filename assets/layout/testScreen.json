@@ -1,0 +1,131 @@
+{
+  "background": {
+    "type": "Rectangle",
+    "position": { "x": 0.0, "y": 0.0 },
+    "size": { "x": 1, "y": 1 },
+    "width": 0.01,
+    "strokeColor": "#000000",
+    "fillColor": "red"
+  },
+  "testLine": {
+    "type": "Line",
+    "startPosition": { "x": 0, "y": 0 },
+    "endPosition": { "x": 1, "y": 1 },
+    "width": 0.01,
+    "color": "#ffffff"
+  },
+  "testCircle": {
+    "type": "Circle",
+    "position": { "x": 0.5, "y": 0.5 },
+    "radius": 0.25,
+    "width": 0.01,
+    "strokeColor": "#000000",
+    "fillColor": "#ffffff"
+  },
+  "testRectangle": {
+    "type": "Rectangle",
+    "position": { "x": 0.25, "y": 0.25 },
+    "size": { "x": 0.5, "y": 0.5 },
+    "width": 0.01,
+    "strokeColor": "#000000",
+    "fillColor": "#ffffff"
+  },
+  "testSprite": {
+    "type": "Sprite",
+    "path": "assets/graphics/testScreen.jpg",
+    "position": { "x": 0.3, "y": 0.3 },
+    "size": { "x": 0.4, "y": 0.4 }
+  },
+  "testText": {
+    "type": "Text",
+    "position": { "x": 0.5, "y": 0.5 },
+    "size": 0.1,
+    "text": "Hello World!",
+    "font": "Arial",
+    "color": "#ffffff",
+    "align": "center"
+  },
+  "testButton": {
+    "type": "Button",
+    "pathUpSprite": "assets/graphics/UI/ButtonUp.png",
+    "pathDownSprite": "assets/graphics/UI/ButtonDown.png",
+    "pathUpSound": "assets/audio/UI/buttonUp.mp3",
+    "pathDownSound": "assets/audio/UI/buttonDown.mp3",
+    "position": { "x": 0.375, "y": 0.425 },
+    "size": { "x": 0.25, "y": 0.15 },
+    "text": "Click Me!",
+    "font": "Ubuntu Title",
+    "color": "#c6ac9f"
+  },
+  "testChoiceBox": {
+    "type": "ChoiceBox",
+    "pathOpenSprite": "assets/graphics/UI/ChoiceBoxMediumOpen.png",
+    "pathClosedSprite": "assets/graphics/UI/ChoiceBoxMediumClosed.png",
+    "pathSound": "assets/audio/UI/buttonUp.mp3",
+    "options": ["Windowed", "Fullscreen", "Borderless"],
+    "positions": {
+      "signOpen": { "x": 0.479, "y": 0.272 },
+      "signClosed": { "x": 0.485, "y": 0.282 },
+      "options": [
+        { "x": 0.548, "y": 0.315 },
+        { "x": 0.571, "y": 0.377 },
+        { "x": 0.571, "y": 0.438 }
+      ]
+    },
+
+    "sizes": {
+      "signOpen": { "x": 0.184, "y": 0.206 },
+      "signClosed": { "x": 0.168, "y": 0.065 }
+    },
+    "sizeText": 0.026,
+    "font": "Ubuntu Title",
+    "color": "#c6ac9f",
+    "alwaysOpen": false
+  },
+  "testSlider": {
+    "type": "Slider",
+    "pathBar": "assets/graphics/UI/SliderBar.png",
+    "pathPin": "assets/graphics/UI/SliderPin.png",
+    "pathSound": "assets/audio/UI/buttonUp.mp3",
+    "position": { "x": 0.25, "y": 0.75 },
+    "sizes": {
+      "bar": { "x": 0.5, "y": 0.125 },
+      "pin": { "x": 0.025, "y": 0.125 }
+    },
+    "value": 0.5
+  },
+  "testSwitch": {
+    "type": "Switch",
+    "pathOn": "assets/graphics/UI/SwitchOn.png",
+    "pathOff": "assets/graphics/UI/SwitchOff.png",
+    "pathSound": "assets/audio/UI/buttonUp.mp3",
+    "position": { "x": 0.4675, "y": 0.15 },
+    "size": { "x": 0.075, "y": 0.060 },
+    "value": "on"
+  },
+  "testSpriteSheet": {
+    "type": "SpriteSheet",
+    "path": "assets/graphics/Game/aircraft.png",
+    "position": { "x": 0.25, "y": 0.25 },
+    "size": { "x": 0.07373, "y": 0.12963 },
+    "animationInfo": {
+      "rows": 4,
+      "columns": 3,
+      "startFrame": 0,
+      "endFrame": 11,
+      "frameRate": 10
+    }
+  },
+  "testProgressBar": {
+    "type": "ProgressBar",
+    "pathBackPlate": "assets/graphics/UI/ProgressBarBackPlate.png",
+    "pathIndicator": "assets/graphics/UI/ProgressBarIndicator.png",
+    "pathPlate": "assets/graphics/UI/ProgressBarPlate.png",
+    "position": { "x": 0.1, "y": 0.1 },
+    "sizes": {
+      "bar": { "x": 0.3656, "y": 0.1148 },
+      "plate": { "x": 0.0646, "y": 0.1148 }
+    },
+    "value": 0.5
+  }
+}
