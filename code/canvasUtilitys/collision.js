@@ -41,17 +41,17 @@ export function circleCircleCollision(circle1, circle2) {
 }
 
 export function rectRectCollision(rect1, rect2) {
-  const scaledWidth = rect1.refSize.x;
-  const scaledHeight = rect1.refSize.y;
+  const scaledWidth = rect1.collisionBoxes.refSize.x;
+  const scaledHeight = rect1.collisionBoxes.refSize.y;
 
-  const scaledX = rect1.refPosition.x + (rect1.refSize.x - scaledWidth) / 2;
-  const scaledY = rect1.refPosition.y + (rect1.refSize.y - scaledHeight) / 2;
+  const scaledX = rect1.collisionBoxes.refPosition.x + (rect1.collisionBoxes.refSize.x - scaledWidth) / 2;
+  const scaledY = rect1.collisionBoxes.refPosition.y + (rect1.collisionBoxes.refSize.y - scaledHeight) / 2;
 
   if (
-    scaledX < rect2.refPosition.x + rect2.refSize.x &&
-    scaledX + scaledWidth > rect2.refPosition.x &&
-    scaledY < rect2.refPosition.y + rect2.refSize.y &&
-    scaledY + scaledHeight > rect2.refPosition.y
+    scaledX < rect2.collisionBoxes.refPosition.x + rect2.collisionBoxes.refSize.x &&
+    scaledX + scaledWidth > rect2.collisionBoxes.refPosition.x &&
+    scaledY < rect2.collisionBoxes.refPosition.y + rect2.collisionBoxes.refSize.y &&
+    scaledY + scaledHeight > rect2.collisionBoxes.refPosition.y
   ) {
     return true;
   }

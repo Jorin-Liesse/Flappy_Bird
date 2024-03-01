@@ -5,6 +5,7 @@ import { rectRectCollision } from "../canvasUtilitys/collision.js";
 import { Settings } from "../settings.js";
 
 export class Player extends GameObject {
+  hitTolerance = 1;
   constructor(screenPosition, screenSize) {
     super(
       {
@@ -23,7 +24,7 @@ export class Player extends GameObject {
   update() {
     // super.update();
 
-    this.velocity.x = (0.5 - this.refPosition.x) * 0.00005 * DeltaTime.dt;
+    this.velocity.x = (0.5 - this.refPosition.x) * Settings.playerRecenterForce * DeltaTime.dt;
     this.velocity.y += Settings.gravity * DeltaTime.dt;
 
     if (InputManager.isKeyPressed(32) || InputManager.isMouseButtonPressed(0) || InputManager.isTouchPressed()){
@@ -39,7 +40,7 @@ export class Player extends GameObject {
 
     this.resize(this.screenPosition, this.screenSize);
 
-    this.collisionBoxes.position = this.position;
+    this.setCollisionBoxesPosition();
   }
 
   draw() {

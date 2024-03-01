@@ -9,12 +9,14 @@ export class GameObject extends SpriteSheet{
     super(data, screenPosition, screenSize);
     this.velocity = { x: 0, y: 0 };
 
+    this.hitTolerance = 1;
+
     this.screenPosition = screenPosition;
     this.screenSize = screenSize;
 
     this.collisionBoxes = new Rectangle({
       "position": data.position,
-      "size": data.size,
+      "size": {x: data.size.x * this.hitTolerance, y: data.size.y * this.hitTolerance},
       "width": Settings.collisionBoxesWidth,
       "strokeColor": "blue",
       "fillColor": "transparent",
@@ -34,7 +36,7 @@ export class GameObject extends SpriteSheet{
 
     this.resize(this.screenPosition, this.screenSize);
 
-    this.collisionBoxes.position = this.position;
+    this.setCollisionBoxesPosition();
   }
 
   draw() {
@@ -46,5 +48,12 @@ export class GameObject extends SpriteSheet{
   resize(screenPosition, screenSize) {
     super.resize(screenPosition, screenSize);
     this.collisionBoxes.resize(screenPosition, screenSize);
+  }
+
+  setCollisionBoxesPosition() {
+    this.collisionBoxes.position = {
+      x: this.position.x + (1 -this.hitTolerance) * this.size.x/2,
+      y: this.position.y + (1- this.hitTolerance) * this.size.y/2
+    };
   }
 }

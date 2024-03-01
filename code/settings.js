@@ -35,6 +35,7 @@ export class Settings {
   static playerJumpForce = -0.0007;
   static playerRotationSmoothness = 0.1;
   static playerRotationMultiplier = 500;
+  static playerRecenterForce = 0.00005;
 
   static groundPosition = {x: 0.0, y: 0.765};
   static groundSize = {x: 1, y: 0.235};
