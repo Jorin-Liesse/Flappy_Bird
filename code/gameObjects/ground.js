@@ -20,6 +20,8 @@ export class Ground {
       screenPosition,
       screenSize
     )
+
+    this.collisionBoxes.velocity = this.velocity;
   }
 
   update() {

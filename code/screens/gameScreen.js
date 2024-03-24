@@ -25,14 +25,16 @@ export class GameScreen extends Screen {
     this.pilarSpawner();
     this.pilarRemover();
 
+    this.elements["player"].collidables = [];
+
     for (const key in this.elements) {
       const element = this.elements[key];
       if (element instanceof Pilar) {
-        this.elements["player"].collidables.push(element);
+        this.elements["player"].collidables.push(element.collisionBoxes);
       }
     }
 
-    this.elements["player"].collidables.push(this.elements["ground"]);
+    this.elements["player"].collidables.push(this.elements["ground"].collisionBoxes);
   }
 
   draw() {
@@ -75,7 +77,7 @@ export class GameScreen extends Screen {
   pilarRemover() {
     for (const key in this.elements) {
       const element = this.elements[key];
-      if (element instanceof Pilar && element.position.x + element.size.x < 0) {
+      if (element instanceof Pilar && (element.position.x + element.size.x < 0)) {
         delete this.elements[key];
       }
     }

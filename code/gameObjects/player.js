@@ -57,7 +57,7 @@ export class Player extends GameObject {
 
   #collision(collidables, direction) {
     collidables.forEach((collidable) => {
-      if (rectRectCollision(this, collidable)) {
+      if (rectRectCollision(this.collisionBoxes, collidable)) {
         if (direction === "horizontal") {
           this.refPosition.x -= this.velocity.x * DeltaTime.dt;
           this.velocity.x = 0;

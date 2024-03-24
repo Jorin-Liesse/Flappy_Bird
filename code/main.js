@@ -2,6 +2,7 @@ import { InputManager } from "./canvasUtilitys/inputManager.js";
 import { DeltaTime } from "./canvasUtilitys/deltaTime.js";
 import { AspectRatio } from "./canvasUtilitys/aspectRatio.js";
 import { setCanvasSize } from "./canvasUtilitys/canvasSize.js";
+import { PageStatus } from "./canvasUtilitys/pageStatus.js";
 
 import { StartScreen } from "./screens/startScreen.js";
 import { OptionsScreen } from "./screens/optionsScreen.js";
@@ -18,6 +19,7 @@ class Main {
 
     InputManager.init();
     AspectRatio.init();
+    PageStatus.init();
 
     setCanvasSize(this.#canvas.width, this.#canvas.height);
 
@@ -41,9 +43,22 @@ class Main {
   #update() {
     InputManager.update();
     DeltaTime.update();
+    PageStatus.update();
 
     for (const screen in this.screens) {
       this.screens[screen].update();
+    }
+
+    if (!PageStatus.pageVisibility || !PageStatus.pageFocus) {
+      for (const screen in this.screens) {
+        this.screens[screen].frozen = true;
+      }
+    }
+
+    else {
+      for (const screen in this.screens) {
+        this.screens[screen].frozen = false;
+      }
     }
 
     // if (!this.screens.gameScreen.isLoaded) return;

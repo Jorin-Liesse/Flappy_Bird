@@ -1,6 +1,6 @@
 export class Settings {
   static aspectRatio = 16 / 9;
-  static showCollisionBoxes = true;
+  static showCollisionBoxes = false;
   static collisionBoxesWidth = 0.005;
 
   static pathStartScreenLayout = "assets/layout/startScreen.json";

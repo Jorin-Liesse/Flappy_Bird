@@ -24,6 +24,8 @@ export class GameObject extends SpriteSheet{
       screenPosition,
       screenSize
     )
+
+    this.collisionBoxes.velocity = this.velocity;
   }
 
   update() {
