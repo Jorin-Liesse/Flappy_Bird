@@ -10,9 +10,28 @@ export class StartScreen extends Screen {
 
   update() {
     super.update();
+
+    this.#checkStatus();
   }
 
   draw() {
     super.draw();
+  }
+
+  #checkStatus() {
+    if (Settings.startScreenStatus === "inactive") {
+      this.active = false;
+      this.frozen = false;
+    }
+
+    if (Settings.startScreenStatus === "active") {
+      this.active = true;
+      this.frozen = false;
+    }
+
+    if (Settings.startScreenStatus === "frozen") {
+      this.active = true;
+      this.frozen = true;
+    }
   }
 }

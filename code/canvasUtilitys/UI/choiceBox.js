@@ -39,15 +39,19 @@ export class ChoiceBox {
       mousePosition.y > this.positions.signOpen.y &&
       mousePosition.y < this.positions.signOpen.y + this.sizes.signOpen.y
 
-    if (InputManager.isMouseButtonReleased(0) && closedBounds && this.status === "closed") {
-      this.sound.play();
-      this.status = "open";
-    } 
+    if (!this.alwaysOpen) {
+      if (InputManager.isMouseButtonReleased(0) && closedBounds && this.status === "closed") {
+        this.sound.play();
+        this.status = "open";
+      } 
     
-    else if ((!(openBounds && InputManager.isMouseButtonReleased(0)) || closedBounds) && InputManager.isMouseButtonReleased(0) && this.status === "open") {
-      this.sound.play();
-      this.status = "closed";
+      else if ((!(openBounds && InputManager.isMouseButtonReleased(0)) || closedBounds) && InputManager.isMouseButtonReleased(0) && this.status === "open") {
+        this.sound.play();
+        this.status = "closed";
+      }
     }
+
+    else this.status = "open";
 
     if (this.status === "open") {
       for (let i = 1; i < this.optionsTexts.length; i++) {
@@ -65,10 +69,6 @@ export class ChoiceBox {
           this.status = "closed";
         }
       }
-    }
-
-    if (this.alwaysOpen) {
-      this.status = "open";
     }
   }
 

@@ -10,5 +10,28 @@ export class BackgroundScreen extends Screen {
 
   update() {
     super.update();
+
+    this.#checkStatus();
+  }
+
+  draw() {
+    super.draw();
+  }
+
+  #checkStatus() {
+    if (Settings.backgroundScreenStatus === "inactive") {
+      this.active = false;
+      this.frozen = false;
+    }
+
+    if (Settings.backgroundScreenStatus === "active") {
+      this.active = true;
+      this.frozen = false;
+    }
+
+    if (Settings.backgroundScreenStatus === "frozen") {
+      this.active = true;
+      this.frozen = true;
+    }
   }
 }

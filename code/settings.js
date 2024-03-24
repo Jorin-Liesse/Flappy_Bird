@@ -8,6 +8,17 @@ export class Settings {
   static pathGameScreenLayout = "assets/layout/gameScreen.json";
   static pathBackgroundLayout = "assets/layout/background.json";
 
+  static pathGraphicsScreenLayout = "assets/layout/graphicsScreen.json";
+  static pathSoundScreenLayout = "assets/layout/soundScreen.json";
+  static pathControllsScreenLayout = "assets/layout/controllsScreen.json";
+
+  static backgroundScreenStatus = "active"; //active, inactive, transitionin, transitionout, forzen
+  static startScreenStatus = "inactive"; //active, inactive, transitionin, transitionout, forzen
+  static optionsScreenStatus = "active"; //active, inactive, transitionin, transitionout, forzen
+  static gameScreenStatus = "inactive"; //active, inactive, transitionin, transitionout, forzen
+
+  static transitionDuration = 1000;
+
   static zIndex = {
     background: 0,
     game: 1,

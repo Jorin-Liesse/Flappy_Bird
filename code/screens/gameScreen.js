@@ -22,8 +22,10 @@ export class GameScreen extends Screen {
   update() {
     super.update();
 
-    this.pilarSpawner();
-    this.pilarRemover();
+    this.#checkStatus();
+
+    this.#pilarSpawner();
+    this.#pilarRemover();
 
     this.elements["player"].collidables = [];
 
@@ -41,7 +43,7 @@ export class GameScreen extends Screen {
     super.draw();
   }
 
-  pilarSpawner() {
+  #pilarSpawner() {
     this.timeSinceLastSpawn += DeltaTime.dt;
 
     if (this.timeSinceLastSpawn >= this.spawnInterval) {
@@ -74,12 +76,29 @@ export class GameScreen extends Screen {
     }
   }
 
-  pilarRemover() {
+  #pilarRemover() {
     for (const key in this.elements) {
       const element = this.elements[key];
       if (element instanceof Pilar && (element.position.x + element.size.x < 0)) {
         delete this.elements[key];
       }
+    }
+  }
+
+  #checkStatus() {
+    if (Settings.gameScreenStatus === "inactive") {
+      this.active = false;
+      this.frozen = false;
+    }
+
+    if (Settings.gameScreenStatus === "active") {
+      this.active = true;
+      this.frozen = false;
+    }
+
+    if (Settings.gameScreenStatus === "frozen") {
+      this.active = true;
+      this.frozen = true;
     }
   }
 }
