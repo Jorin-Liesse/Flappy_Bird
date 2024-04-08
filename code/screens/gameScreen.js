@@ -1,5 +1,6 @@
 import { getCanvasSize } from "../canvasUtilitys/canvasSize.js";
 import { Screen } from "../canvasUtilitys/screen.js";
+import { rectRectCollision } from "../canvasUtilitys/collision.js";
 
 import { Settings } from "../settings.js";
 import { Pilar } from "../gameObjects/pilar.js";
@@ -42,8 +43,10 @@ export class GameScreen extends Screen {
 
     if (this.elements["player"].refPosition.x + this.elements["player"].refSize.x < 0) {
       Settings.lost = true;
-      this.elements["player"].refPosition.x = 0.5;
+      this.elements["player"].refPosition.x = 2;
     };
+
+    
 
     if (Settings.lost) {
       Settings.gameScreenStatus = "frozen";
@@ -82,7 +85,7 @@ export class GameScreen extends Screen {
     for (const key in this.elements) {
       const element = this.elements[key];
       if (element instanceof PointTrigger) {
-        if (element.position.x < this.elements["player"].position.x + this.elements["player"].size.x / 2) {
+        if (rectRectCollision(this.elements["player"].collisionBoxes, element.collisionBoxes)) {
           this.score++;
           delete this.elements[key];
         }
