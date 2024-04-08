@@ -27,9 +27,8 @@ export class Player extends GameObject {
     this.velocity.x = (0.5 - this.refPosition.x) * Settings.playerRecenterForce * DeltaTime.dt;
     this.velocity.y += Settings.gravity * DeltaTime.dt;
 
-    if (InputManager.isKeyPressed(32) || InputManager.isMouseButtonPressed(0) || InputManager.isTouchPressed()){
+    if (InputManager.isKeyPressed(32) || InputManager.isMouseButtonPressed(0) || InputManager.isTouchPressed())
       this.velocity.y = Settings.playerJumpForce;
-    }
 
     this.rotate();
 

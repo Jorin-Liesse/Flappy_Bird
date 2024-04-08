@@ -3,9 +3,9 @@ import { Screen } from "../canvasUtilitys/screen.js";
 
 import { Settings } from "../settings.js";
 
-export class BackgroundScreen extends Screen {
+export class CreditsScreen extends Screen {
   constructor() {
-    super(Settings.pathBackgroundLayout, { x: 0, y: 0 }, { x: 1, y: 1 }, Settings.zIndex.background, { x: 0, y: 0 }, getCanvasSize());
+    super(Settings.pathCreditsScreenLayout, { x: 0, y: 0 }, { x: 1, y: 1 }, Settings.zIndex.credits, { x: 0, y: 0 }, getCanvasSize());
   }
 
   update() {
@@ -15,6 +15,13 @@ export class BackgroundScreen extends Screen {
     if (!this.change) {
       if (this.frozen || !this.active) return;
     }
+
+    if (!this.isLoaded) return;
+
+    if (this.elements.backButton.isClicked()) {
+      Settings.creditsScreenStatus = "inactive";
+      Settings.startScreenStatus = "active";
+    }
   }
 
   draw() {
@@ -22,17 +29,17 @@ export class BackgroundScreen extends Screen {
   }
 
   #checkStatus() {
-    if (Settings.backgroundScreenStatus === "inactive") {
+    if (Settings.creditsScreenStatus === "inactive") {
       this.active = false;
       this.frozen = false;
     }
 
-    if (Settings.backgroundScreenStatus === "active") {
+    if (Settings.creditsScreenStatus === "active") {
       this.active = true;
       this.frozen = false;
     }
 
-    if (Settings.backgroundScreenStatus === "frozen") {
+    if (Settings.creditsScreenStatus === "frozen") {
       this.active = true;
       this.frozen = true;
     }

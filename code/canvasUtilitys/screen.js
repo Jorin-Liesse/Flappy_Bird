@@ -26,13 +26,30 @@ export class Screen {
     this.active = true;
     this.frozen = false;
 
+    this.preActive = true;
+    this.preFrozen = false;
+
+    this.isLoaded = false;
+
     this.elements = {};
 
     this.loadPromise = this.#loadUI(layoutPath);
   }
 
   update() {
-    if (this.frozen || !this.isLoaded || !this.active) return;
+    const changeActive = this.active !== this.preActive;
+    const changeFrozen = this.frozen !== this.preFrozen;
+
+    this.change = changeActive || changeFrozen;
+
+    this.preActive = this.active;
+    this.preFrozen = this.frozen;
+
+    if (!this.change) {
+      if (this.frozen || !this.active) return;
+    }
+
+    if (!this.isLoaded) return
 
     for (const element in this.elements) {
       this.elements[element].update();
@@ -63,6 +80,16 @@ export class Screen {
 
     await this.loadPromise;
     this.putElementOnTop(name);
+  }
+
+  async removeElement(name) {
+    await this.loadPromise;
+    delete this.elements[name];
+  }
+
+  async getElement(name) {
+    await this.loadPromise;
+    return this.elements[name];
   }
 
   async putElementOnTop(elementName) {

@@ -8,6 +8,10 @@ import { StartScreen } from "./screens/startScreen.js";
 import { OptionsScreen } from "./screens/optionsScreen.js";
 import { GameScreen } from "./screens/gameScreen.js";
 import { BackgroundScreen } from "./screens/backgroundScreen.js";
+import { CreditsScreen } from "./screens/creditsScreen.js";
+import { InGameScreen } from "./screens/inGameScreen.js";
+import { InGameMenuScreen } from "./screens/inGameMenuScreen.js";
+import { GameOverScreen } from "./screens/gameOverScreen.js";
 
 class Main {
   #canvas;
@@ -29,6 +33,18 @@ class Main {
     this.screens.gameScreen = new GameScreen();
     this.screens.startScreen = new StartScreen();
     this.screens.optionsScreen = new OptionsScreen();
+    this.screens.creditsScreen = new CreditsScreen();
+    this.screens.inGameScreen = new InGameScreen();
+    this.screens.inGameMenuScreen = new InGameMenuScreen();
+    this.screens.gameOverScreen = new GameOverScreen();
+
+    const soundtrack = new Audio('assets/audio/UI/soundtrack.mp3');
+    soundtrack.volume = 0.5;
+    soundtrack.loop = true;
+
+    window.addEventListener("click", () => {
+      soundtrack.play();
+    }, { once: true });
 
     window.addEventListener("resize", this.#resize.bind(this));
   }
@@ -45,23 +61,11 @@ class Main {
     DeltaTime.update();
     PageStatus.update();
 
+    // if (!PageStatus.pageVisibility || !PageStatus.pageFocus) return;
+
     for (const screen in this.screens) {
       this.screens[screen].update();
     }
-
-    if (!PageStatus.pageVisibility || !PageStatus.pageFocus) {
-      for (const screen in this.screens) {
-        this.screens[screen].frozen = true;
-      }
-    }
-
-    else {
-      for (const screen in this.screens) {
-        this.screens[screen].frozen = false;
-      }
-    }
-
-    // if (!this.screens.gameScreen.isLoaded) return;
   }
 
   #draw() {

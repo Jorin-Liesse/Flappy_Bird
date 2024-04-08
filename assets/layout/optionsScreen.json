@@ -1,4 +1,10 @@
 {
+  "grayFilter": {
+    "type": "Sprite",
+    "path": "assets/graphics/UI/GrayFilter.png",
+    "position": { "x": 0, "y": 0 },
+    "size": { "x": 1, "y": 1 }
+  },
   "backSignSmall": {
     "type": "Sprite",
     "path": "assets/graphics/UI/BackFrameSmall.png",
@@ -70,5 +76,50 @@
     "text": "Controlls",
     "font": "Ubuntu Title",
     "color": "#c6ac9f"
+  },
+  "buttonGraphicsBlocked": {
+    "type": "Sprite",
+    "path": "assets/graphics/UI/BlockButton.png",
+    "position": { "x": 0.096, "y": 0.246 },
+    "size": { "x": 0.236, "y": 0.151 }
+  },
+  "buttonGraphicsBlockedText": {
+    "type": "Text",
+    "text": "Graphics",
+    "position": { "x": 0.122, "y": 0.298 },
+    "size": 0.055,
+    "color": "#c6ac9f",
+    "align": "",
+    "font": "Ubuntu Title"
+  },
+  "buttonSoundBlocked": {
+    "type": "Sprite",
+    "path": "assets/graphics/UI/BlockButton.png",
+    "position": { "x": 0.096, "y": 0.423 },
+    "size": { "x": 0.236, "y": 0.151 }
+  },
+  "buttonSoundBlockedText": {
+    "type": "Text",
+    "text": "Sound",
+    "position": { "x": 0.151, "y": 0.474 },
+    "size": 0.055,
+    "color": "#c6ac9f",
+    "align": "",
+    "font": "Ubuntu Title"
+  },
+  "buttonControllsBlocked": {
+    "type": "Sprite",
+    "path": "assets/graphics/UI/BlockButton.png",
+    "position": { "x": 0.096, "y": 0.6 },
+    "size": { "x": 0.236, "y": 0.151 }
+  },
+  "buttonControllsBlockedText": {
+    "type": "Text",
+    "text": "Controlls",
+    "position": { "x": 0.119, "y": 0.651 },
+    "size": 0.055,
+    "color": "#c6ac9f",
+    "align": "",
+    "font": "Ubuntu Title"
   }
 }

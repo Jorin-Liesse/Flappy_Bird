@@ -7,18 +7,6 @@
     "strokeColor": "transparent",
     "fillColor": "rgba(0, 0, 0, 0.5)"
   },
-  "infoButton": {
-    "type": "Button",
-    "pathUpSprite": "assets/graphics/UI/InfoButtonUp.png",
-    "pathDownSprite": "assets/graphics/UI/InfoButtonDown.png",
-    "pathUpSound": "assets/audio/UI/buttonUp.mp3",
-    "pathDownSound": "assets/audio/UI/buttonDown.mp3",
-    "position": { "x": 0.021, "y": 0.830 },
-    "size": { "x": 0.075, "y": 0.133 },
-    "text": "",
-    "font": "Ubuntu Title",
-    "color": "#c6ac9f"
-  },
   "backSign": {
     "type": "Sprite",
     "path": "assets/graphics/UI/BackFrameSmall.png",
@@ -33,23 +21,29 @@
   },
   "title": {
     "type": "Sprite",
-    "path": "assets/graphics/UI/FlappyBird.png",
+    "path": "assets/graphics/UI/GameOver.png",
     "position": { "x": 0.331, "y": 0.057 },
     "size": { "x": 0.337, "y": 0.209 }
   },
-  "buttonStart": {
-    "type": "Button",
-    "pathUpSprite": "assets/graphics/UI/ButtonUp.png",
-    "pathDownSprite": "assets/graphics/UI/ButtonDown.png",
-    "pathUpSound": "assets/audio/UI/buttonUp.mp3",
-    "pathDownSound": "assets/audio/UI/buttonDown.mp3",
-    "position": { "x": 0.392, "y": 0.253 },
-    "size": { "x": 0.215, "y": 0.138 },
-    "text": "Play",
-    "font": "Ubuntu Title",
-    "color": "#c6ac9f"
+  "scoreText": {
+    "type": "Text",
+    "text": "Score",
+    "position": { "x": 0.5, "y": 0.265 },
+    "size": 0.05,
+    "color": "#c6ac9f",
+    "align": "center",
+    "font": "Ubuntu Title"
   },
-  "buttonOptions": {
+  "scoreNumberText": {
+    "type": "Text",
+    "text": "0",
+    "position": { "x": 0.5, "y": 0.35 },
+    "size": 0.05,
+    "color": "#c6ac9f",
+    "align": "center",
+    "font": "Ubuntu Title"
+  },
+  "buttonRestart": {
     "type": "Button",
     "pathUpSprite": "assets/graphics/UI/ButtonUp.png",
     "pathDownSprite": "assets/graphics/UI/ButtonDown.png",
@@ -57,11 +51,11 @@
     "pathDownSound": "assets/audio/UI/buttonDown.mp3",
     "position": { "x": 0.392, "y": 0.430 },
     "size": { "x": 0.215, "y": 0.138 },
-    "text": "Options",
+    "text": "Restart",
     "font": "Ubuntu Title",
     "color": "#c6ac9f"
   },
-  "buttonQuit": {
+  "buttonExit": {
     "type": "Button",
     "pathUpSprite": "assets/graphics/UI/ButtonUp.png",
     "pathDownSprite": "assets/graphics/UI/ButtonDown.png",
@@ -69,7 +63,7 @@
     "pathDownSound": "assets/audio/UI/buttonDown.mp3",
     "position": { "x": 0.392, "y": 0.606 },
     "size": { "x": 0.215, "y": 0.138 },
-    "text": "Quit",
+    "text": "Exit",
     "font": "Ubuntu Title",
     "color": "#c6ac9f"
   }
