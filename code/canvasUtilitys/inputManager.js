@@ -147,4 +147,34 @@ export class InputManager {
   static getTouchPosition() {
     return this.#previousInput.touchPosition;
   }
+
+  static getMouseTouchPosition() {
+    return this.#currentInput.touchPressed
+      ? this.#currentInput.touchPosition
+      : this.#currentInput.mousePosition;
+  }
+
+  static isMouseTouchDown(button) {
+    return this.#currentInput.touchPressed || this.#currentInput.mouseButtonsPressed[button];
+  }
+
+  static isMouseTouchUp(button) {
+    return !this.#currentInput.touchPressed && !this.#currentInput.mouseButtonsPressed[button];
+  }
+
+  static isMouseTouchPressed(button) {
+    return (
+      !this.#previousInput.touchPressed &&
+      this.#currentInput.touchPressed &&
+      !this.#currentInput.mouseButtonsPressed[button]
+    );
+  }
+
+  static isMouseTouchReleased(button) {
+    return (
+      this.#previousInput.touchPressed &&
+      !this.#currentInput.touchPressed &&
+      !this.#currentInput.mouseButtonsPressed[button]
+    );
+  }
 }

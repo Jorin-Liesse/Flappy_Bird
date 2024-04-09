@@ -23,13 +23,13 @@ export class Button {
   }
 
   update() {
-    const mousePosition = InputManager.getMousePosition();
+    const mousePosition = InputManager.getMouseTouchPosition();
     if (
       mousePosition.x > this.position.x &&
       mousePosition.x < this.position.x + this.size.x &&
       mousePosition.y > this.position.y &&
       mousePosition.y < this.position.y + this.size.y &&
-      InputManager.isMouseButtonDown(0)
+      InputManager.isMouseTouchDown(0)
     ) {
       this.status = "down";
     } else {
@@ -37,7 +37,7 @@ export class Button {
     }
 
     if (
-      InputManager.isMouseButtonDown(0) &&
+      InputManager.isMouseTouchDown(0) &&
       this.previousStatus === "up" &&
       this.status === "down"
     ) {
@@ -45,7 +45,7 @@ export class Button {
     }
 
     if (
-      InputManager.isMouseButtonReleased(0) &&
+      InputManager.isMouseTouchReleased(0) &&
       this.previousStatus === "down"
     ) {
       this.clicked = true;
