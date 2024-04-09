@@ -164,17 +164,19 @@ export class InputManager {
 
   static isMouseTouchPressed(button) {
     return (
-      !this.#previousInput.touchPressed &&
-      this.#currentInput.touchPressed &&
-      !this.#currentInput.mouseButtonsPressed[button]
+      (!this.#previousInput.touchPressed &&
+      this.#currentInput.touchPressed) ||
+      (!this.#previousInput.mouseButtonsPressed[button] &&
+      this.#currentInput.mouseButtonsPressed[button])
     );
   }
 
   static isMouseTouchReleased(button) {
     return (
-      this.#previousInput.touchPressed &&
-      !this.#currentInput.touchPressed &&
-      !this.#currentInput.mouseButtonsPressed[button]
+      (this.#previousInput.touchPressed &&
+      !this.#currentInput.touchPressed) ||
+      (this.#previousInput.mouseButtonsPressed[button] &&
+      !this.#currentInput.mouseButtonsPressed[button])
     );
   }
 }
