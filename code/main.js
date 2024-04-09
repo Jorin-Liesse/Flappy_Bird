@@ -13,6 +13,11 @@ import { InGameScreen } from "./screens/inGameScreen.js";
 import { InGameMenuScreen } from "./screens/inGameMenuScreen.js";
 import { GameOverScreen } from "./screens/gameOverScreen.js";
 
+import { Shader } from "./canvasUtilitys/shader.js";
+import { fragmentShaderSource } from "../assets/shaders/CRT/fragmentShader.js";
+import { vertexShaderSource } from "../assets/shaders/CRT/vertexShader.js";
+import { Settings } from "./settings.js";
+
 class Main {
   #canvas;
   #ctx;
@@ -22,8 +27,13 @@ class Main {
     this.#ctx = this.#canvas.getContext("2d");
 
     InputManager.init();
-    AspectRatio.init();
+    AspectRatio.init(this.#canvas);
     PageStatus.init();
+    Shader.init(vertexShaderSource, fragmentShaderSource);
+
+    Shader.initExtraTexture(Settings.pathScanlines, 1, 'u_scanlines');
+    Shader.initExtraTexture(Settings.pathNoise, 2, 'u_noise');
+    Shader.initExtraTexture(Settings.pathVignette, 3, 'u_vignette');
 
     setCanvasSize(this.#canvas.width, this.#canvas.height);
 
@@ -60,6 +70,7 @@ class Main {
     InputManager.update();
     DeltaTime.update();
     PageStatus.update();
+    Shader.update();
 
     // if (!PageStatus.pageVisibility || !PageStatus.pageFocus) return;
 
@@ -77,10 +88,13 @@ class Main {
     for (const screenName of screenNames) {
       this.screens[screenName].draw();
     }
+
+    Shader.draw();
   }
 
   #resize() {
     AspectRatio.adjust();
+    Shader.resize();
     setCanvasSize(this.#canvas.width, this.#canvas.height);
 
     for (const screen in this.screens) {

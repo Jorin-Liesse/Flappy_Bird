@@ -11,7 +11,7 @@ export class Settings {
   static pathPausedScreenLayout = "assets/layout/pausedScreen.json";
   static pathInGameScreenLayout = "assets/layout/inGameScreen.json";
   static pathInGameMenuScreenLayout = "assets/layout/inGameMenuScreen.json";
-  static pathGameoverScreenLayout = "assets/layout/gameoverScreen.json";
+  static pathGameoverScreenLayout = "assets/layout/gameOverScreen.json";
 
   static pathGraphicsScreenLayout = "assets/layout/graphicsScreen.json";
   static pathSoundScreenLayout = "assets/layout/soundScreen.json";
@@ -43,7 +43,13 @@ export class Settings {
     options: 3,
   };
 
+  static inBrowser = typeof window !== "undefined";
+
   static gravity = 0.000003;
+
+  static pathScanlines = "assets/graphics/textures/scanlines.jpg";
+  static pathNoise = "assets/graphics/textures/noise.jpg";
+  static pathVignette = "assets/graphics/textures/vignette.jpg";
 
   static pathPilarTop = "assets/graphics/Game/pilarTop.png";
   static pathPilarBottom = "assets/graphics/Game/pilarBottom.png";

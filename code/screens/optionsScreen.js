@@ -42,6 +42,23 @@ export class OptionsScreen extends Screen {
     super.draw();
   }
 
+  resize(position, size) {
+    super.resize(position, size);
+
+    this.graphicsScreen.resize(position, size);
+    this.soundScreen.resize(position, size);
+    this.controllsScreen.resize(position, size);
+
+    this.buttonGraphicsBlocked.resize(position, size);
+    this.buttonGraphicsBlockedText.resize(position, size);
+
+    this.buttonSoundBlocked.resize(position, size);
+    this.buttonSoundBlockedText.resize(position, size);
+
+    this.buttonControllsBlocked.resize(position, size);
+    this.buttonControllsBlockedText.resize(position, size);
+  }
+
   #setGraphicsScreen() {
     this.activeOptionsMenu = "graphics";
 

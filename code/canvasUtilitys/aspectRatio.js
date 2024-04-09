@@ -3,8 +3,8 @@ import { Settings } from "../settings.js";
 export class AspectRatio {
   static #canvas;
 
-  static init() {
-    this.#canvas = document.getElementById("mainCanvas");
+  static init(canvas) {
+    this.#canvas = canvas;
     this.adjust();
   }
 
