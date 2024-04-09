@@ -17,7 +17,7 @@ export class Switch {
   }
 
   update() {
-    const mousePosition = InputManager.getMousePosition();
+    const mousePosition = InputManager.getMouseTouchPosition();
 
     const switchBounds =
       mousePosition.x > this.position.x &&
@@ -25,7 +25,7 @@ export class Switch {
       mousePosition.y > this.position.y &&
       mousePosition.y < this.position.y + this.size.y;
 
-    if (switchBounds && InputManager.isMouseButtonPressed(0)) {
+    if (switchBounds && InputManager.isMouseTouchPressed(0)) {
       this.status = this.status === "off" ? "on" : "off";
       this.sound.play();
     }

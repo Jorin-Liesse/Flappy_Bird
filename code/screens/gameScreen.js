@@ -6,6 +6,7 @@ import { Settings } from "../settings.js";
 import { Pilar } from "../gameObjects/pilar.js";
 import { Player } from "../gameObjects/player.js";
 import { Ground } from "../gameObjects/ground.js";
+import { Roof } from "../gameObjects/roof.js";
 import { PointTrigger } from "../gameObjects/pointTrigger.js";
 
 export class GameScreen extends Screen {
@@ -40,13 +41,12 @@ export class GameScreen extends Screen {
     }
 
     this.elements["player"].collidables.push(this.elements["ground"].collisionBoxes);
+    this.elements["player"].collidables.push(this.elements["roof"].collisionBoxes);
 
     if (this.elements["player"].refPosition.x + this.elements["player"].refSize.x < 0) {
       Settings.lost = true;
       this.elements["player"].refPosition.x = 2;
     };
-
-    
 
     if (Settings.lost) {
       Settings.gameScreenStatus = "frozen";
@@ -69,6 +69,7 @@ export class GameScreen extends Screen {
 
     this.score = 0;
 
+    this.addElement("roof", new Roof({ x: 0, y: 0 }, getCanvasSize()));
     this.addElement("ground", new Ground({ x: 0, y: 0 }, getCanvasSize()));
     this.addElement("player", new Player({ x: 0, y: 0 }, getCanvasSize()));
 
@@ -103,11 +104,11 @@ export class GameScreen extends Screen {
   #pilarRemover() {
     for (const key in this.elements) {
       const element = this.elements[key];
-      if (element instanceof Pilar && (element.position.x + element.size.x < 0)) {
+      if (element instanceof Pilar && (element.position.x + element.size.x < -0.1)) {
         delete this.elements[key];
       }
 
-      if (element instanceof PointTrigger && (element.position.x + element.size.x < 0)) {
+      if (element instanceof PointTrigger && (element.position.x + element.size.x < -0.1)) {
         delete this.elements[key];
       }
     }
@@ -148,6 +149,10 @@ export class GameScreen extends Screen {
 
     this.pilarCounter++;
     this.spawnDistance = Math.random() * (Settings.pilarSpawnIntervalMax - Settings.pilarSpawnIntervalMin) + Settings.pilarSpawnIntervalMin;
+
+    if (this.spawnDistance - Settings.pilarSize.x < Settings.playerSize.x) {
+      this.spawnDistance = Settings.playerSize.x + Settings.pilarSize.x;
+    }
   }
 
   #checkStatus() {

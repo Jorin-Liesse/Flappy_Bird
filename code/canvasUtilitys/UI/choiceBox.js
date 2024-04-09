@@ -27,7 +27,7 @@ export class ChoiceBox {
   }
 
   update() {
-    const mousePosition = InputManager.getMousePosition();
+    const mousePosition = InputManager.getMouseTouchPosition();
 
     const closedBounds = mousePosition.x > this.positions.signClosed.x &&
       mousePosition.x < this.positions.signClosed.x + this.sizes.signClosed.x &&
@@ -40,12 +40,12 @@ export class ChoiceBox {
       mousePosition.y < this.positions.signOpen.y + this.sizes.signOpen.y
 
     if (!this.alwaysOpen) {
-      if (InputManager.isMouseButtonReleased(0) && closedBounds && this.status === "closed") {
+      if (InputManager.isMouseTouchReleased(0) && closedBounds && this.status === "closed") {
         this.sound.play();
         this.status = "open";
       } 
     
-      else if ((!(openBounds && InputManager.isMouseButtonReleased(0)) || closedBounds) && InputManager.isMouseButtonReleased(0) && this.status === "open") {
+      else if ((!(openBounds && InputManager.isMouseTouchReleased(0)) || closedBounds) && InputManager.isMouseTouchReleased(0) && this.status === "open") {
         this.sound.play();
         this.status = "closed";
       }
@@ -60,7 +60,7 @@ export class ChoiceBox {
           mousePosition.y > this.optionsTexts[i].position.y - this.optionsTexts[i].height /2 &&
           mousePosition.y < this.optionsTexts[i].position.y + this.optionsTexts[i].height /2;
 
-        if (InputManager.isMouseButtonReleased(0) && optionBounds) {
+        if (InputManager.isMouseTouchReleased(0) && optionBounds) {
           this.sound.play();
           this.data.options = [this.data.options[i], ...this.data.options.filter((item) => item !== this.data.options[i])];
           this.optionsTexts = [this.optionsTexts[i], ...this.optionsTexts.filter((item) => item !== this.optionsTexts[i])];

@@ -10,7 +10,7 @@ export class Player extends GameObject {
     super(
       {
         path: Settings.pathPlayer,
-        position: { x: 0.5, y: 0.5 },
+        position: { x: 0.5 - Settings.playerSize.x/2, y: 0.5 },
         size: Settings.playerSize,
         animationInfo: Settings.pilarAnimationInfo,
       },
@@ -24,7 +24,7 @@ export class Player extends GameObject {
   update() {
     // super.update();
 
-    this.velocity.x = (0.5 - this.refPosition.x) * Settings.playerRecenterForce * DeltaTime.dt;
+    this.velocity.x = (0.5 - Settings.playerSize.x/2 - this.refPosition.x) * Settings.playerRecenterForce * DeltaTime.dt;
     this.velocity.y += Settings.gravity * DeltaTime.dt;
 
     if (InputManager.isKeyPressed(32) || InputManager.isMouseButtonPressed(0) || InputManager.isTouchPressed())

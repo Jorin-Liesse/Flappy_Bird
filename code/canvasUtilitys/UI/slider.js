@@ -22,18 +22,18 @@ export class Slider {
   }
 
   update() {
-    const mousePosition = InputManager.getMousePosition();
+    const mousePosition = InputManager.getMouseTouchPosition();
 
     const pinBounds = mousePosition.x > this.spritePin.position.x &&
       mousePosition.x < this.spritePin.position.x + this.spritePin.size.x &&
       mousePosition.y > this.spritePin.position.y &&
       mousePosition.y < this.spritePin.position.y + this.spritePin.size.y
 
-    if (InputManager.isMouseButtonDown(0) && pinBounds) {
+    if (InputManager.isMouseTouchDown(0) && pinBounds) {
       this.status = "active";
     }
 
-    else if (InputManager.isMouseButtonReleased(0)) {
+    else if (InputManager.isMouseTouchReleased(0)) {
       this.status = "passive";
     }
 
@@ -58,11 +58,11 @@ export class Slider {
     }
     
 
-    if (pinBounds && InputManager.isMouseButtonDown(0) && this.previousStatus === "passive") {
+    if (pinBounds && InputManager.isMouseTouchDown(0) && this.previousStatus === "passive") {
       this.sound.play();
     }
 
-    if (InputManager.isMouseButtonReleased(0) && this.previousStatus === "active") {
+    if (InputManager.isMouseTouchReleased(0) && this.previousStatus === "active") {
       this.sound.play();
     }
 

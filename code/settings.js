@@ -1,6 +1,6 @@
 export class Settings {
   static aspectRatio = 16 / 9;
-  static showCollisionBoxes = false;
+  static showCollisionBoxes = true;
   static collisionBoxesWidth = 0.005;
 
   static pathStartScreenLayout = "assets/layout/startScreen.json";
@@ -73,6 +73,9 @@ export class Settings {
 
   static groundPosition = {x: 0.0, y: 0.765};
   static groundSize = {x: 1, y: 0.235};
+
+  static roofPosition = {x: 0.0, y: -0.3};
+  static roofSize = {x: 1, y: 0.265};
 
   static pathPointTrigger = "assets/graphics/Game/empty.png";
 }
