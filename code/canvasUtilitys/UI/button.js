@@ -108,7 +108,8 @@ export class Button {
       "text": data.text,
       "font": data.font,
       "color": data.color,
-      "align": "center"
+      "align": "center",
+      "baseLine": "bottom"
     };
 
     const textDownData = {
@@ -117,7 +118,8 @@ export class Button {
       "text": data.text,
       "font": data.font,
       "color": data.color,
-      "align": "center"
+      "align": "center",
+      "baseLine": "bottom"
     };
 
     this.buttonTextUp = new Text(textUpData, screenPosition, screenSize);

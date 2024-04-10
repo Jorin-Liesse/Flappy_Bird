@@ -33,6 +33,10 @@ export class OptionsScreen extends Screen {
     };
 
     Settings.showCollisionBoxes = this.graphicsScreen.elements.switchHitboxes.status === "on" ? true : false;
+    Settings.FPSCounterStatus = this.graphicsScreen.elements.switchShowFPS.status === "on" ? "active" : "inactive";
+
+    Settings.fpsLimit = this.graphicsScreen.elements.choiceFPS.value;
+
     Settings.masterVolume = this.soundScreen.elements.sliderMasterVolume.value;
     Settings.musicVolume = this.soundScreen.elements.sliderMusicVolume.value;
     Settings.soundEffectVolume = this.soundScreen.elements.sliderSoundEffectVolume.value;

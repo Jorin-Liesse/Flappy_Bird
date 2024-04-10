@@ -43,7 +43,8 @@
     "text": "Hello World!",
     "font": "Arial",
     "color": "#ffffff",
-    "align": "center"
+    "align": "center",
+    "baseLine": "bottom"
   },
   "testButton": {
     "type": "Button",

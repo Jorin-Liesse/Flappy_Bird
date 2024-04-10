@@ -11,6 +11,7 @@ export class Text {
     this.font = data.font;
     this.color = data.color;
     this.align = data.align;
+    this.baseLine = data.baseLine;
 
     this.#calculateRef(screenPosition, screenSize);
   }
@@ -23,15 +24,8 @@ export class Text {
     this.#ctx.font = `${this.size}px "${this.font}"`;
     this.#ctx.fillStyle = this.color;
 
-    if (this.align === "center") {
-      this.#ctx.textAlign = "center";
-      this.#ctx.textBaseline = "bottom";
-    }
-
-    else if (this.align === "topLeft") {
-      this.#ctx.textAlign = "left";
-      this.#ctx.textBaseline = "middle";
-    }
+    this.#ctx.textAlign = this.align;
+    this.#ctx.textBaseline = this.baseLine;
 
     this.width = this.#ctx.measureText(this.text).width;
     this.height = parseInt(this.#ctx.font) / 2;

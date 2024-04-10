@@ -15,6 +15,7 @@ export class ChoiceBox {
     this.screenSize = screenSize;
 
     this.alwaysOpen = data.alwaysOpen;
+    this.value = data.options[0];
 
     this.status = "closed";
     this.previousStatus = "closed";
@@ -68,6 +69,7 @@ export class ChoiceBox {
           this.#loadTexts(this.data, this.screenPosition, this.screenSize);
 
           this.status = "closed";
+          this.value = this.data.options[0];
         }
       }
     }
@@ -122,7 +124,8 @@ export class ChoiceBox {
         "text": option,
         "font": data.font,
         "color": data.color,
-        "align": "center"
+        "align": "center",
+        "baseLine": "bottom"
       };
     
       return new Text(textData, screenPosition, screenSize);

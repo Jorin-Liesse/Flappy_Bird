@@ -18,6 +18,7 @@
     "text": "0",
     "font": "Ubuntu Title",
     "color": "#c6ac9f",
-    "align": "center"
+    "align": "center",
+    "baseLine": "bottom"
   }
 }

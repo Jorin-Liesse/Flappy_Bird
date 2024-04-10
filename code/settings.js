@@ -1,5 +1,6 @@
 export class Settings {
   static aspectRatio = 16 / 9;
+  static fpsLimit = 60;
   static showCollisionBoxes = true;
   static collisionBoxesWidth = 0.005;
 
@@ -12,6 +13,7 @@ export class Settings {
   static pathInGameScreenLayout = "assets/layout/inGameScreen.json";
   static pathInGameMenuScreenLayout = "assets/layout/inGameMenuScreen.json";
   static pathGameoverScreenLayout = "assets/layout/gameOverScreen.json";
+  static pathFPSCounterLayout = "assets/layout/FPSCounter.json";
 
   static pathGraphicsScreenLayout = "assets/layout/graphicsScreen.json";
   static pathSoundScreenLayout = "assets/layout/soundScreen.json";
@@ -26,6 +28,7 @@ export class Settings {
   static inGameScreenStatus = "inactive"; //active, inactive, transitionin, transitionout, forzen
   static inGameMenuScreenStatus = "inactive"; //active, inactive, transitionin, transitionout, forzen
   static gameoverScreenStatus = "inactive"; //active, inactive, transitionin, transitionout, forzen
+  static FPSCounterStatus = "active"; //graphics, sound, controlls
 
   static transitionDuration = 1000;
   static restart = false;
@@ -41,6 +44,7 @@ export class Settings {
     start: 2,
     gameOver: 2,
     options: 3,
+    FPSCounter: 4
   };
 
   static gravity = 0.000003;
@@ -67,7 +71,7 @@ export class Settings {
   static playerJumpForce = -0.0007;
   static playerRotationSmoothness = 0.1;
   static playerRotationMultiplier = 500;
-  static playerRecenterForce = 0.00005;
+  static playerRecenterForce = 0.00001;
 
   static groundPosition = {x: 0.0, y: 0.765};
   static groundSize = {x: 1, y: 0.235};
@@ -80,4 +84,6 @@ export class Settings {
   static masterVolume = 1;
   static musicVolume = 1;
   static soundEffectVolume = 1;
+
+  static currentFPS = 0;
 }

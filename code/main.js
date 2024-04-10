@@ -13,6 +13,7 @@ import { CreditsScreen } from "./screens/creditsScreen.js";
 import { InGameScreen } from "./screens/inGameScreen.js";
 import { InGameMenuScreen } from "./screens/inGameMenuScreen.js";
 import { GameOverScreen } from "./screens/gameOverScreen.js";
+import { FPSCounter } from "./screens/FPSCounter.js";
 
 import { Shader } from "./canvasUtilitys/shader.js";
 import { fragmentShaderSource } from "../assets/shaders/CRT/fragmentShader.js";
@@ -37,6 +38,8 @@ class Main {
     Shader.initExtraTexture(Settings.pathNoise, 2, 'u_noise');
     Shader.initExtraTexture(Settings.pathVignette, 3, 'u_vignette');
 
+    this.lastFrameTime = performance.now();
+
     setCanvasSize(this.#canvas.width, this.#canvas.height);
 
     this.screens = {};
@@ -49,6 +52,7 @@ class Main {
     this.screens.inGameScreen = new InGameScreen();
     this.screens.inGameMenuScreen = new InGameMenuScreen();
     this.screens.gameOverScreen = new GameOverScreen();
+    this.screens.FPSCounter = new FPSCounter();
 
     AudioManager.createMusic("soundtrack", "assets/audio/UI/soundtrack.mp3");
 
@@ -60,8 +64,11 @@ class Main {
   }
 
   run() {
-    this.#update();
-    this.#draw();
+    if ((performance.now() - this.lastFrameTime) / 1000 >= 1/Settings.fpsLimit) {
+      this.#update();
+      this.#draw();
+      this.lastFrameTime = performance.now();
+    }
 
     requestAnimationFrame(this.run.bind(this));
   }
