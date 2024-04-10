@@ -2,6 +2,7 @@ import { Sprite } from "./sprite.js";
 import { Text } from "./text.js";
 
 import { InputManager } from "../inputManager.js";
+import { AudioManager } from "../audioManager.js";
 
 export class Button {
   constructor(data, screenPosition, screenSize) {
@@ -16,8 +17,8 @@ export class Button {
     this.#loadSprites(data, screenPosition, screenSize);
     this.#loadTexts(data, screenPosition, screenSize);
 
-    this.upSound = new Audio(data.pathUpSound);
-    this.downSound = new Audio(data.pathDownSound);
+    AudioManager.createSoundEffect("upSound", data.pathUpSound);
+    AudioManager.createSoundEffect("downSound", data.pathDownSound);
 
     this.#calculateRef(screenPosition, screenSize);
   }
@@ -41,7 +42,7 @@ export class Button {
       this.previousStatus === "up" &&
       this.status === "down"
     ) {
-      this.upSound.play();
+      AudioManager.play("upSound");
     }
 
     if (
@@ -49,7 +50,7 @@ export class Button {
       this.previousStatus === "down"
     ) {
       this.clicked = true;
-      this.downSound.play();
+      AudioManager.play("downSound");
     }
 
     else {

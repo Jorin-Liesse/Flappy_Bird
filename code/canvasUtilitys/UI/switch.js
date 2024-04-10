@@ -1,6 +1,6 @@
 import { Sprite } from "./sprite.js";
-
 import { InputManager } from "../inputManager.js";
+import { AudioManager } from "../audioManager.js";
 
 export class Switch {
   constructor(data, screenPosition, screenSize) {
@@ -11,7 +11,7 @@ export class Switch {
 
     this.#loadSprites(data, screenPosition, screenSize);
 
-    this.sound = new Audio(data.pathSound);
+    AudioManager.createSoundEffect("sound", data.pathSound);
 
     this.#calculateRef(screenPosition, screenSize);
   }
@@ -27,7 +27,7 @@ export class Switch {
 
     if (switchBounds && InputManager.isMouseTouchPressed(0)) {
       this.status = this.status === "off" ? "on" : "off";
-      this.sound.play();
+      AudioManager.play("sound");
     }
   }
 

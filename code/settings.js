@@ -43,8 +43,6 @@ export class Settings {
     options: 3,
   };
 
-  static inBrowser = typeof window !== "undefined";
-
   static gravity = 0.000003;
 
   static pathScanlines = "assets/graphics/textures/scanlines.jpg";

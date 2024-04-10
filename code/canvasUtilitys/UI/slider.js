@@ -1,5 +1,6 @@
 import { Sprite } from "./sprite.js";
 import { InputManager } from "../inputManager.js";
+import { AudioManager } from "../audioManager.js";
 
 export class Slider {
   constructor(data, screenPosition, screenSize) {
@@ -16,7 +17,7 @@ export class Slider {
 
     this.#loadSprites(data, screenPosition, screenSize);
 
-    this.sound = new Audio(data.pathSound);
+    AudioManager.createSoundEffect("sound", data.pathSound);
 
     this.#calculateRef(screenPosition, screenSize);
   }
@@ -59,11 +60,11 @@ export class Slider {
     
 
     if (pinBounds && InputManager.isMouseTouchDown(0) && this.previousStatus === "passive") {
-      this.sound.play();
+      AudioManager.play("sound");
     }
 
     if (InputManager.isMouseTouchReleased(0) && this.previousStatus === "active") {
-      this.sound.play();
+      AudioManager.play("sound");
     }
 
     this.value = (this.spritePin.refPosition.x - this.refPosition.x) / this.refSizes.bar.x;

@@ -2,6 +2,7 @@ import { Sprite } from "./sprite.js";
 import { Text } from "./text.js";
 
 import { InputManager } from "../inputManager.js";
+import { AudioManager } from "../audioManager.js";
 
 export class ChoiceBox {
   constructor(data, screenPosition, screenSize) {
@@ -21,7 +22,7 @@ export class ChoiceBox {
     this.#loadSprites(data, screenPosition, screenSize);
     this.#loadTexts(data, screenPosition, screenSize);
 
-    this.sound = new Audio(data.pathSound);
+    AudioManager.createSoundEffect("sound", data.pathSound);
 
     this.#calculateRef(screenPosition, screenSize);
   }
@@ -41,12 +42,12 @@ export class ChoiceBox {
 
     if (!this.alwaysOpen) {
       if (InputManager.isMouseTouchReleased(0) && closedBounds && this.status === "closed") {
-        this.sound.play();
+        AudioManager.play("sound");
         this.status = "open";
       } 
     
       else if ((!(openBounds && InputManager.isMouseTouchReleased(0)) || closedBounds) && InputManager.isMouseTouchReleased(0) && this.status === "open") {
-        this.sound.play();
+        AudioManager.play("sound");
         this.status = "closed";
       }
     }
@@ -61,7 +62,7 @@ export class ChoiceBox {
           mousePosition.y < this.optionsTexts[i].position.y + this.optionsTexts[i].height /2;
 
         if (InputManager.isMouseTouchReleased(0) && optionBounds) {
-          this.sound.play();
+          AudioManager.play("sound");
           this.data.options = [this.data.options[i], ...this.data.options.filter((item) => item !== this.data.options[i])];
           this.optionsTexts = [this.optionsTexts[i], ...this.optionsTexts.filter((item) => item !== this.optionsTexts[i])];
           this.#loadTexts(this.data, this.screenPosition, this.screenSize);

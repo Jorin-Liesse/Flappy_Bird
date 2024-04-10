@@ -1,5 +1,6 @@
 import { getCanvasSize } from "../canvasUtilitys/canvasSize.js";
 import { Screen } from "../canvasUtilitys/screen.js";
+import { AudioManager } from "../canvasUtilitys/audioManager.js";
 
 import { Settings } from "../settings.js";
 
@@ -32,6 +33,11 @@ export class OptionsScreen extends Screen {
     };
 
     Settings.showCollisionBoxes = this.graphicsScreen.elements.switchHitboxes.status === "on" ? true : false;
+    Settings.masterVolume = this.soundScreen.elements.sliderMasterVolume.value;
+    Settings.musicVolume = this.soundScreen.elements.sliderMusicVolume.value;
+    Settings.soundEffectVolume = this.soundScreen.elements.sliderSoundEffectVolume.value;
+
+    AudioManager.update(Settings.masterVolume, Settings.musicVolume, Settings.soundEffectVolume);
 
     if(this.elements.buttonGraphics.isClicked()) this.#setGraphicsScreen();
   

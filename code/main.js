@@ -1,4 +1,5 @@
 import { InputManager } from "./canvasUtilitys/inputManager.js";
+import { AudioManager } from "./canvasUtilitys/audioManager.js";
 import { DeltaTime } from "./canvasUtilitys/deltaTime.js";
 import { AspectRatio } from "./canvasUtilitys/aspectRatio.js";
 import { setCanvasSize } from "./canvasUtilitys/canvasSize.js";
@@ -16,6 +17,7 @@ import { GameOverScreen } from "./screens/gameOverScreen.js";
 import { Shader } from "./canvasUtilitys/shader.js";
 import { fragmentShaderSource } from "../assets/shaders/CRT/fragmentShader.js";
 import { vertexShaderSource } from "../assets/shaders/CRT/vertexShader.js";
+
 import { Settings } from "./settings.js";
 
 class Main {
@@ -27,7 +29,7 @@ class Main {
     this.#ctx = this.#canvas.getContext("2d");
 
     InputManager.init();
-    AspectRatio.init(this.#canvas);
+    AspectRatio.init(this.#canvas, Settings.aspectRatio);
     PageStatus.init();
     Shader.init(vertexShaderSource, fragmentShaderSource);
 
@@ -48,12 +50,10 @@ class Main {
     this.screens.inGameMenuScreen = new InGameMenuScreen();
     this.screens.gameOverScreen = new GameOverScreen();
 
-    const soundtrack = new Audio('assets/audio/UI/soundtrack.mp3');
-    soundtrack.volume = 0.5;
-    soundtrack.loop = true;
+    AudioManager.createMusic("soundtrack", "assets/audio/UI/soundtrack.mp3");
 
     window.addEventListener("click", () => {
-      soundtrack.play();
+      AudioManager.play("soundtrack");
     }, { once: true });
 
     window.addEventListener("resize", this.#resize.bind(this));
