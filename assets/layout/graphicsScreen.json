@@ -101,11 +101,11 @@
     "color": "#c6ac9f",
     "align": ""
   },
-  "textAntiAliasing": {
+  "textHitboxes": {
     "type": "Text",
-    "position": { "x": 0.455, "y": 0.669 },
+    "position": { "x": 0.4775, "y": 0.669 },
     "size": 0.035,
-    "text": "Anti Aliasing",
+    "text": "Hitboxes",
     "font": "Ubuntu Title",
     "color": "#c6ac9f",
     "align": ""
@@ -128,7 +128,7 @@
       "size": { "x": 0.075, "y": 0.067 },
     "value": "on"
   },
-  "switchAntiAliasing": {
+  "switchHitboxes": {
     "type": "Switch",
     "pathOn": "assets/graphics/UI/SwitchOn.png",
     "pathOff": "assets/graphics/UI/SwitchOff.png",

@@ -150,8 +150,8 @@ export class GameScreen extends Screen {
     this.pilarCounter++;
     this.spawnDistance = Math.random() * (Settings.pilarSpawnIntervalMax - Settings.pilarSpawnIntervalMin) + Settings.pilarSpawnIntervalMin;
 
-    if (this.spawnDistance - Settings.pilarSize.x < Settings.playerSize.x) {
-      this.spawnDistance = Settings.playerSize.x + Settings.pilarSize.x;
+    if (this.spawnDistance - Settings.pilarSize.x * 1.1 < Settings.playerSize.x) {
+      this.spawnDistance = Settings.playerSize.x * 1.1 + Settings.pilarSize.x;
     }
   }
 

@@ -31,6 +31,8 @@ export class OptionsScreen extends Screen {
       Settings.optionsScreenStatus = "inactive";
     };
 
+    Settings.showCollisionBoxes = this.graphicsScreen.elements.switchHitboxes.status === "on" ? true : false;
+
     if(this.elements.buttonGraphics.isClicked()) this.#setGraphicsScreen();
   
     if (this.elements.buttonSound.isClicked()) this.#setSoundScreen();

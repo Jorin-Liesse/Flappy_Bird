@@ -78,4 +78,8 @@ export class Settings {
   static roofSize = {x: 1, y: 0.265};
 
   static pathPointTrigger = "assets/graphics/Game/empty.png";
+
+  static masterVolume = 1;
+  static musicVolume = 1;
+  static soundEffectVolume = 1;
 }
