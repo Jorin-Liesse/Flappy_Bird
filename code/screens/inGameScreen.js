@@ -28,6 +28,7 @@ export class InGameScreen extends Screen {
     };
 
     this.elements.score.text = Settings.score;
+    this.elements.highScore.text = Settings.highScore;
   }
 
   draw() {

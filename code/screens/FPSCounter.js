@@ -18,7 +18,7 @@ export class FPSCounter extends Screen {
     }
 
     if (!this.isLoaded) return;
-    this.elements.FPSCounter.text = `${(1 / DeltaTime.dt*1000).toFixed(0)} FPS`;
+    this.elements.FPSCounter.text = `${Settings.currentFPS} FPS`;
   }
 
   draw() {

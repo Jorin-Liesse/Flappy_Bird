@@ -25,6 +25,8 @@ export class OptionsScreen extends Screen {
       this.graphicsScreen.removeElement("textResolution");
       this.graphicsScreen.removeElement("choiceResolution");
     }
+
+    this.#setUIToSettings();
   }
 
   update() {
@@ -38,41 +40,12 @@ export class OptionsScreen extends Screen {
     if (!this.isLoaded) return;
 
     if (this.elements.backButton.isClicked()) {
+      Settings.save = true;
       Settings.startScreenStatus = "active";
       Settings.optionsScreenStatus = "inactive";
     };
 
-    if (this.graphicsScreen.elements.choiceFPS.isChanged()) {
-      Settings.fpsLimit = this.graphicsScreen.elements.choiceFPS.value;
-    }
-    if (this.graphicsScreen.elements.choiceWindowMode.isChanged()) {
-      Settings.windowMode = this.graphicsScreen.elements.choiceWindowMode.value;
-      this.changeWindowMode();
-    }
-
-    if (navigator.userAgent.includes('Electron') && this.graphicsScreen.elements.choiceResolution.isChanged()) {
-      window.electronAPI.setResolution(this.graphicsScreen.elements.choiceResolution.value);
-    }
-
-    if (this.graphicsScreen.elements.switchHitboxes.isChanged()) {
-      Settings.showCollisionBoxes = this.graphicsScreen.elements.switchHitboxes.status === "on" ? true : false;
-    }
-    if (this.graphicsScreen.elements.switchShowFPS.isChanged()) {
-      Settings.FPSCounterStatus = this.graphicsScreen.elements.switchShowFPS.status === "on" ? "active" : "inactive";
-    }
-
-    if (this.soundScreen.elements.sliderMasterVolume.isChanged()) {
-      Settings.masterVolume = this.soundScreen.elements.sliderMasterVolume.value;
-      AudioManager.update(Settings.masterVolume, Settings.musicVolume, Settings.soundEffectVolume);
-    }
-    if (this.soundScreen.elements.sliderMusicVolume.isChanged()) {
-      Settings.musicVolume = this.soundScreen.elements.sliderMusicVolume.value;
-      AudioManager.update(Settings.masterVolume, Settings.musicVolume, Settings.soundEffectVolume);
-    }
-    if (this.soundScreen.elements.sliderSoundEffectVolume.isChanged()) {
-      Settings.soundEffectVolume = this.soundScreen.elements.sliderSoundEffectVolume.value;
-      AudioManager.update(Settings.masterVolume, Settings.musicVolume, Settings.soundEffectVolume);
-    }
+    this.#applySettings();
 
     if(this.elements.buttonGraphics.isClicked()) this.#setGraphicsScreen();
   
@@ -83,13 +56,13 @@ export class OptionsScreen extends Screen {
 
   changeWindowMode() {
     switch (Settings.windowMode) {
-      case "Fullscreen":
+      case "fullscreen":
         goFullScreen();
         break;
-      case "Windowed":
+      case "windowed":
         exitFullScreen();
         break;
-      case "Borderless":
+      case "borderless":
         goFullScreen();
         break;
       }
@@ -114,6 +87,65 @@ export class OptionsScreen extends Screen {
 
     this.buttonControllsBlocked.resize(position, size);
     this.buttonControllsBlockedText.resize(position, size);
+  }
+
+  async #setUIToSettings() {
+    await this.graphicsScreen.loadPromise;
+    await this.soundScreen.loadPromise;
+    this.graphicsScreen.elements.choiceFPS.changeValue(Settings.fpsLimit);
+    this.graphicsScreen.elements.choiceWindowMode.changeValue(Settings.windowMode);
+
+    this.graphicsScreen.elements.switchHitboxes.status = Settings.showCollisionBoxes ? "on" : "off";
+    this.graphicsScreen.elements.switchShowFPS.status = Settings.FPSCounterStatus === "active" ? "on" : "off";
+
+    this.soundScreen.elements.sliderMasterVolume.changeValue(Settings.masterVolume);
+    this.soundScreen.elements.sliderMusicVolume.changeValue(Settings.musicVolume);
+    this.soundScreen.elements.sliderSoundEffectVolume.changeValue(Settings.soundEffectVolume);
+
+    if (navigator.userAgent.includes('Electron') && this.graphicsScreen.elements.choiceResolution.isChanged()) {
+      this.graphicsScreen.elements.choiceResolution.changeValue(Settings.resolution);
+      window.electronAPI.setResolution(this.graphicsScreen.elements.choiceResolution.value);
+    }
+
+    await this.#applySettings();
+  }
+
+  async #applySettings() {
+    await this.graphicsScreen.loadPromise;
+    await this.soundScreen.loadPromise;
+
+    if (this.graphicsScreen.elements.choiceFPS.isChanged()) {
+      Settings.fpsLimit = parseInt(this.graphicsScreen.elements.choiceFPS.value);
+    }
+    if (this.graphicsScreen.elements.choiceWindowMode.isChanged()) {
+      Settings.windowMode = this.graphicsScreen.elements.choiceWindowMode.value;
+      this.changeWindowMode();
+    }
+
+    if (navigator.userAgent.includes('Electron') && this.graphicsScreen.elements.choiceResolution.isChanged()) {
+      Settings.resolution = this.graphicsScreen.elements.choiceResolution.value;
+      window.electronAPI.setResolution(this.graphicsScreen.elements.choiceResolution.value);
+    }
+
+    if (this.graphicsScreen.elements.switchHitboxes.isChanged()) {
+      Settings.showCollisionBoxes = this.graphicsScreen.elements.switchHitboxes.status === "on" ? true : false;
+    }
+    if (this.graphicsScreen.elements.switchShowFPS.isChanged()) {
+      Settings.FPSCounterStatus = this.graphicsScreen.elements.switchShowFPS.status === "on" ? "active" : "inactive";
+    }
+
+    if (this.soundScreen.elements.sliderMasterVolume.isChanged()) {
+      Settings.masterVolume = this.soundScreen.elements.sliderMasterVolume.value;
+      AudioManager.update(Settings.masterVolume, Settings.musicVolume, Settings.soundEffectVolume);
+    }
+    if (this.soundScreen.elements.sliderMusicVolume.isChanged()) {
+      Settings.musicVolume = this.soundScreen.elements.sliderMusicVolume.value;
+      AudioManager.update(Settings.masterVolume, Settings.musicVolume, Settings.soundEffectVolume);
+    }
+    if (this.soundScreen.elements.sliderSoundEffectVolume.isChanged()) {
+      Settings.soundEffectVolume = this.soundScreen.elements.sliderSoundEffectVolume.value;
+      AudioManager.update(Settings.masterVolume, Settings.musicVolume, Settings.soundEffectVolume);
+    }
   }
 
   #setGraphicsScreen() {

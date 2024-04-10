@@ -3,7 +3,11 @@ export class Settings {
   static fpsLimit = 60;
   static windowMode = "fullscreen"; //Fullscreen, Windowed, Borderless
   static showCollisionBoxes = true;
+  static resolution = "1280x720";
   static collisionBoxesWidth = 0.005;
+
+  static currentFPS = 0;
+  static highScore = 0;
 
   static pathStartScreenLayout = "assets/layout/startScreen.json";
   static pathOptionsScreenLayout = "assets/layout/optionsScreen.json";
@@ -32,6 +36,7 @@ export class Settings {
   static FPSCounterStatus = "active"; //graphics, sound, controlls
 
   static transitionDuration = 1000;
+  static save = false;
   static restart = false;
   static lost = false;
   static score = 0;
@@ -82,9 +87,7 @@ export class Settings {
 
   static pathPointTrigger = "assets/graphics/Game/empty.png";
 
-  static masterVolume = 1;
-  static musicVolume = 1;
-  static soundEffectVolume = 1;
+  static masterVolume = 0.9;
+  static musicVolume = 0.9;
+  static soundEffectVolume = 0.9;
 }
-
-// module.exports = Settings;

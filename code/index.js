@@ -21,6 +21,8 @@ const createWindow = () => {
 
     mainWindow.setBounds({ width, height });
     mainWindow.center();
+
+    console.log('Resolution set to', data);
   })
 
   mainWindow.loadFile('index.html')

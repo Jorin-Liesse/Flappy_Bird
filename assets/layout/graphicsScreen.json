@@ -4,7 +4,7 @@
     "pathOpenSprite": "assets/graphics/UI/ChoiceBoxMediumOpen.png",
     "pathClosedSprite": "assets/graphics/UI/ChoiceBoxMediumClosed.png",
     "pathSound": "assets/audio/UI/buttonUp.mp3",
-    "options": ["Windowed", "Fullscreen", "Borderless"],
+    "options": ["windowed", "fullscreen", "borderless"],
     "positions": {
       "signOpen": { "x": 0.479, "y": 0.272 },
       "signClosed": { "x": 0.485, "y": 0.282 },

@@ -20,6 +20,8 @@ export class GameOverScreen extends Screen {
 
     this.elements.scoreNumberText.text = Settings.score;
 
+    Settings.highScore = Math.max(Settings.highScore, Settings.score);
+
     if (this.elements.buttonRestart.isClicked()) {
       Settings.gameScreenStatus = "active";
       Settings.inGameScreenStatus = "active";

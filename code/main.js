@@ -38,9 +38,9 @@ class Main {
     Shader.initExtraTexture(Settings.pathNoise, 2, 'u_noise');
     Shader.initExtraTexture(Settings.pathVignette, 3, 'u_vignette');
 
-    this.lastFrameTime = performance.now();
-
     setCanvasSize(this.#canvas.width, this.#canvas.height);
+
+    this.#load();
 
     this.screens = {};
 
@@ -61,16 +61,33 @@ class Main {
     }, { once: true });
 
     window.addEventListener("resize", this.#resize.bind(this));
+
+    this.lastFrameTime = performance.now();
+    this.frameCount = 0;
+    this.lastLogTime = performance.now();
   }
 
-  run() {
-    if ((performance.now() - this.lastFrameTime) / 1000 >= 1/Settings.fpsLimit) {
-      this.#update();
-      this.#draw();
-      this.lastFrameTime = performance.now();
+  run(time) {
+    requestAnimationFrame(this.run.bind(this));
+
+    const elapsed = time - this.lastFrameTime;
+    const elapsedSinceLog = time - this.lastLogTime;
+
+    if (elapsed < 1000 / Settings.fpsLimit) {
+      return;
     }
 
-    requestAnimationFrame(this.run.bind(this));
+    this.lastFrameTime = time;
+    this.frameCount++;
+
+    if (elapsedSinceLog >= 1000) {
+      Settings.currentFPS = this.frameCount;
+      this.frameCount = 0;
+      this.lastLogTime = time;
+    }
+
+    this.#update();
+    this.#draw();
   }
 
   #update() {
@@ -84,6 +101,8 @@ class Main {
     for (const screen in this.screens) {
       this.screens[screen].update();
     }
+
+    this.#save();
   }
 
   #draw() {
@@ -106,6 +125,43 @@ class Main {
 
     for (const screen in this.screens) {
       this.screens[screen].resize({ x: 0, y: 0 }, { x: this.#canvas.width, y: this.#canvas.height });
+    }
+  }
+
+  #save() {
+    if (!Settings.save) return;
+
+    const saveData = {
+      highScore: Settings.highScore,
+
+      showCollisionBoxes: Settings.showCollisionBoxes,
+      fpsLimit: Settings.fpsLimit,
+      windowMode: Settings.windowMode,
+      resolution: Settings.resolution,
+      showFPS: Settings.FPSCounterStatus,
+      masterVolume: Settings.masterVolume,
+      musicVolume: Settings.musicVolume,
+      soundEffectVolume: Settings.soundEffectVolume,
+    };
+
+    localStorage.setItem("saveData", JSON.stringify(saveData));
+    Settings.save = false;
+  }
+
+  #load() {
+    const saveData = JSON.parse(localStorage.getItem("saveData"));
+
+    if (saveData) {
+      Settings.highScore = saveData.highScore;
+
+      Settings.showCollisionBoxes = saveData.showCollisionBoxes;
+      Settings.fpsLimit = saveData.fpsLimit;
+      Settings.windowMode = saveData.windowMode;
+      Settings.resolution = saveData.resolution;
+      Settings.FPSCounterStatus = saveData.showFPS;
+      Settings.masterVolume = saveData.masterVolume;
+      Settings.musicVolume = saveData.musicVolume;
+      Settings.soundEffectVolume = saveData.soundEffectVolume;
     }
   }
 }

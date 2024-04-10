@@ -93,6 +93,16 @@ export class ChoiceBox {
     return changed;
   }
 
+  changeValue(value) {
+    this.value = value;
+
+    const i = this.data.options.indexOf(value.toString());
+
+    this.data.options = [this.data.options[i], ...this.data.options.filter((item) => item !== this.data.options[i])];
+    this.optionsTexts = [this.optionsTexts[i], ...this.optionsTexts.filter((item) => item !== this.optionsTexts[i])];
+    this.#loadTexts(this.data, this.screenPosition, this.screenSize);
+  }
+
   resize(screenPosition, screenSize) {
     this.screenPosition = screenPosition;
     this.screenSize = screenSize;

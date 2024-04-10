@@ -84,6 +84,12 @@ export class Slider {
     return changed;
   }
 
+  changeValue(value) {
+    this.value = value;
+    this.spritePin.refPosition.x = this.refPosition.x + this.refSizes.bar.x * value;
+    this.spritePin.resize(this.screenPosition, this.screenSize);
+  }
+
   resize(screenPosition, screenSize) {
     this.screenPosition = screenPosition;
 

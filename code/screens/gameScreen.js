@@ -54,6 +54,7 @@ export class GameScreen extends Screen {
       Settings.backgroundScreenStatus = "frozen";
       Settings.inGameMenuScreenStatus = "inactive";
       Settings.gameoverScreenStatus = "active";
+      Settings.save = true;
     }
 
     if (Settings.restart) this.#restart();

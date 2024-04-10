@@ -20,5 +20,22 @@
     "color": "#c6ac9f",
     "align": "center",
     "baseLine": "bottom"
+  },
+  "highScore": {
+    "type": "Text",
+    "position": { "x": 0.96, "y": 0.07 },
+    "size": 0.04,
+    "text": "0",
+    "font": "Ubuntu Title",
+    "color": "#c6ac9f",
+    "align": "center",
+    "baseLine": "bottom"
+  },
+  "trophy": {
+    "type": "Sprite",
+    "path": "assets/graphics/UI/trophy.png",
+    "position": { "x": 0.875, "y": 0.017 },
+    "size": { "x": 0.052, "y": 0.093 }
   }
+
 }

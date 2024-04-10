@@ -1,6 +1,12 @@
+let isActive =  new Promise((resolve) => {
+  document.addEventListener("click", () => {resolve();}, { once: true });
+});
+
 // Function to make the page go full screen
-export function goFullScreen() {
-  var elem = document.documentElement;
+export async function goFullScreen() {
+  await isActive;
+
+  const elem = document.documentElement;
 
   if (elem.requestFullscreen) {
     elem.requestFullscreen();
@@ -14,6 +20,7 @@ export function goFullScreen() {
 }
 
 export function exitFullScreen() {
+  const elem = document.documentElement;
   if (document.exitFullscreen) {
     document.exitFullscreen();
   } else if (document.mozCancelFullScreen) { /* Firefox */
@@ -24,6 +31,3 @@ export function exitFullScreen() {
     document.msExitFullscreen();
   }
 }
-
-// Call the function to go full screen
-document.addEventListener("click",() => {goFullScreen();}, { once: true });
