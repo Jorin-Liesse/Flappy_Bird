@@ -13,6 +13,7 @@ export class Slider {
     this.status = "passive";
     this.previousStatus = "passive";
 
+    this.previousValue = data.value;
     this.value = data.value;
 
     this.#loadSprites(data, screenPosition, screenSize);
@@ -75,6 +76,12 @@ export class Slider {
   draw() {
     this.spriteBar.draw();
     this.spritePin.draw();
+  }
+
+  isChanged() {
+    const changed = this.previousValue !== this.value;
+    this.previousValue = this.value;
+    return changed;
   }
 
   resize(screenPosition, screenSize) {

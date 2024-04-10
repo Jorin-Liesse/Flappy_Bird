@@ -28,11 +28,11 @@ export const fragmentShaderSource = `
   }
 
   void main() {
-    vec2 uv = v_texCoord;
+    // vec2 uv = v_texCoord;
     vec2 crtUV = crtCoords(v_texCoord);
 
     vec4 texColorVignette = texture2D(u_vignette, v_texCoord);
-    vec4 texColorScanlines = texture2D(u_scanlines, vec2(uv.x + random, uv.y + random));
+    vec4 texColorScanlines = texture2D(u_scanlines, vec2(crtUV.x + random, crtUV.y + random));
     vec4 texColorNoise = texture2D(u_noise, vec2(crtUV.x / 2.0, crtUV.y / 2.0 - time));
     vec4 texColorMainCanvas = texture2D(u_mainCanvas, crtUV);
 
@@ -41,8 +41,8 @@ export const fragmentShaderSource = `
     texColorMainCanvas.rgb = mix(texColorMainCanvas.rgb, vec3(gray), desaturation);
 
     // Add some color bleeding
-    texColorMainCanvas.rgb += texture2D(u_mainCanvas, uv + vec2(0.001, 0.001)).rgb * colorBleed;
-    texColorMainCanvas.rgb += texture2D(u_mainCanvas, uv + vec2(-0.001, 0.001)).rgb * colorBleed;
+    texColorMainCanvas.rgb += texture2D(u_mainCanvas, crtUV + vec2(0.001, 0.001)).rgb * colorBleed;
+    texColorMainCanvas.rgb += texture2D(u_mainCanvas, crtUV + vec2(-0.001, 0.001)).rgb * colorBleed;
 
     // Gamma correction
     texColorMainCanvas.r = pow(texColorMainCanvas.r, 1.0 / gamma);

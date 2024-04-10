@@ -7,6 +7,7 @@ export class Switch {
     this.refPosition = data.position;
     this.refSize = data.size;
 
+    this.previousStatus = data.value;
     this.status = data.value;
 
     this.#loadSprites(data, screenPosition, screenSize);
@@ -37,6 +38,12 @@ export class Switch {
     } else {
       this.spriteOff.draw();
     }
+  }
+
+  isChanged() {
+    const changed = this.previousStatus !== this.status;
+    this.previousStatus = this.status;
+    return changed;
   }
 
   resize(screenPosition, screenSize) {

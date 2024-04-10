@@ -15,10 +15,13 @@ export class ChoiceBox {
     this.screenSize = screenSize;
 
     this.alwaysOpen = data.alwaysOpen;
+    this.previousValue = data.options[0];
     this.value = data.options[0];
 
     this.status = "closed";
     this.previousStatus = "closed";
+
+    this.active = true;
 
     this.#loadSprites(data, screenPosition, screenSize);
     this.#loadTexts(data, screenPosition, screenSize);
@@ -29,6 +32,7 @@ export class ChoiceBox {
   }
 
   update() {
+    if (!this.active) return;
     const mousePosition = InputManager.getMouseTouchPosition();
 
     const closedBounds = mousePosition.x > this.positions.signClosed.x &&
@@ -41,16 +45,14 @@ export class ChoiceBox {
       mousePosition.y > this.positions.signOpen.y &&
       mousePosition.y < this.positions.signOpen.y + this.sizes.signOpen.y
 
-    if (!this.alwaysOpen) {
-      if (InputManager.isMouseTouchReleased(0) && closedBounds && this.status === "closed") {
-        AudioManager.play("sound");
-        this.status = "open";
-      } 
+    if (InputManager.isMouseTouchReleased(0) && closedBounds && this.status === "closed") {
+      AudioManager.play("sound");
+      this.status = "open";
+    } 
     
-      else if ((!(openBounds && InputManager.isMouseTouchReleased(0)) || closedBounds) && InputManager.isMouseTouchReleased(0) && this.status === "open") {
-        AudioManager.play("sound");
-        this.status = "closed";
-      }
+    else if ((!(openBounds && InputManager.isMouseTouchReleased(0)) || closedBounds) && InputManager.isMouseTouchReleased(0) && this.status === "open") {
+      if (!this.alwaysOpen) AudioManager.play("sound");
+      this.status = this.alwaysOpen ? "open" : "closed";
     }
 
     else this.status = "open";
@@ -68,7 +70,7 @@ export class ChoiceBox {
           this.optionsTexts = [this.optionsTexts[i], ...this.optionsTexts.filter((item) => item !== this.optionsTexts[i])];
           this.#loadTexts(this.data, this.screenPosition, this.screenSize);
 
-          this.status = "closed";
+          this.status = this.alwaysOpen ? "open" : "closed";
           this.value = this.data.options[0];
         }
       }
@@ -83,6 +85,12 @@ export class ChoiceBox {
       this.spriteOpen.draw();
       this.optionsTexts.forEach((option) => option.draw());
     }
+  }
+
+  isChanged() {
+    const changed = this.previousValue !== this.value;
+    this.previousValue = this.value;
+    return changed;
   }
 
   resize(screenPosition, screenSize) {

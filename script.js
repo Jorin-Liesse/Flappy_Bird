@@ -1,5 +1,5 @@
 // Function to make the page go full screen
-function goFullScreen() {
+export function goFullScreen() {
   var elem = document.documentElement;
 
   if (elem.requestFullscreen) {
@@ -10,6 +10,18 @@ function goFullScreen() {
     elem.webkitRequestFullscreen();
   } else if (elem.msRequestFullscreen) {/* IE/Edge */
     elem.msRequestFullscreen();
+  }
+}
+
+export function exitFullScreen() {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.mozCancelFullScreen) { /* Firefox */
+    document.mozCancelFullScreen();
+  } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) { /* IE/Edge */
+    document.msExitFullscreen();
   }
 }
 

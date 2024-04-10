@@ -1,6 +1,7 @@
 export class Settings {
   static aspectRatio = 16 / 9;
   static fpsLimit = 60;
+  static windowMode = "fullscreen"; //Fullscreen, Windowed, Borderless
   static showCollisionBoxes = true;
   static collisionBoxesWidth = 0.005;
 
@@ -84,6 +85,6 @@ export class Settings {
   static masterVolume = 1;
   static musicVolume = 1;
   static soundEffectVolume = 1;
-
-  static currentFPS = 0;
 }
+
+// module.exports = Settings;

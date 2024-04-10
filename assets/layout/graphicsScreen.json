@@ -1,5 +1,5 @@
 {
-  "choiceBoxWindowMode": {
+  "choiceWindowMode": {
     "type": "ChoiceBox",
     "pathOpenSprite": "assets/graphics/UI/ChoiceBoxMediumOpen.png",
     "pathClosedSprite": "assets/graphics/UI/ChoiceBoxMediumClosed.png",
@@ -54,7 +54,7 @@
     "pathOpenSprite": "assets/graphics/UI/ChoiceBoxMediumOpen.png",
     "pathClosedSprite": "assets/graphics/UI/ChoiceBoxMediumClosed.png",
     "pathSound": "assets/audio/UI/buttonUp.mp3",
-    "options": ["1920X1080", "1280x720", "3840x2160"],
+    "options": ["1920x1080", "1280x720", "3840x2160"],
     "positions": {
       "signOpen": { "x": 0.667, "y": 0.571 },
       "signClosed": { "x": 0.674, "y": 0.580 },
@@ -136,5 +136,20 @@
     "position": { "x": 0.499, "y": 0.710 },
     "size": { "x": 0.075, "y": 0.067 },
       "value": "off"
+  },
+  "choiceResolutionGray": {
+    "type": "Sprite",
+    "path": "assets/graphics/UI/ChoiceBoxMediumOpenGrayFilter.png",
+    "position": { "x": 0.667, "y": 0.571 },
+    "size": { "x": 0.184, "y": 0.206 }
+  },
+  "textResolutionGray": {
+    "type": "Text",
+    "position": { "x": 0.690, "y": 0.527 },
+    "size": 0.035,
+    "text": "Resolution",
+    "font": "Ubuntu Title",
+    "color": "#948177",
+    "align": ""
   }
 }

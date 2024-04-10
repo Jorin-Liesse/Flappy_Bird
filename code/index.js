@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('node:path')
 
 const createWindow = () => {
@@ -9,9 +9,18 @@ const createWindow = () => {
     width: 1280,
     height: 720,
     webPreferences: {
-      nodeIntegration: false,
+      // nodeIntegration: true,
       preload: path.join(__dirname, 'preload.js'),
     }
+  })
+
+  ipcMain.on('setResolution', (event, data) => {
+    const parts = data.split('x');
+    const width = parseInt(parts[0]);
+    const height = parseInt(parts[1]);
+
+    mainWindow.setBounds({ width, height });
+    mainWindow.center();
   })
 
   mainWindow.loadFile('index.html')
