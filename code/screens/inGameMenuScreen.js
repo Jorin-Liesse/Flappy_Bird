@@ -1,5 +1,7 @@
 import { getCanvasSize } from "../canvasUtilitys/canvasSize.js";
 import { Screen } from "../canvasUtilitys/screen.js";
+import { InputManager } from "../canvasUtilitys/inputManager.js";
+import { PageStatus } from "../canvasUtilitys/pageStatus.js";
 
 import { Settings } from "../settings.js";
 
@@ -23,6 +25,7 @@ export class InGameMenuScreen extends Screen {
       Settings.inGameScreenStatus = "active";
       Settings.inGameMenuScreenStatus = "inactive";
       Settings.backgroundScreenStatus = "active";
+      PageStatus.wasHidden = false;
     };
 
     if (this.elements.restartButton.isClicked()) {
@@ -30,11 +33,11 @@ export class InGameMenuScreen extends Screen {
       Settings.inGameScreenStatus = "active";
       Settings.inGameMenuScreenStatus = "inactive";
       Settings.backgroundScreenStatus = "active";
-
       Settings.restart = true;
+      PageStatus.wasHidden = false;
     };
     
-    if (this.elements.exitButton.isClicked()) {
+    if (this.elements.exitButton.isClicked() || InputManager.isKeyPressed(27)) {
       Settings.startScreenStatus = "active";
       Settings.gameScreenStatus = "inactive";
       Settings.inGameScreenStatus = "inactive";

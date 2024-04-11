@@ -1,5 +1,6 @@
 import { getCanvasSize } from "../canvasUtilitys/canvasSize.js";
 import { Screen } from "../canvasUtilitys/screen.js";
+import { InputManager } from "../canvasUtilitys/inputManager.js";
 
 import { Settings } from "../settings.js";
 
@@ -31,7 +32,7 @@ export class GameOverScreen extends Screen {
       Settings.lost = false;
     }
 
-    if (this.elements.buttonExit.isClicked()) {
+    if (this.elements.buttonExit.isClicked() || InputManager.isKeyPressed(27)) {
       Settings.gameScreenStatus = "inactive";
       Settings.inGameScreenStatus = "inactive";
       Settings.startScreenStatus = "active";

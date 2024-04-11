@@ -1,5 +1,6 @@
 import { getCanvasSize } from "../canvasUtilitys/canvasSize.js";
 import { Screen } from "../canvasUtilitys/screen.js";
+import { InputManager } from "../canvasUtilitys/inputManager.js";
 
 import { Settings } from "../settings.js";
 
@@ -18,10 +19,16 @@ export class CreditsScreen extends Screen {
 
     if (!this.isLoaded) return;
 
-    if (this.elements.backButton.isClicked()) {
+    if (this.elements.backButton.isClicked() || InputManager.isKeyPressed(27)) {
       Settings.creditsScreenStatus = "inactive";
       Settings.startScreenStatus = "active";
     }
+
+    if (this.elements.linkedinButton.isClicked()) window.open('https://www.linkedin.com/in/jorin-liesse-755774287/', '_blank');
+
+    if (this.elements.githubButton.isClicked()) window.open('https://github.com/Jorin-Liesse/Flappy_Bird', '_blank');
+
+
   }
 
   draw() {

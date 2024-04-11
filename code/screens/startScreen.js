@@ -1,5 +1,6 @@
 import { getCanvasSize } from "../canvasUtilitys/canvasSize.js";
 import { Screen } from "../canvasUtilitys/screen.js";
+import { PageStatus } from "../canvasUtilitys/pageStatus.js";
 
 import { Settings } from "../settings.js";
 
@@ -28,6 +29,7 @@ export class StartScreen extends Screen {
       Settings.gameScreenStatus = "active";
       Settings.inGameScreenStatus = "active";
       Settings.restart = true;
+      PageStatus.wasHidden = false;
     };
     
     if (this.elements.buttonOptions.isClicked()) {

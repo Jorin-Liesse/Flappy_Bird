@@ -33,6 +33,7 @@ class Main {
     AspectRatio.init(this.#canvas, Settings.aspectRatio);
     PageStatus.init();
     Shader.init(vertexShaderSource, fragmentShaderSource);
+    DeltaTime.init();
 
     Shader.initExtraTexture(Settings.pathScanlines, 1, 'u_scanlines');
     Shader.initExtraTexture(Settings.pathNoise, 2, 'u_noise');
@@ -93,10 +94,7 @@ class Main {
   #update() {
     InputManager.update();
     DeltaTime.update();
-    PageStatus.update();
     Shader.update();
-
-    // if (!PageStatus.pageVisibility || !PageStatus.pageFocus) return;
 
     for (const screen in this.screens) {
       this.screens[screen].update();

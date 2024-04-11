@@ -1,5 +1,7 @@
 import { getCanvasSize } from "../canvasUtilitys/canvasSize.js";
 import { Screen } from "../canvasUtilitys/screen.js";
+import { InputManager } from "../canvasUtilitys/inputManager.js";
+import { PageStatus } from "../canvasUtilitys/pageStatus.js";
 
 import { Settings } from "../settings.js";
 
@@ -20,11 +22,15 @@ export class InGameScreen extends Screen {
 
     if (!this.isLoaded) return;
 
-    if (this.elements.pauseButton.isClicked()) {
+    // if (!PageStatus.pageVisibility || !PageStatus.pageFocus) console.log("pageVisibility or pageFocus is false");
+
+    // console.log(PageStatus.wasHidden);
+    if (this.elements.pauseButton.isClicked() || InputManager.isKeyReleased(27) || PageStatus.wasHidden) {
       Settings.gameScreenStatus = "frozen";
       Settings.inGameScreenStatus = "frozen";
       Settings.backgroundScreenStatus = "frozen";
       Settings.inGameMenuScreenStatus = "active";
+      PageStatus.wasHidden = false;
     };
 
     this.elements.score.text = Settings.score;

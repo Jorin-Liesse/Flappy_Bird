@@ -1,6 +1,7 @@
 import { getCanvasSize } from "../canvasUtilitys/canvasSize.js";
 import { Screen } from "../canvasUtilitys/screen.js";
 import { AudioManager } from "../canvasUtilitys/audioManager.js";
+import { InputManager } from "../canvasUtilitys/inputManager.js";
 
 import { goFullScreen, exitFullScreen } from "../../script.js";
 
@@ -39,7 +40,7 @@ export class OptionsScreen extends Screen {
 
     if (!this.isLoaded) return;
 
-    if (this.elements.backButton.isClicked()) {
+    if (this.elements.backButton.isClicked() || InputManager.isKeyPressed(27)) {
       Settings.save = true;
       Settings.startScreenStatus = "active";
       Settings.optionsScreenStatus = "inactive";

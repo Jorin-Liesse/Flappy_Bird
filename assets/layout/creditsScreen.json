@@ -46,5 +46,29 @@
     "text": "",
     "font": "Ubuntu Title",
     "color": "#c6ac9f"
+  },
+  "linkedinButton": {
+    "type": "Button",
+    "pathUpSprite": "assets/graphics/UI/myLinkedin.png",
+    "pathDownSprite": "assets/graphics/UI/myLinkedin.png",
+    "pathUpSound": "assets/audio/UI/buttonUp.mp3",
+    "pathDownSound": "assets/audio/UI/buttonDown.mp3",
+    "position": { "x": 0.4595, "y": 0.635 },
+    "size": { "x": 0.081, "y": 0.031 },
+    "text": "",
+    "font": "Ubuntu Title",
+    "color": "#c6ac9f"
+  },
+  "githubButton": {
+    "type": "Button",
+    "pathUpSprite": "assets/graphics/UI/myGithub.png",
+    "pathDownSprite": "assets/graphics/UI/myGithub.png",
+    "pathUpSound": "assets/audio/UI/buttonUp.mp3",
+    "pathDownSound": "assets/audio/UI/buttonDown.mp3",
+    "position": { "x": 0.4595, "y": 0.67 },
+    "size": { "x": 0.081, "y": 0.031 },
+    "text": "",
+    "font": "Ubuntu Title",
+    "color": "#c6ac9f"
   }
 }

@@ -1,47 +1,26 @@
 export class PageStatus {
-  static #pageVisibility = true;
-  static #pageFocus = true;
+  static pageVisibility = true;
+  static pageFocus = true;
 
-  static init() {}
+  static wasHidden = false;
 
-  static update() {
-    this.#checkVisibility();
-    this.#checkFocus();
-  }
-
-  static #checkVisibility() {
-    if (typeof document.hidden !== "undefined") {
-      document.addEventListener("visibilitychange", () => {
-        this.#pageVisibility = document.hidden;
-      });
-
-    } else if (typeof document.msHidden !== "undefined") {
-      document.addEventListener("msvisibilitychange", () => {
-        this.#pageVisibility = document.msHidden;
-      });
-
-    } else if (typeof document.webkitHidden !== "undefined") {
-      document.addEventListener("webkitvisibilitychange", () => {
-        this.#pageVisibility = document.webkitHidden;
-      });
-    }
-  }
-
-  static #checkFocus() {
-    if (typeof document.hasFocus === "function") {
-      if (document.hasFocus()) {
-        this.#pageVisibility = true;
+  static init() {
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') {
+        this.pageVisibility = true;
       } else {
-        this.#pageVisibility = false
+        this.pageVisibility = false;
+        this.wasHidden = true;
       }
-    }
-  }
+    });
+    window.addEventListener('focus', () => {
+      this.pageFocus = false
+      this.wasHidden = true;
+    });
 
-  static get pageVisibility() {
-    return this.#pageVisibility;
-  }
-
-  static get pageFocus() {
-    return this.#pageFocus;
+    window.addEventListener('blur', () => {
+      this.pageFocus = false
+      this.wasHidden = true;
+    });
   }
 }
