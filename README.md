@@ -95,8 +95,8 @@ To play the game, follow these steps:
 
   ### Personal Links
 
-- [Portfolio Website](https://jorin-liesse.github.io/Portfolio/) - Visit my portfolio to learn more about my projects and skills.
-- <a href="https://www.linkedin.com/in/jorin-liesse-755774287/" target="_blank">LinkedIn</a> - Connect with me on LinkedIn.
+- [Portfolio Website](https://jorin-liesse.github.io/Portfolio/){:target="_blank" rel="noopener"} - Visit my portfolio to learn more about my projects and skills.
+- [LinkedIn](https://www.linkedin.com/in/jorin-liesse-755774287/){:target="_blank" rel="noopener"} - Connect with me on LinkedIn.
 
 ### Inspirations
 
