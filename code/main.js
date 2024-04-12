@@ -159,6 +159,7 @@ export class Main {
       Options.fpsLimit = saveData.fpsLimit;
       Options.windowMode = saveData.windowMode;
       Options.showCollisionBoxes = saveData.showCollisionBoxes;
+      Settings.showCollisionBoxes = saveData.showCollisionBoxes;
       Options.showFPS = saveData.showFPS;
       Options.resolution = saveData.resolution;
       Options.masterVolume = saveData.masterVolume;

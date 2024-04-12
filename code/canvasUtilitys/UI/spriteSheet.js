@@ -7,10 +7,10 @@ export class SpriteSheet {
   
   constructor({ data = {}, screenPosition = { x: 0, y: 0 }, screenSize = getCanvasSize() } = {}) {
     const defaultData = {
-      "path": "assets/graphics/empty.png",
-      "position": { "x": 0, "y": 0 },
-      "size": { "x": 0.1, "y": 0.1 },
-      "animationInfo": {
+      path: "assets/graphics/empty.png",
+      position: { "x": 0, "y": 0 },
+      size: { "x": 0.1, "y": 0.1 },
+      animationInfo: {
         "rows": 1,
         "columns": 1,
         "startFrame": 0,
@@ -18,6 +18,8 @@ export class SpriteSheet {
         "frameRate": 1
       }
     };
+
+    if (data.path === undefined) throw new Error("SpriteSheet: path is required");
 
     data = { ...defaultData, ...data };
 
