@@ -1,9 +1,9 @@
 # Flappy Bird
 [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
-[![GitHub Release](https://img.shields.io/github/v/release/Jorin-Liesse/Flappy_Bird)](https://github.com/Jorin-Liesse/Flappy_Bird/releases)
-[![GitHub Stars](https://img.shields.io/github/stars/Jorin-Liesse/Flappy_Bird)](https://github.com/Jorin-Liesse/Flappy_Bird/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/Jorin-Liesse/Flappy_Bird)](https://github.com/Jorin-Liesse/Flappy_Bird/forks)
-[![GitHub watchers](https://img.shields.io/github/watchers/Jorin-Liesse/Flappy_Bird)](https://github.com/Jorin-Liesse/Flappy_Bird/watchers)
+[![GitHub Release](https://img.shields.io/github/v/release/Jorin-Liesse/Flappy_Bird)](https://github.com/Jorin-Liesse/Flappy_Bird/releases){:target="_blank"}
+[![GitHub Stars](https://img.shields.io/github/stars/Jorin-Liesse/Flappy_Bird)](https://github.com/Jorin-Liesse/Flappy_Bird/stargazers){:target="_blank"}
+[![GitHub forks](https://img.shields.io/github/forks/Jorin-Liesse/Flappy_Bird)](https://github.com/Jorin-Liesse/Flappy_Bird/forks){:target="_blank"}
+[![GitHub watchers](https://img.shields.io/github/watchers/Jorin-Liesse/Flappy_Bird)](https://github.com/Jorin-Liesse/Flappy_Bird/watchers){:target="_blank"}
 
 ## Table of Contents
 - [Installation](#Installation)
