@@ -77,9 +77,7 @@ export class Screen {
 
     if (!this.checkUpdateNeeded()) return;
     for (const element in this.elements) {
-      try {
       this.elements[element].update();
-      } catch (error) {console.error("Error updating element", element, ":", error);}
     }
   }
 
@@ -91,9 +89,7 @@ export class Screen {
   static draw() {
     if (!this.checkDrawNeeded()) return;
     for (const element in this.elements) {
-      try {
         this.elements[element].draw();
-        } catch (error) {console.error("Error updating element", element, ":", error);}
     }
   }
 
