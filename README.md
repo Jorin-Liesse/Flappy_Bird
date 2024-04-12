@@ -104,8 +104,8 @@ To play the game, follow these steps:
 
 ### Testers
 
-- [Sander Daniels](https://github.com/testerusername) - Provided valuable feedback and testing
-- [Sander Daniels](https://github.com/testerusername) - Provided valuable feedback and testing
+- [Sander Daniels](https://www.linkedin.com/in/sander-daniels-429a11293/) - Provided valuable feedback and testing
+- [Brian Thys](https://www.linkedin.com/in/brian-thys-4a88492a4/) - Provided valuable feedback and testing
 
 ## License
 This work is licensed under a
