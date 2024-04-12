@@ -2,7 +2,7 @@
 [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
 [![GitHub Stars](https://img.shields.io/github/stars/Jorin-Liesse/Flappy_Bird.svg)](https://github.com/Jorin-Liesse/Flappy_Bird/stargazers)
 [![GitHub Release](https://img.shields.io/github/release/Jorin-Liesse/Flappy_Bird.svg)](https://github.com/Jorin-Liesse/Flappy_Bird/releases)
-[![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/Jorin-Liesse/Flappy_Bird/total)]
+[![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/Jorin-Liesse/Flappy_Bird/total)](https://github.com/Jorin-Liesse/Flappy_Bird/releases)
 
 ## Table of Contents
 - Project Title
