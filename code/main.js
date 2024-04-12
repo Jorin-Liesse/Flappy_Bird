@@ -1,3 +1,4 @@
+import { Shader, fetchShader } from "./canvasUtilitys/shader.js";
 import { InputManager } from "./canvasUtilitys/inputManager.js";
 import { AudioManager } from "./canvasUtilitys/audioManager.js";
 import { DeltaTime } from "./canvasUtilitys/deltaTime.js";
@@ -17,18 +18,17 @@ import { GameOver } from "./screens/gameOver.js";
 import { FPSCounter } from "./screens/FPSCounter.js";
 import { GrayFilter } from "./screens/grayFilter.js";
 
-import { Shader } from "./canvasUtilitys/shader.js";
-import { fragmentShaderSource } from "../assets/shaders/CRT/fragmentShader.js";
-import { vertexShaderSource } from "../assets/shaders/CRT/vertexShader.js";
-
 export class Main {
   static save;
 
-  static init() {
+  static async init() {
     this.canvas = document.getElementById("mainCanvas");
     this.ctx = this.canvas.getContext("2d");
 
     this.loadLocalStorage();
+
+    const vertexShaderSource = await fetchShader('assets/shaders/CRT/vertexShader.glsl');
+    const fragmentShaderSource = await fetchShader('assets/shaders/CRT/fragmentShader.glsl');
 
     InputManager.init();
     AspectRatio.init(this.canvas, Settings.aspectRatio);
@@ -169,7 +169,7 @@ export class Main {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  Main.init();
+document.addEventListener("DOMContentLoaded", async () => {
+  await Main.init();
   Main.run();
 });

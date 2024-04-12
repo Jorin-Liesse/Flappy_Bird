@@ -1,5 +1,3 @@
-#version 300 es
-
 attribute vec2 a_position;
 varying vec2 v_texCoord;
 void main() {

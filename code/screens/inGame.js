@@ -35,6 +35,7 @@ export class InGame extends Screen {
       Game.status = "frozen";
       InGameMenu.status = "transitionIn";
       PageStatus.wasHidden = false;
+      this.status = "frozen";
     }
 
     this.elements.score.text = this.score;
