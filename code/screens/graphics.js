@@ -1,4 +1,5 @@
 import { Screen } from "../canvasUtilitys/screen.js";
+import { GameObject } from "../canvasUtilitys/gameObject.js";
 import { Settings } from "../settings.js";
 
 import { goFullScreen, exitFullScreen } from "../../script.js";
@@ -53,7 +54,7 @@ export class Graphics extends Screen {
     
     if (this.elements.switchHitboxes.isChanged()) {
       Options.showCollisionBoxes = this.elements.switchHitboxes.status === "on" ? true : false;
-      Settings.showCollisionBoxes = Options.showCollisionBoxes;
+      GameObject.showCollisionBoxes = Options.showCollisionBoxes;
       Main.save = true;
     }
     if (this.elements.switchShowFPS.isChanged()) {

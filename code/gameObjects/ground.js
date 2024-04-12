@@ -1,5 +1,6 @@
 import { Settings } from "../settings.js";
 import { Rectangle } from "../canvasUtilitys/UI/rectangle.js";
+import { GameObject } from "../canvasUtilitys/gameObject.js"; 
 
 export class Ground {
   constructor(screenPosition, screenSize) {
@@ -13,7 +14,7 @@ export class Ground {
     this.collisionBoxes = new Rectangle({data: {
       position: Settings.groundPosition,
       size: Settings.groundSize,
-      width: Settings.collisionBoxesWidth,
+      width: GameObject.collisionBoxesWidth,
       strokeColor: "blue",
       fillColor: "transparent",
       },
@@ -29,7 +30,7 @@ export class Ground {
   }
 
   draw() {
-    if (Settings.showCollisionBoxes) this.collisionBoxes.draw();
+    if (GameObject.showCollisionBoxes) this.collisionBoxes.draw();
   }
 
   resize(screenPosition, screenSize) {

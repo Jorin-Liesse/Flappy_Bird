@@ -1,5 +1,6 @@
 import { Settings } from "../settings.js";
 import { Rectangle } from "../canvasUtilitys/UI/rectangle.js";
+import { GameObject } from "../canvasUtilitys/gameObject.js"; 
 
 export class Roof {
   constructor(screenPosition, screenSize) {
@@ -13,7 +14,7 @@ export class Roof {
     this.collisionBoxes = new Rectangle({data: {
       position: Settings.roofPosition,
       size: Settings.roofSize,
-      width: Settings.collisionBoxesWidth,
+      width: GameObject.collisionBoxesWidth,
       strokeColor: "blue",
       fillColor: "transparent",
       },
@@ -29,7 +30,7 @@ export class Roof {
   }
 
   draw() {
-    if (Settings.showCollisionBoxes) this.collisionBoxes.draw();
+    if (GameObject.showCollisionBoxes) this.collisionBoxes.draw();
   }
 
   resize(screenPosition, screenSize) {

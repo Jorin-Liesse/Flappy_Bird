@@ -5,6 +5,7 @@ import { DeltaTime } from "./canvasUtilitys/deltaTime.js";
 import { AspectRatio } from "./canvasUtilitys/aspectRatio.js";
 import { setCanvasSize } from "./canvasUtilitys/canvasSize.js";
 import { PageStatus } from "./canvasUtilitys/pageStatus.js";
+import { GameObject } from "./canvasUtilitys/gameObject.js";
 import { Settings } from "./settings.js";
 
 import { Start } from "./screens/start.js";
@@ -31,7 +32,7 @@ export class Main {
     const fragmentShaderSource = await fetchShader('assets/shaders/CRT/fragmentShader.glsl');
 
     InputManager.init();
-    AspectRatio.init(this.canvas, Settings.aspectRatio);
+    AspectRatio.init();
     PageStatus.init();
     Shader.init(vertexShaderSource, fragmentShaderSource);
     DeltaTime.init();
@@ -159,7 +160,7 @@ export class Main {
       Options.fpsLimit = saveData.fpsLimit;
       Options.windowMode = saveData.windowMode;
       Options.showCollisionBoxes = saveData.showCollisionBoxes;
-      Settings.showCollisionBoxes = saveData.showCollisionBoxes;
+      GameObject.showCollisionBoxes = saveData.showCollisionBoxes;
       Options.showFPS = saveData.showFPS;
       Options.resolution = saveData.resolution;
       Options.masterVolume = saveData.masterVolume;

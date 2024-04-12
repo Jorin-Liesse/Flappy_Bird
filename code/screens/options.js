@@ -55,9 +55,11 @@ export class Options extends Screen {
       };
     }
 
-    if (this.elements.buttonGraphics.isClicked()) this.setGraphics();
-    if (this.elements.buttonSound.isClicked()) this.setSound();
-    if (this.elements.buttonControlls.isClicked()) this.setControlls();
+    if (this.elements.optionsMenu.status !== "active") return;
+
+    if (this.elements.buttonGraphics.isClicked() && this.elements.optionsMenu !== Graphics) this.setGraphics();
+    if (this.elements.buttonSound.isClicked() && this.elements.optionsMenu !== Sound) this.setSound();
+    if (this.elements.buttonControlls.isClicked() && this.elements.optionsMenu !== Controlls) this.setControlls();
   }
 
   static draw() {

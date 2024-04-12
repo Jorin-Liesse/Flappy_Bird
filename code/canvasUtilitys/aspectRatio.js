@@ -1,10 +1,9 @@
 export class AspectRatio {
   static #canvas;
-  static #aspectRatio;
+  static #aspectRatio = 16 / 9;
 
-  static init(canvas, aspectRatio) {
-    this.#canvas = canvas;
-    this.#aspectRatio = aspectRatio;
+  static init() {
+    this.#canvas = document.getElementById("mainCanvas");
     this.adjust();
   }
 

@@ -1,10 +1,11 @@
 import { SpriteSheet } from "./UI/spriteSheet.js";
 import { Rectangle } from "./UI/rectangle.js";
-
-import { Settings } from "../settings.js";
 import { DeltaTime } from "./deltaTime.js";
 
 export class GameObject extends SpriteSheet{
+  static collisionBoxesWidth = 0.005;
+  static showCollisionBoxes = false;
+
   constructor({ data = {}, screenPosition = { x: 0, y: 0 }, screenSize = getCanvasSize() } = {}) {
     super({data: data, screenPosition: screenPosition, screenSize: screenSize});
     this.velocity = { x: 0, y: 0 };
@@ -17,7 +18,7 @@ export class GameObject extends SpriteSheet{
     this.collisionBoxes = new Rectangle({data: {
       position: data.position,
       size: {x: data.size.x * this.hitTolerance, y: data.size.y * this.hitTolerance},
-      width: Settings.collisionBoxesWidth,
+      width: GameObject.collisionBoxesWidth,
       strokeColor: "blue",
       fillColor: "transparent",
       },
@@ -43,8 +44,7 @@ export class GameObject extends SpriteSheet{
 
   draw() {
     super.draw();
-
-    if (Settings.showCollisionBoxes) this.collisionBoxes.draw();
+    if (GameObject.showCollisionBoxes) this.collisionBoxes.draw();
   }
 
   resize(screenPosition, screenSize) {

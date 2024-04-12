@@ -1,8 +1,4 @@
 export class Settings {
-  static aspectRatio = 16 / 9;
-  static collisionBoxesWidth = 0.005;
-  static showCollisionBoxes = false;
-
   static pathStartScreenLayout = "assets/layout/start.json";
   static pathOptionsScreenLayout = "assets/layout/options.json";
   static pathGameScreenLayout = "assets/layout/game.json";
