@@ -19,8 +19,6 @@ export class SpriteSheet {
       }
     };
 
-    if (data.path === undefined) throw new Error("SpriteSheet: path is required");
-
     data = { ...defaultData, ...data };
 
     const canvas = document.getElementById("mainCanvas");
