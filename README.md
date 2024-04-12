@@ -6,12 +6,14 @@
 [![GitHub watchers](https://img.shields.io/github/watchers/Jorin-Liesse/Flappy_Bird)](https://github.com/Jorin-Liesse/Flappy_Bird/watchers)
 
 ## Table of Contents
+- [Project Description](#Project-Description)
 - [Installation](#Installation)
 - [Troubleshooting](#Troubleshooting)
 - [Usage](#Usage)
 - [Credits](#Credits)
 - [License](#License)
-- [Project Description](#Project-Description)
+
+## Project Description
 
 ## Installation
 
@@ -116,5 +118,3 @@ This work is licensed under a
 [cc-by-nc-sa]: http://creativecommons.org/licenses/by-nc-sa/4.0/
 [cc-by-nc-sa-image]: https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
 [cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
-
-## Project Description
