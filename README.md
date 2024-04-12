@@ -11,7 +11,7 @@
 - [Usage](#Usage)
 - [Credits](#Credits)
 - [License](#License)
-- [Project Description](#Project Description)
+- [Project Description](#Project-Description)
 
 ## Installation
 
