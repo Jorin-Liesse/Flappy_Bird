@@ -91,7 +91,9 @@ export class Screen {
   static draw() {
     if (!this.checkDrawNeeded()) return;
     for (const element in this.elements) {
-      this.elements[element].draw();
+      try {
+        this.elements[element].draw();
+        } catch (error) {console.error("Error updating element", element, ":", error);}
     }
   }
 
