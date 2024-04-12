@@ -44,10 +44,8 @@ export class Settings {
   static pilarSpawnIntervalMax = 0.3;
   static pilarSpawnIntervalMin = 0.15;
   
-  // static pathPlayer = "assets/graphics/game/playerSheet.png";
-  // static playerAnimationInfo = {rows: 1, columns: 6, startFrame: 0, endFrame: 5, frameRate: 10};
-  static pathPlayer = "assets/graphics/game/player.png";
-  static playerAnimationInfo = {rows: 1, columns: 1, startFrame: 0, endFrame: 0, frameRate: 1};
+  static pathPlayer = "assets/graphics/game/playerSheet.png";
+  static playerAnimationInfo = {rows: 1, columns: 10, startFrame: 0, endFrame: 9, frameRate: 20};
   static playerSize = {x: 0.0690, y: 0.1255};
   static playerJumpForce = -0.0007;
   static playerRotationSmoothness = 0.1;

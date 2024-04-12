@@ -19,8 +19,6 @@ export async function goFullScreen() {
 }
 
 export function exitFullScreen() {
-  if (!document.fullscreenElement || !document.webkitFullscreenElement || !document.mozFullScreenElement || !document.msFullscreenElement) return;
-
   if (document.exitFullscreen) {
     document.exitFullscreen();
   } else if (document.mozCancelFullScreen) { /* Firefox */

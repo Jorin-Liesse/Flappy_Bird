@@ -83,10 +83,10 @@ export class Game extends Screen {
     this.addElement("ground", new Ground({ x: 0, y: 0 }, getCanvasSize()));
     this.addElement("player", new Player({ x: 0, y: 0 }, getCanvasSize()));
 
-    async () => {
+    (async () => {
       await this.loadPromise;
       this.addPilar();
-    };
+    })();
 
     this.restart = false;
   }
