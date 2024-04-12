@@ -42,6 +42,10 @@ export class GameObject extends SpriteSheet{
     this.setCollisionBoxesPosition();
   }
 
+  updateSpriteSheet() {
+    super.update();
+  }
+
   draw() {
     super.draw();
     if (GameObject.showCollisionBoxes) this.collisionBoxes.draw();

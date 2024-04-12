@@ -33,6 +33,7 @@ export class SpriteSheet {
     this.currentFrame = this.animationInfo.startFrame;
     this.frameTimer = 0;
     this.visible = true;
+    this.isLoaded = false;
 
     this.#loadImage();
 
@@ -117,8 +118,6 @@ export class SpriteSheet {
   #loadImage() {
     this.image = new Image();
     this.image.src = this.path;
-
-    this.isLoaded = false;
 
     this.isFlippedVertical = false;
     this.isFlippedHorizontal = false;

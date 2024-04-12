@@ -12,7 +12,7 @@ export class Player extends GameObject {
         path: Settings.pathPlayer,
         position: { x: 0.5 - Settings.playerSize.x/2, y: 0.5 },
         size: Settings.playerSize,
-        animationInfo: Settings.pilarAnimationInfo,
+        animationInfo: Settings.playerAnimationInfo,
       },
       screenPosition: screenPosition,
       screenSize: screenSize
@@ -22,7 +22,7 @@ export class Player extends GameObject {
   }
 
   update() {
-    // super.update();
+    super.updateSpriteSheet();
 
     this.velocity.x = (0.5 - Settings.playerSize.x/2 - this.refPosition.x) * Settings.playerRecenterForce * DeltaTime.dt;
     this.velocity.y += Settings.gravity * DeltaTime.dt;

@@ -28,6 +28,8 @@ export class Game extends Screen {
   static update() {
     super.update();
     if (!this.checkUpdateNeeded()) return;
+    if (!this.elements.player.isLoaded) return;
+    if (!this.elements.pilar0Top.isLoaded) return;
 
     this.pilarSpawner();
     this.pilarRemover();
