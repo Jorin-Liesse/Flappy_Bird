@@ -3,7 +3,8 @@
 [![GitHub Release](https://img.shields.io/github/v/release/Jorin-Liesse/Flappy_Bird)](https://github.com/Jorin-Liesse/Flappy_Bird/releases)
 
 [![GitHub Stars](https://img.shields.io/github/stars/Jorin-Liesse/Flappy_Bird)](https://github.com/Jorin-Liesse/Flappy_Bird/stargazers)
-[![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/Jorin-Liesse/Flappy_Bird/total)](https://github.com/Jorin-Liesse/Flappy_Bird/releases)
+[![GitHub forks](https://img.shields.io/github/forks/Jorin-Liesse/Flappy_Bird)](https://github.com/Jorin-Liesse/Flappy_Bird)
+[![GitHub watchers](https://img.shields.io/github/watchers/Jorin-Liesse/Flappy_Bird)](https://github.com/Jorin-Liesse/Flappy_Bird)
 
 ## Table of Contents
 - Project Title
