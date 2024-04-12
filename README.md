@@ -8,10 +8,10 @@
 
 ## Table of Contents
 - [Installation](#Installation)
-- Usage
-- Credits
-- License
-- Project Description
+- [Usage](#Usage)
+- [Credits](#Credits)
+- [License](#License)
+- [Project Description](#Project Description)
 
 ## Installation
 
