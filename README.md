@@ -1,9 +1,10 @@
-# FlappyBird
+# Flappy Bird
 [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
 [![GitHub stars](https://img.shields.io/github/stars/Jorin-Liesse/Flappy_Bird.svg)](https://github.com/Jorin-Liesse/Flappy_Bird/stargazers)
 [![GitHub release](https://img.shields.io/github/release/Jorin-Liesse/Flappy_Bird.svg)](https://github.com/Jorin-Liesse/Flappy_Bird/releases)
 [![Visit My Website](https://img.shields.io/github/stars/Jorin-Liesse/Flappy_Bird.svg)](https://github.com/Jorin-Liesse/Flappy_Bird/releases)
 ![Visit My Website]([(https://img.shields.io/badge/)](https://jorin-liesse.github.io/Flappy_Bird/))
+![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/Jorin-Liesse/Flappy_Bird/total)
 
 ## Table of Contents
 - Project Title
