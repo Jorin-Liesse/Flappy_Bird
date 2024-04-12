@@ -1,5 +1,5 @@
 # FlappyBird
-[![GitHub stars](https://img.shields.io/github/stars/Jorin-Liesse/Flappy_Bird.svg?style=social)][(https://github.com/Jorin-Liesse/Flappy_Bird/stargazers)]
+[![GitHub stars](https://img.shields.io/github/stars/Jorin-Liesse/Flappy_Bird.svg?style=social)](https://github.com/Jorin-Liesse/Flappy_Bird/stargazers)
 [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
 ## Table of Contents
 - Project Title
