@@ -7,7 +7,7 @@
 [![GitHub watchers](https://img.shields.io/github/watchers/Jorin-Liesse/Flappy_Bird)](https://github.com/Jorin-Liesse/Flappy_Bird/watchers)
 
 ## Table of Contents
-[- Installation](#Installation)
+- [Installation](#Installation)
 - Usage
 - Credits
 - License
