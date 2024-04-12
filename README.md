@@ -28,13 +28,8 @@
 - CSS3
 - JavaScript
 
-### Screenshots and GIFs
-
 ![Gameplay GIF](path/to/gameplay.gif)
-*Gameplay GIF showcasing the core mechanics of Flappy Bird*
-
 ![Score Tracking](path/to/score-tracking.gif)
-*GIF demonstrating the score tracking feature*
 
 ## Installation
 
