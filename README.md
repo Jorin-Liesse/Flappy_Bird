@@ -14,6 +14,27 @@
 - [License](#License)
 
 ## Project Description
+**Flappy Bird Clone** is a recreation of the classic Flappy Bird game. It aims to provide an enjoyable and nostalgic gaming experience for players. The game features simple controls and addictive gameplay.
+
+### Key Features
+
+- **Classic Gameplay**: Navigate the bird through pipes by tapping the screen or pressing the spacebar.
+- **Score Tracking**: Keep track of your highest score as you play.
+- **Responsive Design**: Enjoy seamless gameplay on different screen sizes.
+
+### Technologies Used
+
+- HTML5
+- CSS3
+- JavaScript
+
+### Screenshots and GIFs
+
+![Gameplay GIF](path/to/gameplay.gif)
+*Gameplay GIF showcasing the core mechanics of Flappy Bird*
+
+![Score Tracking](path/to/score-tracking.gif)
+*GIF demonstrating the score tracking feature*
 
 ## Installation
 
