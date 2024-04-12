@@ -93,7 +93,7 @@ To play the game, follow these steps:
 
 - [Jorin Liesse](https://github.com/Jorin-Liesse) - Sole developer of the project
 
-  ### Personal Links
+### Personal Links
 
 - [Portfolio Website](https://jorin-liesse.github.io/Portfolio/) - Visit my portfolio to learn more about my projects and skills.
 - [LinkedIn](https://www.linkedin.com/in/jorin-liesse-755774287/) - Connect with me on LinkedIn.
