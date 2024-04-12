@@ -3,9 +3,37 @@ import { Text } from "./text.js";
 
 import { InputManager } from "../inputManager.js";
 import { AudioManager } from "../audioManager.js";
+import { getCanvasSize } from "../canvasSize.js";
 
 export class ChoiceBox {
-  constructor(data, screenPosition, screenSize) {
+  constructor({ data = {}, screenPosition = { x: 0, y: 0 }, screenSize = getCanvasSize() } = {}) {
+    const defaultData = {
+      pathOpenSprite: "assets/graphics/empty.png",
+      pathClosedSprite: "assets/graphics/empty.png",
+      pathSound: "",
+      options: ["Option 1", "Option 2", "Option 3"],
+      positions: {
+        signOpen: { x: 0.5, y: 0.3 },
+        signClosed: { x: 0.5, y: 0.3 },
+        options: [
+          { x: 0.5, y: 0.3 },
+          { x: 0.6, y: 0.3 },
+          { x: 0.6, y: 0.3 }
+        ]
+      },
+
+      sizes: {
+        signOpen: { x: 0.2, y: 0.2 },
+        signClosed: { x: 0.2, y: 0.2 }
+      },
+      sizeText: 0.01,
+      font: "Arial",
+      color: "#000000",
+      alwaysOpen: false
+    };
+
+    data = { ...defaultData, ...data };
+
     this.refPositions = data.positions;
     this.refSizes = data.sizes;
     this.refSizeText = data.sizeText;
@@ -20,6 +48,7 @@ export class ChoiceBox {
 
     this.status = "closed";
     this.previousStatus = "closed";
+    this.visible = true;
 
     this.active = true;
 
@@ -78,6 +107,7 @@ export class ChoiceBox {
   }
 
   draw() {
+    if (!this.visible) return;
     if (this.status === "closed") {
       this.spriteClosed.draw();
       this.optionsTexts[0].draw();
@@ -117,19 +147,19 @@ export class ChoiceBox {
 
   #loadSprites(data, screenPosition, screenSize) {
     const spriteOpenData = {
-      "path": data.pathOpenSprite,
-      "position": this.refPositions.signOpen,
-      "size": this.refSizes.signOpen
+      path: data.pathOpenSprite,
+      position: this.refPositions.signOpen,
+      size: this.refSizes.signOpen
     };
 
     const spriteClosedData = {
-      "path": data.pathClosedSprite,
-      "position": this.refPositions.signClosed,
-      "size": this.refSizes.signClosed
+      path: data.pathClosedSprite,
+      position: this.refPositions.signClosed,
+      size: this.refSizes.signClosed
     };
 
-    this.spriteOpen = new Sprite(spriteOpenData, screenPosition, screenSize);
-    this.spriteClosed = new Sprite(spriteClosedData, screenPosition, screenSize);
+    this.spriteOpen = new Sprite({data: spriteOpenData, screenPosition: screenPosition, screenSize: screenSize});
+    this.spriteClosed = new Sprite({data: spriteClosedData, screenPosition: screenPosition, screenSize: screenSize});
   }
 
   #loadTexts(data, screenPosition, screenSize) {
@@ -137,16 +167,16 @@ export class ChoiceBox {
 
     this.optionsTexts = data.options.map((option, i) => {
       let textData = {
-        "position": this.refPositions.options[i],
-        "size": this.refSizeText,
-        "text": option,
-        "font": data.font,
-        "color": data.color,
-        "align": "center",
-        "baseLine": "bottom"
+        position: this.refPositions.options[i],
+        size: this.refSizeText,
+        text: option,
+        font: data.font,
+        color: data.color,
+        align: "center",
+        baseLine: "bottom"
       };
     
-      return new Text(textData, screenPosition, screenSize);
+      return new Text({data: textData, screenPosition: screenPosition, screenSize: screenSize});
     });
   }
 

@@ -1,11 +1,27 @@
 import { DeltaTime } from "../deltaTime.js";
+import { getCanvasSize } from "../canvasSize.js";
 
 import { Sprite } from "./sprite.js";
 
 export class Parallax {
-  constructor(data, screenPosition, screenSize) {
+  constructor({ data = {}, screenPosition = { x: 0, y: 0 }, screenSize = getCanvasSize() } = {}) {
+    const defaultData = {
+      position: { x: 0, y: 0 },
+      size: { x: 1, y: 1 },
+      layers: [
+        {
+          path: "assets/graphics/empty.png",
+          speed: 0.01
+        }
+      ]
+    };
+
+    data = { ...defaultData, ...data };
+
     this.refPosition = data.position;
     this.refSize = data.size;
+
+    this.visible = true;
 
     this.layers = [];
     for (let i = 0; i < data.layers.length; i++) {
@@ -15,7 +31,7 @@ export class Parallax {
         size: { x: this.refSize.x * 1.01, y: this.refSize.y}
       }
 
-      const sprite1 = new Sprite(imageData1, screenPosition, screenSize);
+      const sprite1 = new Sprite({data: imageData1, screenPosition: screenPosition, screenSize: screenSize});
       sprite1.speed = data.layers[i].speed;
       this.layers.push(sprite1);
 
@@ -27,7 +43,7 @@ export class Parallax {
           size: { x: this.refSize.x * 1.01, y: this.refSize.y}
         }
 
-      const sprite2 = new Sprite(imageData2, screenPosition, screenSize);
+      const sprite2 = new Sprite({data: imageData2, screenPosition: screenPosition, screenSize: screenSize});
       sprite2.speed = data.layers[i].speed;
       this.layers.push(sprite2);
     }
@@ -54,6 +70,7 @@ export class Parallax {
   }
 
   draw() {
+    if (!this.visible) return;
     for (let i = 0; i < this.layers.length; i++) {
       this.layers[i].draw();
     }

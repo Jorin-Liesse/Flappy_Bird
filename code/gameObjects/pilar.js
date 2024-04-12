@@ -3,16 +3,16 @@ import { Settings } from "../settings.js";
 
 export class Pilar extends GameObject {
   constructor(path, position, screenPosition, screenSize) {
-    super(
-      {
+    super({
+      data: {
         path: path,
         position: position,
         size: Settings.pilarSize,
         animationInfo: Settings.pilarAnimationInfo,
       },
-      screenPosition,
-      screenSize
-    );
+      screenPosition: screenPosition,
+      screenSize: screenSize
+    });
 
     this.velocity.x = Settings.pilarSpeed;
   }

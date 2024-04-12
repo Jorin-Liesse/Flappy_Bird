@@ -1,16 +1,14 @@
 import { Screen } from "../canvasUtilitys/screen.js";
 import { Settings } from "../settings.js";
 
-export class FPSCounter extends Screen {
-  static currentFPS = 0;
+export class Background extends Screen {
   static init() {
-    super.init({layoutPath: Settings.pathFPSCounterLayout, zIndex: Settings.zIndex.FPSCounter, status: "active"});
+    super.init({layoutPath: Settings.pathBackgroundLayout, zIndex: Settings.zIndex.background, status: "active"});
   }
 
   static update() {
     super.update();
     if (!this.checkUpdateNeeded()) return;
-    this.elements.FPSCounter.text = `${this.currentFPS} FPS`;
   }
 
   static draw() {

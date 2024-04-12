@@ -1,7 +1,19 @@
+import { getCanvasSize } from "../canvasSize.js";
+
 export class Rectangle {
   #ctx;
 
-  constructor(data, screenPosition, screenSize) {
+  constructor({ data = {}, screenPosition = { x: 0, y: 0 }, screenSize = getCanvasSize() } = {}) {
+    const defaultData = {
+      position: { x: 0.25, y: 0.25 },
+      size: { x: 0.5, y: 0.5 },
+      width: 0.01,
+      strokeColor: "#000000",
+      fillColor: "#ffffff"
+    };
+
+    data = { ...defaultData, ...data };
+
     const canvas = document.getElementById("mainCanvas");
     this.#ctx = canvas.getContext("2d");
 
@@ -11,12 +23,15 @@ export class Rectangle {
     this.strokeColor = data.strokeColor;
     this.fillColor = data.fillColor;
 
+    this.visible = true;
+
     this.#calculateRef(screenPosition, screenSize);
   }
 
   update() {}
 
   draw() {
+    if (!this.visible) return;
     this.#ctx.save();
 
     this.#ctx.strokeStyle = this.strokeColor;

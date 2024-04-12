@@ -5,8 +5,8 @@ import { Settings } from "../settings.js";
 import { DeltaTime } from "./deltaTime.js";
 
 export class GameObject extends SpriteSheet{
-  constructor(data, screenPosition, screenSize) {
-    super(data, screenPosition, screenSize);
+  constructor({ data = {}, screenPosition = { x: 0, y: 0 }, screenSize = getCanvasSize() } = {}) {
+    super({data: data, screenPosition: screenPosition, screenSize: screenSize});
     this.velocity = { x: 0, y: 0 };
 
     this.hitTolerance = 1;
@@ -14,16 +14,16 @@ export class GameObject extends SpriteSheet{
     this.screenPosition = screenPosition;
     this.screenSize = screenSize;
 
-    this.collisionBoxes = new Rectangle({
-      "position": data.position,
-      "size": {x: data.size.x * this.hitTolerance, y: data.size.y * this.hitTolerance},
-      "width": Settings.collisionBoxesWidth,
-      "strokeColor": "blue",
-      "fillColor": "transparent",
+    this.collisionBoxes = new Rectangle({data: {
+      position: data.position,
+      size: {x: data.size.x * this.hitTolerance, y: data.size.y * this.hitTolerance},
+      width: Settings.collisionBoxesWidth,
+      strokeColor: "blue",
+      fillColor: "transparent",
       },
-      screenPosition,
-      screenSize
-    )
+      screenPosition: screenPosition,
+      screenSize: screenSize
+    })
 
     this.collisionBoxes.velocity = this.velocity;
   }

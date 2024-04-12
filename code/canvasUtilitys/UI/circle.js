@@ -1,7 +1,19 @@
+import { getCanvasSize } from "../canvasSize.js";
+
 export class Circle {
   #ctx;
   
-  constructor(data, screenPosition, screenSize) {
+  constructor({ data = {}, screenPosition = { x: 0, y: 0 }, screenSize = getCanvasSize() } = {}) {
+    const defaultData = {
+      position: { x: 0.5, y: 0.5 },
+      radius: 0.25,
+      width: 0.01,
+      strokeColor: "#000000",
+      fillColor: "#ffffff"
+    };
+
+    data = { ...defaultData, ...data };
+
     const canvas = document.getElementById("mainCanvas");
     this.#ctx = canvas.getContext("2d");
 
@@ -10,6 +22,8 @@ export class Circle {
     this.refWidth = data.width;
     this.strokeColor = data.strokeColor;
     this.fillColor = data.fillColor;
+    
+    this.visible = true;
 
     this.#calculateRef(screenPosition, screenSize);
   }
@@ -17,6 +31,7 @@ export class Circle {
   update() {}
 
   draw() {
+    if (!this.visible) return;
     this.#ctx.save();
 
     this.#ctx.strokeStyle = this.strokeColor;

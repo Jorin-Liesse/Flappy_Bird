@@ -7,16 +7,16 @@ import { Settings } from "../settings.js";
 export class Player extends GameObject {
   hitTolerance = 1;
   constructor(screenPosition, screenSize) {
-    super(
-      {
+    super({
+      data: {
         path: Settings.pathPlayer,
         position: { x: 0.5 - Settings.playerSize.x/2, y: 0.5 },
         size: Settings.playerSize,
         animationInfo: Settings.pilarAnimationInfo,
       },
-      screenPosition,
-      screenSize
-    );
+      screenPosition: screenPosition,
+      screenSize: screenSize
+    });
 
     this.collidables = [];
   }

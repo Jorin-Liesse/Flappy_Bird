@@ -1,14 +1,27 @@
 import { Sprite } from "./sprite.js";
 import { InputManager } from "../inputManager.js";
 import { AudioManager } from "../audioManager.js";
+import { getCanvasSize } from "../canvasSize.js";
 
 export class Switch {
-  constructor(data, screenPosition, screenSize) {
+  constructor({ data = {}, screenPosition = { x: 0, y: 0 }, screenSize = getCanvasSize() } = {}) {
+    const defaultData = {
+      pathOn: "assets/graphics/empty.png",
+      pathOff: "assets/graphics/empty.png",
+      pathSound: "",
+      position: {x: 0.4675, y: 0.15 },
+      size: { x: 0.075, y: 0.060 },
+      value: "on"
+    };
+
+    data = { ...defaultData, ...data };
+
     this.refPosition = data.position;
     this.refSize = data.size;
-
     this.previousStatus = data.value;
     this.status = data.value;
+
+    this.visible = true;
 
     this.#loadSprites(data, screenPosition, screenSize);
 
@@ -33,6 +46,7 @@ export class Switch {
   }
 
   draw() {
+    if (!this.visible) return;
     if (this.status === "on") {
       this.spriteOn.draw();
     } else {
@@ -55,19 +69,19 @@ export class Switch {
 
   #loadSprites(data, screenPosition, screenSize) {
     const spriteOnData = {
-      "path": data.pathOn,
-      "position": this.refPosition,
-      "size": this.refSize
+      path: data.pathOn,
+      position: this.refPosition,
+      size: this.refSize
     };
 
     const spriteOffData = {
-      "path": data.pathOff,
-      "position": this.refPosition,
-      "size": this.refSize
+      path: data.pathOff,
+      position: this.refPosition,
+      size: this.refSize
     };
 
-    this.spriteOn = new Sprite(spriteOnData, screenPosition, screenSize);
-    this.spriteOff = new Sprite(spriteOffData, screenPosition, screenSize);
+    this.spriteOn = new Sprite({data: spriteOnData, screenPosition: screenPosition, screenSize: screenSize});
+    this.spriteOff = new Sprite({data: spriteOffData, screenPosition: screenPosition, screenSize: screenSize});
   }
 
   #calculateRef(screenPosition, screenSize) {

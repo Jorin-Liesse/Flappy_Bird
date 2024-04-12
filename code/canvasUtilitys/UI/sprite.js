@@ -1,13 +1,25 @@
+import { getCanvasSize } from "../canvasSize.js";
+
 export class Sprite {
   #ctx;
   
-  constructor(data, screenPosition, screenSize) {
+  constructor({ data = {}, screenPosition = { x: 0, y: 0 }, screenSize = getCanvasSize() } = {}) {
+    const defaultData = {
+      path: "assets/graphics/empty.png",
+      position: { x: 0.5, y: 0.5 },
+      size: { x: 0.5, y: 0.5 }
+    };
+
+    data = { ...defaultData, ...data };
+
     const canvas = document.getElementById("mainCanvas");
     this.#ctx = canvas.getContext("2d");
 
     this.path = data.path;
     this.refPosition = data.position;
     this.refSize = data.size;
+
+    this.visible = true;
 
     this.#loadImage();
 
@@ -17,6 +29,7 @@ export class Sprite {
   update() {}
 
   draw() {
+    if (!this.visible) return;
     if (!this.isLoaded) return;
 
     this.#ctx.save();

@@ -11,32 +11,48 @@ import { ProgressBar } from "./UI/progressBar.js";
 import { SpriteSheet } from "./UI/spriteSheet.js";
 import { Parallax } from "./UI/parallax.js";
 
+import { getCanvasSize } from "./canvasSize.js";
+import { AnimationTimer } from "./animationTimer.js";
+
 export class Screen {
-  constructor(layoutPath, refPosition, refSize, zIndex, screenPosition, screenSize) {
+  static init({
+    layoutPath = "",
+    refPosition = { x: 0, y: 0 },
+    refSize = { x: 1, y: 1 },
+    zIndex = 0,
+    screenPosition = { x: 0, y: 0 },
+    screenSize = getCanvasSize(),
+    status = "inactive",
+    transitionDuration = 200,
+  } = {}) {
     this.refPosition = refPosition;
     this.refSize = refSize;
-
     this.zIndex = zIndex;
-
     this.screenPosition = screenPosition;
     this.screenSize = screenSize;
+    this.status = status;
+    this.transitionDuration = transitionDuration;
 
-    this.#calculateRef(screenPosition, screenSize);
+    this.fnAfterTransitionIn = function () {};
+    this.fnAfterTransitionOut = function () {};
+    this.fnTransitionIn = function () {};
+    this.fnTransitionOut = function () {};
 
+    this.isTransitionIn = false;
+    this.isTransitionOut = false;
     this.active = true;
     this.frozen = false;
-
     this.preActive = true;
     this.preFrozen = false;
-
     this.isLoaded = false;
-
     this.elements = {};
 
-    this.loadPromise = this.#loadUI(layoutPath);
+    this.animationTimer = new AnimationTimer(this.transitionDuration);
+    this.calculateRef(screenPosition, screenSize);
+    this.loadPromise = this.loadUI(layoutPath);
   }
 
-  update() {
+  static checkUpdateNeeded() {
     const changeActive = this.active !== this.preActive;
     const changeFrozen = this.frozen !== this.preFrozen;
 
@@ -46,53 +62,66 @@ export class Screen {
     this.preFrozen = this.frozen;
 
     if (!this.change) {
-      if (this.frozen || !this.active) return;
+      if (this.frozen || !this.active) return false;
     }
 
-    if (!this.isLoaded) return
+    if (!this.isLoaded) return false;
 
+    return true;
+  }
+
+  static update() {
+    this.checkStatus();
+    this.transitionIn();
+    this.transitionOut();
+
+    if (!this.checkUpdateNeeded()) return;
     for (const element in this.elements) {
       this.elements[element].update();
     }
   }
 
-  draw() {
-    if (!this.isLoaded || !this.active) return;
+  static checkDrawNeeded() {
+    if (!this.isLoaded || !this.active) return false;
+    return true;
+  }
 
+  static draw() {
+    if (!this.checkDrawNeeded()) return;
     for (const element in this.elements) {
       this.elements[element].draw();
     }
   }
 
-  resize(screenPosition, screenSize) {
+  static resize({screenPosition = { x: 0, y: 0 }, screenSize = getCanvasSize()} = {}) {
     this.screenPosition = screenPosition;
     this.screenSize = screenSize;
 
-    this.#calculateRef(screenPosition, screenSize);
+    this.calculateRef(screenPosition, screenSize);
 
     for (const element in this.elements) {
       this.elements[element].resize(this.position, this.size);
     }
   }
 
-  async addElement(name, element) {
+  static async addElement(name, element) {
     this.elements[name] = element;
 
     await this.loadPromise;
     this.putElementOnTop(name);
   }
 
-  async removeElement(name) {
+  static async removeElement(name) {
     await this.loadPromise;
     delete this.elements[name];
   }
 
-  async getElement(name) {
+  static async getElement(name) {
     await this.loadPromise;
     return this.elements[name];
   }
 
-  async putElementOnTop(elementName) {
+  static async putElementOnTop(elementName) {
     await this.loadPromise;
 
     const element = this.elements[elementName];
@@ -100,7 +129,12 @@ export class Screen {
     this.elements[elementName] = element;
   }
 
-  async #loadUI(layoutPath) {
+  static async loadUI(layoutPath) {
+    if (layoutPath === "") {
+      this.isLoaded = true;
+      return;
+    }
+
     try {
       const response = await fetch(layoutPath);
       if (!response.ok) {
@@ -110,51 +144,51 @@ export class Screen {
       for (const element in data) {
         switch (data[element].type) {
           case "Line":
-            this.elements[element] = new Line(data[element], this.position, this.size);
+            this.elements[element] = new Line({data: data[element], screenPosition: this.position, screenSize: this.size});
             break;
 
           case "Circle":
-            this.elements[element] = new Circle(data[element], this.position, this.size);
+            this.elements[element] = new Circle({data: data[element], screenPosition: this.position, screenSize: this.size});
             break;
 
           case "Rectangle":
-            this.elements[element] = new Rectangle(data[element], this.position, this.size);
+            this.elements[element] = new Rectangle({data: data[element], screenPosition: this.position, screenSize: this.size});
             break;
 
           case "Sprite":
-            this.elements[element] = new Sprite(data[element], this.position, this.size);
+            this.elements[element] = new Sprite({data: data[element], screenPosition: this.position, screenSize: this.size});
             break;
 
           case "Text":
-            this.elements[element] = new Text(data[element], this.position, this.size);
+            this.elements[element] = new Text({data: data[element], screenPosition: this.position, screenSize: this.size});
             break;
 
           case "Button":
-            this.elements[element] = new Button(data[element], this.position, this.size);
+            this.elements[element] = new Button({data: data[element], screenPosition: this.position, screenSize: this.size});
             break;
 
           case "ChoiceBox":
-            this.elements[element] = new ChoiceBox(data[element], this.position, this.size);
+            this.elements[element] = new ChoiceBox({data: data[element], screenPosition: this.position, screenSize: this.size});
             break;
 
           case "Slider":
-            this.elements[element] = new Slider(data[element], this.position, this.size);
+            this.elements[element] = new Slider({data: data[element], screenPosition: this.position, screenSize: this.size});
             break;
 
           case "Switch":
-            this.elements[element] = new Switch(data[element], this.position, this.size);
+            this.elements[element] = new Switch({data: data[element], screenPosition: this.position, screenSize: this.size});
             break;
 
           case "ProgressBar":
-            this.elements[element] = new ProgressBar(data[element], this.position, this.size);
+            this.elements[element] = new ProgressBar({data: data[element], screenPosition: this.position, screenSize: this.size});
             break;
 
           case "SpriteSheet":
-            this.elements[element] = new SpriteSheet(data[element], this.position, this.size);
+            this.elements[element] = new SpriteSheet({data: data[element], screenPosition: this.position, screenSize: this.size});
             break;
 
             case "Parallax":
-              this.elements[element] = new Parallax(data[element], this.position, this.size);
+              this.elements[element] = new Parallax({data: data[element], screenPosition: this.position, screenSize: this.size});
               break;
         }
       }
@@ -166,7 +200,7 @@ export class Screen {
     }
   }
 
-  #calculateRef(screenPosition, screenSize) {
+  static calculateRef(screenPosition, screenSize) {
     this.position = {
       x: this.refPosition.x * screenSize.x + screenPosition.x,
       y: this.refPosition.y * screenSize.y + screenPosition.y,
@@ -176,5 +210,57 @@ export class Screen {
       x: this.refSize.x * screenSize.x,
       y: this.refSize.y * screenSize.y,
     };
+  }
+
+  static transitionIn() {
+    if (!this.isTransitionIn || this.animationTimer.finished) return;
+
+    this.animationTimer.update();
+    this.fnTransitionIn();
+
+    if (this.animationTimer.progress === 1) {
+      this.status = "active";
+      this.fnAfterTransitionIn();
+      this.isTransitionIn = false;
+    }
+  }
+
+  static transitionOut() {
+    if (!this.isTransitionOut || this.animationTimer.finished) return;
+    this.animationTimer.update();
+    this.fnTransitionOut();
+
+    if (this.animationTimer.progress === 1) {
+      this.status = "inactive";
+      this.fnAfterTransitionOut();
+      this.isTransitionOut = false;
+    }
+  }
+
+  static checkStatus() {
+    switch (this.status) {
+      case "active":
+        this.active = true;
+        this.frozen = false;
+        break;
+      case "inactive":
+        this.active = false;
+        this.frozen = false;
+        break;
+      case "frozen":
+        this.active = true;
+        this.frozen = true;
+        break;
+      case "transitionIn":
+        this.isTransitionIn = true;
+        this.animationTimer.start();
+        this.status = "frozen";
+        break;
+      case "transitionOut":
+        this.isTransitionOut = true;
+        this.animationTimer.start();
+        this.status = "frozen";
+        break;
+    }
   }
 }

@@ -9,7 +9,6 @@ const createWindow = () => {
     width: 1280,
     height: 720,
     webPreferences: {
-      // nodeIntegration: true,
       preload: path.join(__dirname, 'preload.js'),
     }
   })
@@ -21,8 +20,6 @@ const createWindow = () => {
 
     mainWindow.setBounds({ width, height });
     mainWindow.center();
-
-    console.log('Resolution set to', data);
   })
 
   mainWindow.loadFile('index.html')

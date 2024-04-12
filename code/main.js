@@ -4,33 +4,34 @@ import { DeltaTime } from "./canvasUtilitys/deltaTime.js";
 import { AspectRatio } from "./canvasUtilitys/aspectRatio.js";
 import { setCanvasSize } from "./canvasUtilitys/canvasSize.js";
 import { PageStatus } from "./canvasUtilitys/pageStatus.js";
+import { Settings } from "./settings.js";
 
-import { StartScreen } from "./screens/startScreen.js";
-import { OptionsScreen } from "./screens/optionsScreen.js";
-import { GameScreen } from "./screens/gameScreen.js";
-import { BackgroundScreen } from "./screens/backgroundScreen.js";
-import { CreditsScreen } from "./screens/creditsScreen.js";
-import { InGameScreen } from "./screens/inGameScreen.js";
-import { InGameMenuScreen } from "./screens/inGameMenuScreen.js";
-import { GameOverScreen } from "./screens/gameOverScreen.js";
+import { Start } from "./screens/start.js";
+import { Options } from "./screens/options.js";
+import { Game } from "./screens/game.js";
+import { Background } from "./screens/background.js";
+import { Credits } from "./screens/credits.js";
+import { InGame } from "./screens/inGame.js";
+import { InGameMenu } from "./screens/inGameMenu.js";
+import { GameOver } from "./screens/gameOver.js";
 import { FPSCounter } from "./screens/FPSCounter.js";
+import { GrayFilter } from "./screens/grayFilter.js";
 
 import { Shader } from "./canvasUtilitys/shader.js";
 import { fragmentShaderSource } from "../assets/shaders/CRT/fragmentShader.js";
 import { vertexShaderSource } from "../assets/shaders/CRT/vertexShader.js";
 
-import { Settings } from "./settings.js";
+export class Main {
+  static save;
 
-class Main {
-  #canvas;
-  #ctx;
+  static init() {
+    this.canvas = document.getElementById("mainCanvas");
+    this.ctx = this.canvas.getContext("2d");
 
-  constructor() {
-    this.#canvas = document.getElementById("mainCanvas");
-    this.#ctx = this.#canvas.getContext("2d");
+    this.loadLocalStorage();
 
     InputManager.init();
-    AspectRatio.init(this.#canvas, Settings.aspectRatio);
+    AspectRatio.init(this.canvas, Settings.aspectRatio);
     PageStatus.init();
     Shader.init(vertexShaderSource, fragmentShaderSource);
     DeltaTime.init();
@@ -39,21 +40,24 @@ class Main {
     Shader.initExtraTexture(Settings.pathNoise, 2, 'u_noise');
     Shader.initExtraTexture(Settings.pathVignette, 3, 'u_vignette');
 
-    setCanvasSize(this.#canvas.width, this.#canvas.height);
-
-    this.#load();
+    setCanvasSize(this.canvas.width, this.canvas.height);
 
     this.screens = {};
 
-    this.screens.backgroundScreen = new BackgroundScreen();
-    this.screens.gameScreen = new GameScreen();
-    this.screens.startScreen = new StartScreen();
-    this.screens.optionsScreen = new OptionsScreen();
-    this.screens.creditsScreen = new CreditsScreen();
-    this.screens.inGameScreen = new InGameScreen();
-    this.screens.inGameMenuScreen = new InGameMenuScreen();
-    this.screens.gameOverScreen = new GameOverScreen();
-    this.screens.FPSCounter = new FPSCounter();
+    this.screens.backgroundScreen = Background;
+    this.screens.game = Game;
+    this.screens.startScreen = Start;
+    this.screens.optionsScreen = Options;
+    this.screens.creditsScreen = Credits;
+    this.screens.inGameScreen = InGame;
+    this.screens.inGameMenuScreen = InGameMenu;
+    this.screens.gameOverScreen = GameOver;
+    this.screens.FPSCounter = FPSCounter;
+    this.screens.grayFilter = GrayFilter;
+
+    for (const screen in this.screens) {
+      this.screens[screen].init();
+    }
 
     AudioManager.createMusic("soundtrack", "assets/audio/UI/soundtrack.mp3");
 
@@ -61,20 +65,20 @@ class Main {
       AudioManager.play("soundtrack");
     }, { once: true });
 
-    window.addEventListener("resize", this.#resize.bind(this));
+    window.addEventListener("resize", this.resize.bind(this));
 
     this.lastFrameTime = performance.now();
     this.frameCount = 0;
     this.lastLogTime = performance.now();
   }
 
-  run(time) {
+  static run(time) {
     requestAnimationFrame(this.run.bind(this));
 
     const elapsed = time - this.lastFrameTime;
     const elapsedSinceLog = time - this.lastLogTime;
 
-    if (elapsed < 1000 / Settings.fpsLimit) {
+    if (elapsed < 1000 / Options.fpsLimit) {
       return;
     }
 
@@ -82,16 +86,16 @@ class Main {
     this.frameCount++;
 
     if (elapsedSinceLog >= 1000) {
-      Settings.currentFPS = this.frameCount;
+      FPSCounter.currentFPS = this.frameCount;
       this.frameCount = 0;
       this.lastLogTime = time;
     }
 
-    this.#update();
-    this.#draw();
+    this.update();
+    this.draw();
   }
 
-  #update() {
+  static update() {
     InputManager.update();
     DeltaTime.update();
     Shader.update();
@@ -100,11 +104,11 @@ class Main {
       this.screens[screen].update();
     }
 
-    this.#save();
+    this.saveLocalStorage();
   }
 
-  #draw() {
-    this.#ctx.clearRect(0, 0, this.#canvas.width, this.#canvas.height);
+  static draw() {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
     const screenNames = Object.keys(this.screens);
     screenNames.sort((a, b) => this.screens[a].zIndex - this.screens[b].zIndex);
@@ -116,55 +120,55 @@ class Main {
     Shader.draw();
   }
 
-  #resize() {
+  static resize() {
     AspectRatio.adjust();
     Shader.resize();
-    setCanvasSize(this.#canvas.width, this.#canvas.height);
+    setCanvasSize(this.canvas.width, this.canvas.height);
 
     for (const screen in this.screens) {
-      this.screens[screen].resize({ x: 0, y: 0 }, { x: this.#canvas.width, y: this.#canvas.height });
+      this.screens[screen].resize({ x: 0, y: 0 }, { x: this.canvas.width, y: this.canvas.height });
     }
   }
 
-  #save() {
-    if (!Settings.save) return;
+  static saveLocalStorage() {
+    if (!this.save) return;
 
     const saveData = {
-      highScore: Settings.highScore,
+      highScore: InGame.highScore,
 
-      showCollisionBoxes: Settings.showCollisionBoxes,
-      fpsLimit: Settings.fpsLimit,
-      windowMode: Settings.windowMode,
-      resolution: Settings.resolution,
-      showFPS: Settings.FPSCounterStatus,
-      masterVolume: Settings.masterVolume,
-      musicVolume: Settings.musicVolume,
-      soundEffectVolume: Settings.soundEffectVolume,
+      showCollisionBoxes: Options.showCollisionBoxes,
+      fpsLimit: Options.fpsLimit,
+      windowMode: Options.windowMode,
+      resolution: Options.resolution,
+      showFPS: Options.showFPS,
+      masterVolume: Options.masterVolume,
+      musicVolume: Options.musicVolume,
+      soundEffectVolume: Options.soundEffectVolume,
     };
 
     localStorage.setItem("saveData", JSON.stringify(saveData));
-    Settings.save = false;
+    this.save = false;
   }
 
-  #load() {
+  static loadLocalStorage() {
     const saveData = JSON.parse(localStorage.getItem("saveData"));
 
     if (saveData) {
-      Settings.highScore = saveData.highScore;
+      InGame.highScore = saveData.highScore;
 
-      Settings.showCollisionBoxes = saveData.showCollisionBoxes;
-      Settings.fpsLimit = saveData.fpsLimit;
-      Settings.windowMode = saveData.windowMode;
-      Settings.resolution = saveData.resolution;
-      Settings.FPSCounterStatus = saveData.showFPS;
-      Settings.masterVolume = saveData.masterVolume;
-      Settings.musicVolume = saveData.musicVolume;
-      Settings.soundEffectVolume = saveData.soundEffectVolume;
+      Options.fpsLimit = saveData.fpsLimit;
+      Options.windowMode = saveData.windowMode;
+      Options.showCollisionBoxes = saveData.showCollisionBoxes;
+      Options.showFPS = saveData.showFPS;
+      Options.resolution = saveData.resolution;
+      Options.masterVolume = saveData.masterVolume;
+      Options.musicVolume = saveData.musicVolume;
+      Options.soundEffectVolume = saveData.soundEffectVolume;
     }
   }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const main = new Main();
-  main.run();
+  Main.init();
+  Main.run();
 });

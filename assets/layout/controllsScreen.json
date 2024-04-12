@@ -1,8 +1,0 @@
-{
-  "controllsPC": {
-    "type": "Sprite",
-    "path": "assets/graphics/UI/ControllsPC.png",
-    "position": { "x": 0.445, "y": 0.213 },
-    "size": { "x": 0.442, "y": 0.574 }
-  }
-}

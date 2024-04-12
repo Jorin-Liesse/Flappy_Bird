@@ -1,9 +1,26 @@
 import { DeltaTime } from "../deltaTime.js";
 
+import { getCanvasSize } from "../canvasSize.js";
+
 export class SpriteSheet {
   #ctx;
   
-  constructor(data, screenPosition, screenSize) {
+  constructor({ data = {}, screenPosition = { x: 0, y: 0 }, screenSize = getCanvasSize() } = {}) {
+    const defaultData = {
+      "path": "assets/graphics/empty.png",
+      "position": { "x": 0, "y": 0 },
+      "size": { "x": 0.1, "y": 0.1 },
+      "animationInfo": {
+        "rows": 1,
+        "columns": 1,
+        "startFrame": 0,
+        "endFrame": 0,
+        "frameRate": 1
+      }
+    };
+
+    data = { ...defaultData, ...data };
+
     const canvas = document.getElementById("mainCanvas");
     this.#ctx = canvas.getContext("2d");
 
@@ -15,6 +32,7 @@ export class SpriteSheet {
 
     this.currentFrame = this.animationInfo.startFrame;
     this.frameTimer = 0;
+    this.visible = true;
 
     this.#loadImage();
 
@@ -30,6 +48,7 @@ export class SpriteSheet {
   }
 
   draw() {
+    if (!this.visible) return;
     if (!this.isLoaded) return;
 
     this.#ctx.save();

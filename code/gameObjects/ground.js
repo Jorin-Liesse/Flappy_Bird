@@ -10,16 +10,16 @@ export class Ground {
 
     this.#calculateRef(screenPosition, screenSize);
 
-    this.collisionBoxes = new Rectangle({
-      "position": Settings.groundPosition,
-      "size": Settings.groundSize,
-      "width": Settings.collisionBoxesWidth,
-      "strokeColor": "blue",
-      "fillColor": "transparent",
+    this.collisionBoxes = new Rectangle({data: {
+      position: Settings.groundPosition,
+      size: Settings.groundSize,
+      width: Settings.collisionBoxesWidth,
+      strokeColor: "blue",
+      fillColor: "transparent",
       },
-      screenPosition,
-      screenSize
-    )
+      screenPosition: screenPosition,
+      screenPosition: screenSize
+    })
 
     this.collisionBoxes.velocity = this.velocity;
   }

@@ -3,16 +3,16 @@ import { Settings } from "../settings.js";
 
 export class PointTrigger extends GameObject {
   constructor(path, position, size, screenPosition, screenSize) {
-    super(
-      {
+    super({
+      data: {
         path: path,
         position: position,
         size: size,
         animationInfo: Settings.pilarAnimationInfo,
       },
-      screenPosition,
-      screenSize
-    );
+      screenPosition: screenPosition,
+      screenSize: screenSize
+    });
 
     this.velocity.x = Settings.pilarSpeed;
   }

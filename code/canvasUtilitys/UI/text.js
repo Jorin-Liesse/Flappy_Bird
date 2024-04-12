@@ -1,7 +1,21 @@
+import { getCanvasSize } from "../canvasSize.js";
+
 export class Text {
   #ctx;
 
-  constructor(data, screenPosition, screenSize) {
+  constructor({ data = {}, screenPosition = { x: 0, y: 0 }, screenSize = getCanvasSize() } = {}) {
+    const defaultData = {
+      position: { "x": 0.5, "y": 0.5 },
+      size: 0.1,
+      text: "Hello World!",
+      font: "Arial",
+      color: "#ffffff",
+      align: "right",
+      baseLine: "middle"
+    };
+
+    data = { ...defaultData, ...data };
+
     const canvas = document.getElementById("mainCanvas");
     this.#ctx = canvas.getContext("2d");
 
@@ -13,12 +27,15 @@ export class Text {
     this.align = data.align;
     this.baseLine = data.baseLine;
 
+    this.visible = true;
+
     this.#calculateRef(screenPosition, screenSize);
   }
 
   update() {}
 
   draw() {
+    if (!this.visible) return;
     this.#ctx.save();
 
     this.#ctx.font = `${this.size}px "${this.font}"`;

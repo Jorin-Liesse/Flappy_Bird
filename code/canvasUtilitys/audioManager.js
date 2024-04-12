@@ -34,7 +34,7 @@ export class AudioManager {
     this.#sounds[soundName].currentTime = 0;
   }
 
-  static update(masterVolume, musicVolume, soundEffectVolume) {
+  static update({masterVolume = this.#masterVolume, musicVolume = this.#musicVolume, soundEffectVolume = this.#soundEffectVolume} = {}) {
     this.#masterVolume = masterVolume;
     this.#musicVolume = musicVolume;
     this.#soundEffectVolume = soundEffectVolume;

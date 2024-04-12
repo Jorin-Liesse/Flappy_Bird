@@ -1,7 +1,18 @@
+import { getCanvasSize } from "../canvasSize.js";
+
 export class Line {
   #ctx;
   
-  constructor(data, screenPosition, screenSize) {
+  constructor({ data = {}, screenPosition = { x: 0, y: 0 }, screenSize = getCanvasSize() } = {}) {
+    const defaultData = {
+      startPosition: { x: 0, y: 0 },
+      endPosition: { x: 1, y: 1 },
+      width: 0.01,
+      color: "#ffffff"
+    };
+
+    data = { ...defaultData, ...data };
+
     const canvas = document.getElementById("mainCanvas");
     this.#ctx = canvas.getContext("2d");
 
@@ -10,12 +21,15 @@ export class Line {
     this.refWidth = data.width;
     this.color = data.color;
 
+    this.visible = true;
+
     this.#calculateRef(screenPosition, screenSize);
   }
 
   update() {}
 
   draw() {
+    if (!this.visible) return;
     this.#ctx.save();
     this.#ctx.strokeStyle = this.color;
     this.#ctx.lineWidth = this.width;

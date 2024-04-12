@@ -1,7 +1,22 @@
 import { Sprite } from "./sprite.js";
 
+import { getCanvasSize } from "../canvasSize.js";
+
 export class ProgressBar {
-  constructor(data, screenPosition, screenSize) {
+  constructor({ data = {}, screenPosition = { x: 0, y: 0 }, screenSize = getCanvasSize() } = {}) {
+    const defaultData = {
+      pathBackPlate: "assets/graphics/empty.png",
+      pathIndicator: "assets/graphics/empty.png",
+      pathPlate: "assets/graphics/empty.png",
+      position: { x: 0.1, y: 0.1 },
+      sizes: {
+        bar: { x: 0.4, y: 0.1 },
+        plate: { x: 0.05, y: 0.1 }
+      },
+      value: 0.5
+    };
+
+    data = { ...defaultData, ...data };
     this.refPosition = data.position;
     this.refSizes = data.sizes;
 
@@ -9,6 +24,8 @@ export class ProgressBar {
     this.screenSize = screenSize;
 
     this.value = data.value;
+
+    this.visible = true;
 
     this.#loadSprites(data, screenPosition, screenSize);
 
@@ -24,6 +41,7 @@ export class ProgressBar {
   }
 
   draw() {
+    if (!this.visible) return;
     this.spriteBackPlate.draw();
     this.spriteIndicator.draw();
     this.spritePlate.draw();
@@ -56,9 +74,9 @@ export class ProgressBar {
       size: this.refSizes.plate,
     };
 
-    this.spriteBackPlate = new Sprite(spriteBackPlateData, screenPosition, screenSize);
-    this.spriteIndicator = new Sprite(spriteIndicatorData, screenPosition, screenSize);
-    this.spritePlate = new Sprite(spritePlateData, screenPosition, screenSize);
+    this.spriteBackPlate = new Sprite({data: spriteBackPlateData, screenPosition: screenPosition, screenSize: screenSize});
+    this.spriteIndicator = new Sprite({data: spriteIndicatorData, screenPosition: screenPosition, screenSize: screenSize});
+    this.spritePlate = new Sprite({data: spritePlateData, screenPosition: screenPosition, screenSize: screenSize});
   }
 
   #calculateRef(screenPosition, screenSize) {

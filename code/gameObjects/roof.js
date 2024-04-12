@@ -10,16 +10,16 @@ export class Roof {
 
     this.#calculateRef(screenPosition, screenSize);
 
-    this.collisionBoxes = new Rectangle({
-      "position": Settings.roofPosition,
-      "size": Settings.roofSize,
-      "width": Settings.collisionBoxesWidth,
-      "strokeColor": "blue",
-      "fillColor": "transparent",
+    this.collisionBoxes = new Rectangle({data: {
+      position: Settings.roofPosition,
+      size: Settings.roofSize,
+      width: Settings.collisionBoxesWidth,
+      strokeColor: "blue",
+      fillColor: "transparent",
       },
-      screenPosition,
-      screenSize
-    )
+      screenPosition: screenPosition,
+      screenSize: screenSize
+    })
 
     this.collisionBoxes.velocity = this.velocity;
   }

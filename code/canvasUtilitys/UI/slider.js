@@ -1,9 +1,24 @@
 import { Sprite } from "./sprite.js";
 import { InputManager } from "../inputManager.js";
 import { AudioManager } from "../audioManager.js";
+import { getCanvasSize } from "../canvasSize.js";
 
 export class Slider {
-  constructor(data, screenPosition, screenSize) {
+  constructor({ data = {}, screenPosition = { x: 0, y: 0 }, screenSize = getCanvasSize() } = {}) {
+    const defaultData = {
+      pathBar: "assets/graphics/empty.png",
+      pathPin: "assets/graphics/empty.png",
+      pathSound: "",
+      position: { x: 0.25, y: 0.75 },
+      sizes: {
+        bar: { x: 0.5, y: 0.125 },
+        pin: { x: 0.025, y: 0.125 }
+      },
+      value: 0.5
+    };
+
+    data = { ...defaultData, ...data };
+
     this.refPosition = data.position;
     this.refSizes = data.sizes;
 
@@ -12,6 +27,7 @@ export class Slider {
 
     this.status = "passive";
     this.previousStatus = "passive";
+    this.visible = true;
 
     this.previousValue = data.value;
     this.value = data.value;
@@ -74,6 +90,7 @@ export class Slider {
   }
 
   draw() {
+    if (!this.visible) return;
     this.spriteBar.draw();
     this.spritePin.draw();
   }
@@ -110,22 +127,22 @@ export class Slider {
   
   #loadSprites(data, screenPosition, screenSize) {
     const spriteBarData = {
-      "path": data.pathBar,
-      "position": this.refPosition,
-      "size": this.refSizes.bar
+      path: data.pathBar,
+      position: this.refPosition,
+      size: this.refSizes.bar
     };
 
     const spritePinData = {
-      "path": data.pathPin,
-      "position": {
-        "x": this.refPosition.x + this.refSizes.bar.x * this.value,
-        "y": this.refPosition.y
+      path: data.pathPin,
+      position: {
+        x: this.refPosition.x + this.refSizes.bar.x * this.value,
+        y: this.refPosition.y
       },
-      "size": this.refSizes.pin
+      size: this.refSizes.pin
     };
 
-    this.spriteBar = new Sprite(spriteBarData, screenPosition, screenSize);
-    this.spritePin = new Sprite(spritePinData, screenPosition, screenSize);
+    this.spriteBar = new Sprite({data: spriteBarData, screenPosition: screenPosition, screenSize: screenSize});
+    this.spritePin = new Sprite({data: spritePinData, screenPosition: screenPosition, screenSize: screenSize});
   }
 
   #calculateRef(screenPosition, screenSize) {

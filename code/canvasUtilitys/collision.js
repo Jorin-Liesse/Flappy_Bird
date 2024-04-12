@@ -16,12 +16,10 @@ export function circleRectCollision(circle, rect) {
   else if (circleCenterrefPosition.y > rect.refPosition.y + rect.refSize.y)
     testY = rect.refPosition.y + rect.refSize.y; // bottom edge
 
-  // get distance from closest edges
   let distX = circleCenterrefPosition.x - testX;
   let distY = circleCenterrefPosition.y - testY;
   let distance = Math.sqrt(distX * distX + distY * distY);
 
-  // if the distance is less than the radius, collision!
   if (distance <= circle.radius) {
     return true;
   }

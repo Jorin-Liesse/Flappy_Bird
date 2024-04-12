@@ -1,16 +1,33 @@
 import { Sprite } from "./sprite.js";
 import { Text } from "./text.js";
 
+import { getCanvasSize } from "../canvasSize.js";
 import { InputManager } from "../inputManager.js";
 import { AudioManager } from "../audioManager.js";
 
 export class Button {
-  constructor(data, screenPosition, screenSize) {
+  constructor({ data = {}, screenPosition = { x: 0, y: 0 }, screenSize = getCanvasSize() } = {}) {
+    const defaultData = {
+      pathUpSprite: "assets/graphics/empty.png",
+      pathDownSprite: "assets/graphics/empty.png",
+      pathUpSound: "",
+      pathDownSound: "",
+      position: { x: 0, y: 0 },
+      size: { x: 1, y: 1 },
+      text: "",
+      font: "Arial",
+      color: "#000000"
+    };
+
+    data = { ...defaultData, ...data };
+
     this.refPosition = data.position;
     this.refSize = data.size;
 
     this.status = "closed";
     this.previousStatus = "closed";
+
+    this.visible = true;
 
     this.clicked = false;
 
@@ -61,6 +78,7 @@ export class Button {
   }
 
   draw() {
+    if (!this.visible) return;
     if (this.status === "up") {
       this.spriteUp.draw();
       this.buttonTextUp.draw();
@@ -86,44 +104,44 @@ export class Button {
 
   #loadSprites(data, screenPosition, screenSize) {
     const spriteUpData = {
-      "path": data.pathUpSprite,
-      "position": this.refPosition,
-      "size": this.refSize
+      path: data.pathUpSprite,
+      position: this.refPosition,
+      size: this.refSize
     };
 
     const spriteDownData = {
-      "path": data.pathDownSprite,
-      "position": this.refPosition,
-      "size": this.refSize
+      path: data.pathDownSprite,
+      position: this.refPosition,
+      size: this.refSize
     };
 
-    this.spriteUp = new Sprite(spriteUpData, screenPosition, screenSize);
-    this.spriteDown = new Sprite(spriteDownData, screenPosition, screenSize);
+    this.spriteUp = new Sprite({data: spriteUpData, screenPosition: screenPosition, screenSize: screenSize});
+    this.spriteDown = new Sprite({data: spriteDownData, screenPosition: screenPosition, screenSize: screenSize});
   }
 
   #loadTexts(data, screenPosition, screenSize) {
     const textUpData = {
-      "position": { x: this.refPosition.x + this.refSize.x /2, y: this.refPosition.y + this.refSize.y /2 },
-      "size": this.refSize.x / 4,
-      "text": data.text,
-      "font": data.font,
-      "color": data.color,
-      "align": "center",
-      "baseLine": "bottom"
+      position: { x: this.refPosition.x + this.refSize.x /2, y: this.refPosition.y + this.refSize.y /2 },
+      size: this.refSize.x / 4,
+      text: data.text,
+      font: data.font,
+      color: data.color,
+      align: "center",
+      baseLine: "bottom"
     };
 
     const textDownData = {
-      "position": { x: this.refPosition.x + this.refSize.x /2, y: this.refPosition.y + this.refSize.y /2 + this.refSize.y / 15},
-      "size": this.refSize.x / 4.5,
-      "text": data.text,
-      "font": data.font,
-      "color": data.color,
-      "align": "center",
-      "baseLine": "bottom"
+      position: { x: this.refPosition.x + this.refSize.x /2, y: this.refPosition.y + this.refSize.y /2 + this.refSize.y / 15},
+      size: this.refSize.x / 4.5,
+      text: data.text,
+      font: data.font,
+      color: data.color,
+      align: "center",
+      baseLine: "bottom"
     };
 
-    this.buttonTextUp = new Text(textUpData, screenPosition, screenSize);
-    this.buttonTextDown = new Text(textDownData, screenPosition, screenSize);
+    this.buttonTextUp = new Text({data: textUpData, screenPosition: screenPosition, screenSize: screenSize});
+    this.buttonTextDown = new Text({data: textDownData, screenPosition: screenPosition, screenSize: screenSize});
   }
 
   #calculateRef(screenPosition, screenSize) {

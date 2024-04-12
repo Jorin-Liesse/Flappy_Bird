@@ -1,66 +1,43 @@
 export class Settings {
   static aspectRatio = 16 / 9;
-  static fpsLimit = 60;
-  static windowMode = "fullscreen"; //Fullscreen, Windowed, Borderless
-  static showCollisionBoxes = true;
-  static resolution = "1280x720";
   static collisionBoxesWidth = 0.005;
+  static showCollisionBoxes = false;
 
-  static currentFPS = 0;
-  static highScore = 0;
-
-  static pathStartScreenLayout = "assets/layout/startScreen.json";
-  static pathOptionsScreenLayout = "assets/layout/optionsScreen.json";
-  static pathGameScreenLayout = "assets/layout/gameScreen.json";
+  static pathStartScreenLayout = "assets/layout/start.json";
+  static pathOptionsScreenLayout = "assets/layout/options.json";
+  static pathGameScreenLayout = "assets/layout/game.json";
   static pathBackgroundLayout = "assets/layout/background.json";
-  static pathCreditsScreenLayout = "assets/layout/creditsScreen.json";
-  static pathPausedScreenLayout = "assets/layout/pausedScreen.json";
-  static pathInGameScreenLayout = "assets/layout/inGameScreen.json";
-  static pathInGameMenuScreenLayout = "assets/layout/inGameMenuScreen.json";
-  static pathGameoverScreenLayout = "assets/layout/gameOverScreen.json";
+  static pathCreditsScreenLayout = "assets/layout/credits.json";
+  static pathPausedScreenLayout = "assets/layout/paused.json";
+  static pathInGameScreenLayout = "assets/layout/inGame.json";
+  static pathInGameMenuScreenLayout = "assets/layout/inGameMenu.json";
+  static pathGameoverScreenLayout = "assets/layout/gameOver.json";
   static pathFPSCounterLayout = "assets/layout/FPSCounter.json";
-
-  static pathGraphicsScreenLayout = "assets/layout/graphicsScreen.json";
-  static pathSoundScreenLayout = "assets/layout/soundScreen.json";
-  static pathControllsScreenLayout = "assets/layout/controllsScreen.json";
-
-  static backgroundScreenStatus = "active"; //active, inactive, transitionin, transitionout, forzen
-  static startScreenStatus = "active"; //active, inactive, transitionin, transitionout, forzen
-  static optionsScreenStatus = "inactive"; //active, inactive, transitionin, transitionout, forzen
-  static gameScreenStatus = "inactive"; //active, inactive, transitionin, transitionout, forzen
-  static creditsScreenStatus = "inactive"; //active, inactive, transitionin, transitionout, forzen
-  static pausedScreenStatus = "inactive"; //active, inactive, transitionin, transitionout, forzen
-  static inGameScreenStatus = "inactive"; //active, inactive, transitionin, transitionout, forzen
-  static inGameMenuScreenStatus = "inactive"; //active, inactive, transitionin, transitionout, forzen
-  static gameoverScreenStatus = "inactive"; //active, inactive, transitionin, transitionout, forzen
-  static FPSCounterStatus = "active"; //graphics, sound, controlls
-
-  static transitionDuration = 1000;
-  static save = false;
-  static restart = false;
-  static lost = false;
-  static score = 0;
-
-  static zIndex = {
-    background: 0,
-    credits: 1,
-    game: 1,
-    inGame: 2,
-    paused: 2,
-    start: 2,
-    gameOver: 2,
-    options: 3,
-    FPSCounter: 4
-  };
-
-  static gravity = 0.000003;
+  static pathGrayFilterLayout = "assets/layout/grayFilter.json";
+  static pathGraphicsScreenLayout = "assets/layout/graphics.json";
+  static pathSoundScreenLayout = "assets/layout/sound.json";
+  static pathControllsScreenLayout = "assets/layout/controlls.json";
 
   static pathScanlines = "assets/graphics/textures/scanlines.jpg";
   static pathNoise = "assets/graphics/textures/noise.jpg";
   static pathVignette = "assets/graphics/textures/vignette.jpg";
 
-  static pathPilarTop = "assets/graphics/Game/pilarTop.png";
-  static pathPilarBottom = "assets/graphics/Game/pilarBottom.png";
+  static zIndex = {
+    background: 0,
+    game: 1,
+    inGame: 2,
+    grayFilter: 3,
+    credits: 4,
+    start: 4,
+    gameOver: 4,
+    options: 4,
+    FPSCounter: 4
+  };
+
+  static gravity = 0.000003;
+
+  static pathPilarTop = "assets/graphics/game/pilarTop.png";
+  static pathPilarBottom = "assets/graphics/game/pilarBottom.png";
   static pilarAnimationInfo = {rows: 1, columns: 1, startFrame: 0, endFrame: 0, frameRate: 1};
   static pilarSize = {x: 0.0948, y: 0.7185};
   static pilarSpeed = -0.00015;
@@ -71,7 +48,7 @@ export class Settings {
   static pilarSpawnIntervalMax = 0.3;
   static pilarSpawnIntervalMin = 0.15;
   
-  static pathPlayer = "assets/graphics/Game/player.png";
+  static pathPlayer = "assets/graphics/game/player.png";
   static playerAnimationInfo = {rows: 1, columns: 3, startFrame: 0, endFrame: 2, frameRate: 10};
   static playerSize = {x: 0.0690, y: 0.1255};
   static playerJumpForce = -0.0007;
@@ -85,9 +62,5 @@ export class Settings {
   static roofPosition = {x: 0.0, y: -0.3};
   static roofSize = {x: 1, y: 0.265};
 
-  static pathPointTrigger = "assets/graphics/Game/empty.png";
-
-  static masterVolume = 0.9;
-  static musicVolume = 0.9;
-  static soundEffectVolume = 0.9;
+  static pathPointTrigger = "assets/graphics/empty.png";
 }
