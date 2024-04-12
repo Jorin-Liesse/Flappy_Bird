@@ -1,6 +1,5 @@
-# Flappy_Bird
-[![Total Downloads](https://poser.pugx.org/aimeos/aimeos-typo3/d/total.svg)](https://packagist.org/packages/aimeos/aimeos-typo3)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/aimeos/aimeos-typo3/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/aimeos/aimeos-typo3/?branch=master)
+# FlappyBird
+[![GitHub stars](https://img.shields.io/github/stars/your-username/your-repository.svg?style=social)](https://github.com/your-username/your-repository/stargazers)
 [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
 ## Table of Contents
 - Project Title
