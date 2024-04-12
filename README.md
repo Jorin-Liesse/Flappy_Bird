@@ -89,6 +89,23 @@ To play the game, follow these steps:
 - **Escape**: To pause the game.
 
 ## Credits
+### Development
+
+- [Jorin Liesse](https://github.com/Jorin-Liesse) - Sole developer of the project
+
+  ### Personal Links
+
+- [Portfolio Website](https://jorin-liesse.github.io/Portfolio/) - Visit my portfolio to learn more about my projects and skills.
+- [LinkedIn](https://www.linkedin.com/in/jorin-liesse-755774287/) - Connect with me on LinkedIn.
+
+### Inspirations
+
+- Mention any games, projects, or individuals who inspired your work
+
+### Testers
+
+- [Sander Daniels](https://github.com/testerusername) - Provided valuable feedback and testing
+- [Sander Daniels](https://github.com/testerusername) - Provided valuable feedback and testing
 
 ## License
 This work is licensed under a
