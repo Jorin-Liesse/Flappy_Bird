@@ -41,6 +41,7 @@ export class Start extends Screen {
         InGame.status = "transitionIn";
         Game.status = "active";
         PageStatus.wasHidden = false;
+        Game.restart = true;
       };
     };
     
