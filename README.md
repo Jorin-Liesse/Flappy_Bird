@@ -47,7 +47,7 @@ Before installing and running the application, please ensure that you have the f
 - Node.js (>= 10.x)
 - npm (Node Package Manager)
 
-### Method 1: Running with npm http-server (Windows)
+### Method 1: Running with npm http-server (Windows, macOS, Linux)
 
 1. Open your command line interface.
 2. Navigate to the root directory of the repository.
