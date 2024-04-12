@@ -42,8 +42,8 @@ Before installing and running the application, please ensure that you have the f
     ```
 5. Run `http-server` again.
 6. Open your web browser and navigate to one of the following URLs:
-    - [http://192.168.129.85:8080](http://192.168.129.85:8080){:target="_blank"}
-    - [http://127.0.0.1:8080](http://127.0.0.1:8080){:target="_blank"}
+    - [http://192.168.129.85:8080](http://192.168.129.85:8080)
+    - [http://127.0.0.1:8080](http://127.0.0.1:8080)
 
 ### Method 2: Building from Source (Windows, macOS, Linux)
 
@@ -96,7 +96,7 @@ To play the game, follow these steps:
   ### Personal Links
 
 - [Portfolio Website](https://jorin-liesse.github.io/Portfolio/) - Visit my portfolio to learn more about my projects and skills.
-- [LinkedIn](https://www.linkedin.com/in/jorin-liesse-755774287/) - Connect with me on LinkedIn.
+- <a href="https://www.linkedin.com/in/jorin-liesse-755774287/" target="_blank">LinkedIn</a> - Connect with me on LinkedIn.
 
 ### Inspirations
 
