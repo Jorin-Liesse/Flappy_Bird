@@ -7,6 +7,7 @@
 
 ## Table of Contents
 - [Installation](#Installation)
+- [Troubleshooting](#Troubleshooting)
 - [Usage](#Usage)
 - [Credits](#Credits)
 - [License](#License)
