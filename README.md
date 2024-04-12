@@ -1,9 +1,9 @@
 # Flappy Bird
 [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
-[![GitHub Release](https://img.shields.io/github/v/release/Jorin-Liesse/Flappy_Bird)](https://github.com/Jorin-Liesse/Flappy_Bird/releases){:target="_blank"}
-[![GitHub Stars](https://img.shields.io/github/stars/Jorin-Liesse/Flappy_Bird)](https://github.com/Jorin-Liesse/Flappy_Bird/stargazers){:target="_blank"}
-[![GitHub forks](https://img.shields.io/github/forks/Jorin-Liesse/Flappy_Bird)](https://github.com/Jorin-Liesse/Flappy_Bird/forks){:target="_blank"}
-[![GitHub watchers](https://img.shields.io/github/watchers/Jorin-Liesse/Flappy_Bird)](https://github.com/Jorin-Liesse/Flappy_Bird/watchers){:target="_blank"}
+[![GitHub Release](https://img.shields.io/github/v/release/Jorin-Liesse/Flappy_Bird)](https://github.com/Jorin-Liesse/Flappy_Bird/releases)
+[![GitHub Stars](https://img.shields.io/github/stars/Jorin-Liesse/Flappy_Bird)](https://github.com/Jorin-Liesse/Flappy_Bird/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/Jorin-Liesse/Flappy_Bird)](https://github.com/Jorin-Liesse/Flappy_Bird/forks)
+[![GitHub watchers](https://img.shields.io/github/watchers/Jorin-Liesse/Flappy_Bird)](https://github.com/Jorin-Liesse/Flappy_Bird/watchers)
 
 ## Table of Contents
 - [Installation](#Installation)
@@ -42,8 +42,8 @@ Before installing and running the application, please ensure that you have the f
     ```
 5. Run `http-server` again.
 6. Open your web browser and navigate to one of the following URLs:
-    - [http://192.168.129.85:8080](http://192.168.129.85:8080)
-    - [http://127.0.0.1:8080](http://127.0.0.1:8080)
+    - [http://192.168.129.85:8080](http://192.168.129.85:8080){:target="_blank"}
+    - [http://127.0.0.1:8080](http://127.0.0.1:8080){:target="_blank"}
 
 ### Method 2: Building from Source (Windows, macOS, Linux)
 
