@@ -32,7 +32,8 @@ Before installing and running the application, please ensure that you have the f
     ```
 4. If you encounter the error message:
     ```
-    http-server : File C:\Users\yourusername\AppData\Roaming\npm\http-server.ps1 cannot be loaded because running scripts is disabled on this system...
+    http-server : File C:\Users\yourusername\AppData\Roaming\npm\http-server.ps1
+    cannot be loaded because running scripts is disabled on this system...
     ```
     You need to adjust the execution policy by running:
     ```bash
