@@ -13,7 +13,7 @@ export class InGame extends Screen {
   static highScore = 0;
 
   static init() {
-    super.init({layoutPath: Settings.pathInGameScreenLayout, zIndex: Settings.zIndex.inGame});
+    super.init({layoutPath: Settings.pathInGameLayout, zIndex: Settings.zIndex.inGame});
 
     this.fnTransitionOut = function () {
       this.refPosition.y = -this.animationTimer.progress * 0.2;

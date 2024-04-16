@@ -10,7 +10,7 @@ import { Main } from "../main.js";
 
 export class Graphics extends Screen {
   static init() {
-    super.init({layoutPath: Settings.pathGraphicsScreenLayout, status: "active"});
+    super.init({layoutPath: Settings.pathGraphicsLayout, status: "active"});
 
     if (navigator.userAgent.includes('Electron')) {
       this.removeElement("choiceResolutionGray");

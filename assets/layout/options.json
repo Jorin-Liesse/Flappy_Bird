@@ -49,7 +49,7 @@
     "pathDownSound": "assets/audio/UI/buttonDown.mp3",
     "position": { "x": 0.107, "y": 0.606 },
     "size": { "x": 0.215, "y": 0.138 },
-    "text": "Controlls",
+    "text": "Controls",
     "font": "Ubuntu Title",
     "color": "#c6ac9f"
   },
@@ -93,7 +93,7 @@
   },
   "buttonControllsBlockedText": {
     "type": "Text",
-    "text": "Controlls",
+    "text": "Controls",
     "position": { "x": 0.119, "y": 0.651 },
     "size": 0.055,
     "color": "#c6ac9f",

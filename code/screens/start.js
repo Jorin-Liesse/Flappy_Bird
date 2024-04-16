@@ -10,7 +10,7 @@ import { GrayFilter } from "./grayFilter.js";
 
 export class Start extends Screen {
   static init() {
-    super.init({layoutPath: Settings.pathStartScreenLayout, zIndex: Settings.zIndex.start, status: "active"});
+    super.init({layoutPath: Settings.pathStartLayout, zIndex: Settings.zIndex.start, status: "active"});
 
     this.fnTransitionOut = function () {
       this.refPosition.y = -this.animationTimer.progress;

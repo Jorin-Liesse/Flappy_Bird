@@ -7,7 +7,7 @@ import { Main } from "../main.js";
 
 export class Sound extends Screen {
   static init() {
-    super.init({layoutPath: Settings.pathSoundScreenLayout, status: "active"});
+    super.init({layoutPath: Settings.pathSoundLayout, status: "active"});
 
     this.setUIValues();
 

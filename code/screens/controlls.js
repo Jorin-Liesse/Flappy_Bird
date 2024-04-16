@@ -3,7 +3,7 @@ import { Settings } from "../settings.js";
 
 export class Controlls extends Screen {
   static init() {
-    super.init({layoutPath: Settings.pathControllsScreenLayout, status: "active"});
+    super.init({layoutPath: Settings.pathControllsLayout, status: "active"});
 
     this.fnTransitionOut = function () {
       this.refPosition.x = this.animationTimer.progress * 0.6;

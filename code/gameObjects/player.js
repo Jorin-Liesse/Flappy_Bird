@@ -5,7 +5,6 @@ import { rectRectCollision } from "../canvasUtilitys/collision.js";
 import { Settings } from "../settings.js";
 
 export class Player extends GameObject {
-  hitTolerance = 1;
   constructor(screenPosition, screenSize) {
     super({
       data: {

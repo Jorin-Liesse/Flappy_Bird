@@ -5,7 +5,7 @@ import { Settings } from "../settings.js";
 
 export class Credits extends Screen {
   static init() {
-    super.init({layoutPath: Settings.pathCreditsScreenLayout, zIndex: Settings.zIndex.credits});
+    super.init({layoutPath: Settings.pathCreditsLayout, zIndex: Settings.zIndex.credits});
 
     this.fnTransitionOut = function () {
       this.refPosition.y = -this.animationTimer.progress;

@@ -19,7 +19,7 @@ export class Options extends Screen {
   static soundEffectVolume = 0.9;
 
   static init() {
-    super.init({layoutPath: Settings.pathOptionsScreenLayout, zIndex: Settings.zIndex.options});
+    super.init({layoutPath: Settings.pathOptionsLayout, zIndex: Settings.zIndex.options});
 
     Graphics.init();
     Sound.init();

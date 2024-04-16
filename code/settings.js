@@ -1,18 +1,17 @@
 export class Settings {
-  static pathStartScreenLayout = "assets/layout/start.json";
-  static pathOptionsScreenLayout = "assets/layout/options.json";
-  static pathGameScreenLayout = "assets/layout/game.json";
+  static pathStartLayout = "assets/layout/start.json";
+  static pathOptionsLayout = "assets/layout/options.json";
+  static pathGameLayout = "assets/layout/game.json";
   static pathBackgroundLayout = "assets/layout/background.json";
-  static pathCreditsScreenLayout = "assets/layout/credits.json";
-  static pathPausedScreenLayout = "assets/layout/paused.json";
-  static pathInGameScreenLayout = "assets/layout/inGame.json";
-  static pathInGameMenuScreenLayout = "assets/layout/inGameMenu.json";
-  static pathGameoverScreenLayout = "assets/layout/gameOver.json";
+  static pathCreditsLayout = "assets/layout/credits.json";
+  static pathInGameLayout = "assets/layout/inGame.json";
+  static pathInGameMenuLayout = "assets/layout/inGameMenu.json";
+  static pathGameoverLayout = "assets/layout/gameOver.json";
   static pathFPSCounterLayout = "assets/layout/FPSCounter.json";
   static pathGrayFilterLayout = "assets/layout/grayFilter.json";
-  static pathGraphicsScreenLayout = "assets/layout/graphics.json";
-  static pathSoundScreenLayout = "assets/layout/sound.json";
-  static pathControllsScreenLayout = "assets/layout/controlls.json";
+  static pathGraphicsLayout = "assets/layout/graphics.json";
+  static pathSoundLayout = "assets/layout/sound.json";
+  static pathControllsLayout = "assets/layout/controlls.json";
 
   static pathScanlines = "assets/graphics/textures/scanlines.jpg";
   static pathNoise = "assets/graphics/textures/noise.jpg";

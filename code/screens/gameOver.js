@@ -11,7 +11,7 @@ import { GrayFilter } from "./grayFilter.js";
 
 export class GameOver extends Screen {
   static init() {
-    super.init({layoutPath: Settings.pathGameoverScreenLayout, zIndex: Settings.zIndex.gameOver});
+    super.init({layoutPath: Settings.pathGameoverLayout, zIndex: Settings.zIndex.gameOver});
 
     this.fnTransitionOut = function () {
       this.refPosition.y = -this.animationTimer.progress;

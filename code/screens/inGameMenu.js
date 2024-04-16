@@ -11,7 +11,7 @@ import { GrayFilter } from "./grayFilter.js";
 
 export class InGameMenu extends Screen {
   static init() {
-    super.init({layoutPath: Settings.pathInGameMenuScreenLayout, zIndex: Settings.zIndex.options});
+    super.init({layoutPath: Settings.pathInGameMenuLayout, zIndex: Settings.zIndex.options});
 
     this.fnTransitionOut = function () {
       this.refPosition.x = -this.animationTimer.progress * 0.4;
