@@ -95,7 +95,6 @@ To play the game, follow these steps:
 2. Once the game is launched, you will be presented with the main menu.
 3. Use the following controls to play the game:
    - **Spacebar** or **Left Mouse Button**: Flap wings to fly.
-   - *Optionally include other controls here.*
 4. Navigate through the obstacles by tapping the spacebar or left mouse button to keep the bird flying.
 5. Try to achieve the highest score possible by passing through the gaps between the obstacles without colliding.
 6. The game ends when the bird falls off the screen.

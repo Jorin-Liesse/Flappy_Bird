@@ -91,6 +91,12 @@ export class Button {
   resize(screenPosition, screenSize) {
     this.#calculateRef(screenPosition, screenSize);
 
+    this.spriteUp.refPosition = this.refPosition;
+    this.spriteDown.refPosition = this.refPosition;
+
+    this.spriteUp.refSize = this.refSize;
+    this.spriteDown.refSize = this.refSize;
+
     this.spriteUp.resize(screenPosition, screenSize);
     this.spriteDown.resize(screenPosition, screenSize);
 
