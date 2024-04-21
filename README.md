@@ -7,15 +7,12 @@
 
 <div style="display: flex; flex-direction: row;">
     <a href="https://jorin-liesse.github.io/Flappy_Bird/" target="_blank">
-        <img src="https://github.com/Jorin-Liesse/Flappy_Bird/assets/66786568/8597f717-3c94-4363-aa9d-02ee4b49e750" alt="Settings" width="400"/>
-        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(255, 255, 255, 0.7); padding: 10px; border-radius: 5px;">Click Me</div>
+        <img src="https://github.com/Jorin-Liesse/Flappy_Bird/assets/66786568/4d9138d3-ad38-470f-a00c-e6c7fe502995" alt="Settings" width="400"/>
     </a>
     <a href="https://jorin-liesse.github.io/Flappy_Bird/" target="_blank">
-        <img src="https://github.com/Jorin-Liesse/Flappy_Bird/assets/66786568/69d829f4-2902-4813-9cb4-89361648a6e6" alt="GamePlay" width="400"/>
-        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(255, 255, 255, 0.7); padding: 10px; border-radius: 5px;">Click Me</div>
+        <img src="https://github.com/Jorin-Liesse/Flappy_Bird/assets/66786568/27fa6eb6-f894-4f62-ad3c-08c776f73d74" alt="GamePlay" width="400"/>
     </a>
 </div>
-
 
 ## Table of Contents
 - [Project Description](#Project-Description)
