@@ -5,6 +5,9 @@
 [![GitHub forks](https://img.shields.io/github/forks/Jorin-Liesse/Flappy_Bird)](https://github.com/Jorin-Liesse/Flappy_Bird/forks)
 [![GitHub watchers](https://img.shields.io/github/watchers/Jorin-Liesse/Flappy_Bird)](https://github.com/Jorin-Liesse/Flappy_Bird/watchers)
 
+![GamePlay](https://github.com/Jorin-Liesse/Flappy_Bird/assets/66786568/69d829f4-2902-4813-9cb4-89361648a6e6)
+
+
 ## Table of Contents
 - [Project Description](#Project-Description)
 - [Installation](#Installation)
