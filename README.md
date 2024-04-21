@@ -6,9 +6,14 @@
 [![GitHub watchers](https://img.shields.io/github/watchers/Jorin-Liesse/Flappy_Bird)](https://github.com/Jorin-Liesse/Flappy_Bird/watchers)
 
 <div style="display: flex; flex-direction: row;">
-    <img src="https://github.com/Jorin-Liesse/Flappy_Bird/assets/66786568/8597f717-3c94-4363-aa9d-02ee4b49e750" alt="Settings" width="400"/>
-    <img src="https://github.com/Jorin-Liesse/Flappy_Bird/assets/66786568/69d829f4-2902-4813-9cb4-89361648a6e6" alt="GamePlay" width="400"/>
+    <a href="https://jorin-liesse.github.io/Flappy_Bird/" target="_blank">
+        <img src="https://github.com/Jorin-Liesse/Flappy_Bird/assets/66786568/8597f717-3c94-4363-aa9d-02ee4b49e750" alt="Settings" width="400"/>
+    </a>
+    <a href="https://jorin-liesse.github.io/Flappy_Bird/" target="_blank">
+        <img src="https://github.com/Jorin-Liesse/Flappy_Bird/assets/66786568/69d829f4-2902-4813-9cb4-89361648a6e6" alt="GamePlay" width="400"/>
+    </a>
 </div>
+
 
 ## Table of Contents
 - [Project Description](#Project-Description)
