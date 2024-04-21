@@ -14,6 +14,18 @@
     </a>
 </div>
 
+---
+
+### Watch the Gameplay Video
+
+Click on the images below to watch the gameplay video:
+
+1. [Settings](https://jorin-liesse.github.io/Flappy_Bird/)  
+   ![Settings](https://github.com/Jorin-Liesse/Flappy_Bird/assets/66786568/8597f717-3c94-4363-aa9d-02ee4b49e750)
+
+2. [GamePlay](https://jorin-liesse.github.io/Flappy_Bird/)  
+   ![GamePlay](https://github.com/Jorin-Liesse/Flappy_Bird/assets/66786568/69d829f4-2902-4813-9cb4-89361648a6e6)
+
 
 ## Table of Contents
 - [Project Description](#Project-Description)
