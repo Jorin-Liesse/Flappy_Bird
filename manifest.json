@@ -1,7 +1,7 @@
 {
   "name": "Flappy Bird",
   "short_name": "Flappy Bird",
-  "start_url": "/Flappy_Bird/",
+  "start_url": "https://jorin-liesse.github.io/Flappy_Bird/",
   "display": "fullscreen",
   "theme_color": "#000",
   "background_color": "#000",
