@@ -165,16 +165,16 @@ const resourcesToPrecache = [
   "assets/shaders/grayScale/vertexShader.glsl"
 ];
 
-// self.addEventListener("install", (event) => {
-//   console.log("Service worker installing...");
+self.addEventListener("install", (event) => {
+  console.log("Service worker installing...");
 
-//   event.waitUntil(
-//     caches.open(cacheName)
-//       .then((cache) => {
-//         return cache.addAll(resourcesToPrecache);
-//       })
-//   );
-// });
+  event.waitUntil(
+    caches.open(cacheName)
+      .then((cache) => {
+        return cache.addAll(resourcesToPrecache);
+      })
+  );
+});
 
 self.addEventListener("activate", (event) => {
   console.log("Service worker activating...");
@@ -187,19 +187,5 @@ self.addEventListener("fetch", event => {
     .then((cachedResponse) => {
       return cachedResponse || fetch(event.request);
     })
-  );
-});
-
-self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(cacheName)
-      .then(async (cache) => {
-        const response = await fetch('/');
-        const html = await response.text();
-        // Parse the HTML response to get all the URLs
-        let doc = new DOMParser().parseFromString(html, 'text/html');
-        let urls = Array.from(doc.querySelectorAll('a')).map(a => a.href);
-        return await cache.addAll(urls);
-      })
   );
 });
