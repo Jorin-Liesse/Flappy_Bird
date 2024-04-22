@@ -5,6 +5,15 @@
 [![GitHub forks](https://img.shields.io/github/forks/Jorin-Liesse/Flappy_Bird)](https://github.com/Jorin-Liesse/Flappy_Bird/forks)
 [![GitHub watchers](https://img.shields.io/github/watchers/Jorin-Liesse/Flappy_Bird)](https://github.com/Jorin-Liesse/Flappy_Bird/watchers)
 
+<div style="display: flex; flex-direction: row;">
+    <a href="https://jorin-liesse.github.io/Flappy_Bird/" target="_blank">
+        <img src="https://github.com/Jorin-Liesse/Flappy_Bird/assets/66786568/4d9138d3-ad38-470f-a00c-e6c7fe502995" alt="Settings" width="400"/>
+    </a>
+    <a href="https://jorin-liesse.github.io/Flappy_Bird/" target="_blank">
+        <img src="https://github.com/Jorin-Liesse/Flappy_Bird/assets/66786568/27fa6eb6-f894-4f62-ad3c-08c776f73d74" alt="GamePlay" width="400"/>
+    </a>
+</div>
+
 ## Table of Contents
 - [Project Description](#Project-Description)
 - [Installation](#Installation)
