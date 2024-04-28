@@ -167,6 +167,10 @@ export class Main {
       Options.musicVolume = saveData.musicVolume;
       Options.soundEffectVolume = saveData.soundEffectVolume;
     }
+
+    if (!InGame.highScore) {
+      InGame.highScore = 0;
+    }
   }
 }
 

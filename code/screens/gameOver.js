@@ -27,7 +27,7 @@ export class GameOver extends Screen {
     super.update();
     if (!this.checkUpdateNeeded()) return;
 
-    this.elements.scoreNumberText.text = InGame.score;;
+    this.elements.scoreNumberText.text = InGame.score;
 
     if (this.elements.buttonRestart.isClicked()) {
       this.status = "transitionOut";
