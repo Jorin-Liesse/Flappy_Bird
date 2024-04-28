@@ -37,9 +37,6 @@
 - CSS3
 - JavaScript
 
-![Gameplay GIF](path/to/gameplay.gif)
-![Score Tracking](path/to/score-tracking.gif)
-
 ## Installation
 
 ### Prerequisites
